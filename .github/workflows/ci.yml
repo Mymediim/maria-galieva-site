@@ -1,0 +1,32 @@
+name: Проверка сайта
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Получить код
+        uses: actions/checkout@v4
+
+      - name: Настроить Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Установить зависимости
+        run: npm ci
+
+      - name: Проверить и собрать сайт
+        run: npm run build
+        env:
+          PUBLIC_SITE_URL: https://maria-galieva.ru
+          PUBLIC_SITE_INDEXING: 'false'
