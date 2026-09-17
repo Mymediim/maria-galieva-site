@@ -1,0 +1,100 @@
+---
+import '../../desktop-design.css';
+import CookieConsent from '../components/CookieConsent.astro';
+import prototypeSource from '../../prototype-desktop.html?raw';
+
+const baseStyles = prototypeSource.match(/<style>([\s\S]*?)<\/style>/)?.[1] ?? '';
+const siteUrl = (import.meta.env.PUBLIC_SITE_URL ?? '').replace(/\/$/, '');
+const allowIndexing = import.meta.env.PUBLIC_SITE_INDEXING === 'true' && Boolean(siteUrl);
+const pageTitle = 'Мария Галиева — продуктовый консультант';
+const pageDescription = 'Помогаю собственникам бизнеса спроектировать цифровой продукт, разобрать процесс перед автоматизацией и освоить ИИ на реальной рабочей задаче.';
+const originalBody = prototypeSource.match(/<body>([\s\S]*?)<\/body>/)?.[1] ?? '';
+const clientScript = originalBody.match(/<script>([\s\S]*?)<\/script>/)?.[1] ?? '';
+const pageContent = originalBody
+  .replace(/<script>[\s\S]*?<\/script>/, '')
+  .replaceAll('src="assets/', 'src="/')
+  .replace(
+    '<nav class="nav" aria-label="Разделы сайта">',
+    `<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="sr-only">Открыть меню</span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </button>
+    <nav class="nav" id="site-nav" aria-label="Разделы сайта">`,
+  );
+
+const navigationScript = `
+  const siteHeader = document.querySelector('.site-header');
+  const menuToggle = document.querySelector('.menu-toggle');
+  const closeMenu = () => {
+    if (!siteHeader || !menuToggle) return;
+    siteHeader.removeAttribute('data-menu-open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.querySelector('.sr-only').textContent = 'Открыть меню';
+  };
+
+  menuToggle?.addEventListener('click', () => {
+    const isOpen = siteHeader?.hasAttribute('data-menu-open') ?? false;
+    if (isOpen) {
+      closeMenu();
+      return;
+    }
+    siteHeader?.setAttribute('data-menu-open', '');
+    menuToggle.setAttribute('aria-expanded', 'true');
+    menuToggle.querySelector('.sr-only').textContent = 'Закрыть меню';
+  });
+
+  document.querySelectorAll('#site-nav a').forEach((link) => link.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeMenu();
+  });
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 1100) closeMenu();
+  });
+`;
+---
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <meta name="robots" content={allowIndexing ? 'index, follow' : 'noindex, nofollow'} />
+    {siteUrl && <link rel="canonical" href={`${siteUrl}/`} />}
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    {siteUrl && <meta property="og:url" content={`${siteUrl}/`} />}
+    {siteUrl && <meta property="og:image" content={`${siteUrl}/maria-hero-soft-blur.png`} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        name: 'Мария Галиева',
+        jobTitle: 'Продуктовый консультант',
+        description: pageDescription,
+        url: siteUrl || undefined,
+        sameAs: ['https://t.me/Mediim', 'https://it-production.dev/'],
+        worksFor: {
+          '@type': 'Organization',
+          name: 'IT Production',
+          url: 'https://it-production.dev/',
+        },
+      })}
+    ></script>
+    <style is:global set:html={baseStyles}></style>
+  </head>
+  <body>
+    <Fragment set:html={pageContent} />
+    <CookieConsent />
+    <script is:inline set:html={`${clientScript}\n${navigationScript}`}></script>
+  </body>
+</html>

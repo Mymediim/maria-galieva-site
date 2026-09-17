@@ -1,0 +1,61 @@
+---
+import CookieConsent from '../components/CookieConsent.astro';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const siteUrl = (import.meta.env.PUBLIC_SITE_URL ?? '').replace(/\/$/, '');
+const allowIndexing = import.meta.env.PUBLIC_SITE_INDEXING === 'true' && Boolean(siteUrl);
+const canonicalUrl = siteUrl ? `${siteUrl}${Astro.url.pathname}` : '';
+---
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content={allowIndexing ? 'index, follow' : 'noindex, nofollow'} />
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <header><a href="/">← На главную</a><span>Мария Галиева</span></header>
+    <main><slot /></main>
+    <footer>
+      <span>ИП Галиева Мария Альбертовна · ИНН 667221959508 · ОГРНИП 321665800158422</span>
+      <nav><a href="/privacy/">Политика</a><a href="/agreement/">Пользовательское соглашение</a></nav>
+    </footer>
+    <CookieConsent />
+  </body>
+</html>
+
+<style is:global>
+  :root { font-family: Inter, "Segoe UI", Arial, sans-serif; color: #142131; background: #fff; }
+  * { box-sizing: border-box; }
+  body { margin: 0; }
+  a { color: #173b5e; text-underline-offset: 4px; }
+  header, footer { width: min(900px, calc(100% - 40px)); margin-inline: auto; display: flex; justify-content: space-between; gap: 24px; }
+  header { padding: 28px 0; border-bottom: 1px solid #dbe3ea; font-weight: 700; }
+  main { width: min(780px, calc(100% - 40px)); margin: 64px auto 90px; }
+  h1 { margin: 0 0 18px; color: #102a43; font-size: clamp(38px, 6vw, 62px); line-height: 1.03; letter-spacing: -.05em; }
+  h2 { margin: 48px 0 16px; color: #102a43; font-size: 26px; letter-spacing: -.03em; }
+  h3 { margin: 28px 0 12px; color: #102a43; font-size: 19px; }
+  p, li { color: #536476; font-size: 16px; line-height: 1.68; }
+  li + li { margin-top: 8px; }
+  .legal-meta { margin-bottom: 42px; color: #de7d24; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  .legal-note { padding: 18px 20px; border-left: 4px solid #f29d49; background: #fff1e3; }
+  footer { align-items: flex-start; padding: 28px 0 40px; border-top: 1px solid #dbe3ea; color: #617184; font-size: 12px; line-height: 1.5; }
+  footer nav { display: flex; flex-wrap: wrap; gap: 12px 20px; }
+  @media (max-width: 650px) { header, footer { flex-direction: column; } main { margin-top: 44px; } }
+</style>

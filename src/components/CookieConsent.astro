@@ -1,0 +1,126 @@
+---
+const yandexMetrikaId = import.meta.env.PUBLIC_YANDEX_METRIKA_ID ?? '';
+const googleAnalyticsId = import.meta.env.PUBLIC_GA_ID ?? '';
+---
+
+<aside
+  class="cookie-consent"
+  data-cookie-consent
+  data-yandex-id={yandexMetrikaId}
+  data-google-id={googleAnalyticsId}
+  aria-label="Настройки аналитических файлов cookie"
+  hidden
+>
+  <p>
+    Сайт использует необязательные аналитические cookies, чтобы понимать, какие материалы полезны посетителям.
+    Подробнее — в <a href="/privacy/">политике обработки персональных данных</a>.
+  </p>
+  <div class="cookie-consent__actions">
+    <button type="button" data-cookie-accept>Разрешить аналитику</button>
+    <button type="button" class="cookie-consent__secondary" data-cookie-decline>Только необходимые</button>
+  </div>
+</aside>
+
+<script is:inline>
+  (() => {
+    const root = document.querySelector('[data-cookie-consent]');
+    if (!root) return;
+
+    const storageKey = 'maria-galieva-analytics-consent';
+    const yandexId = root.dataset.yandexId;
+    const googleId = root.dataset.googleId;
+
+    const loadAnalytics = () => {
+      if (root.dataset.analyticsLoaded === 'true') return;
+      root.dataset.analyticsLoaded = 'true';
+
+      if (yandexId && /^\d+$/.test(yandexId)) {
+        window.ym = window.ym || function () { (window.ym.a = window.ym.a || []).push(arguments); };
+        window.ym.l = Date.now();
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://mc.yandex.ru/metrika/tag.js';
+        document.head.appendChild(script);
+        window.ym(Number(yandexId), 'init', {
+          clickmap: true,
+          trackLinks: true,
+          accurateTrackBounce: true,
+          webvisor: false,
+        });
+      }
+
+      if (googleId && /^G-[A-Z0-9]+$/i.test(googleId)) {
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(googleId)}`;
+        document.head.appendChild(script);
+        window.gtag('js', new Date());
+        window.gtag('config', googleId, { anonymize_ip: true });
+      }
+    };
+
+    const savedConsent = localStorage.getItem(storageKey);
+    if (savedConsent === 'accepted') {
+      loadAnalytics();
+      return;
+    }
+    if (savedConsent !== 'declined') root.hidden = false;
+
+    root.querySelector('[data-cookie-accept]')?.addEventListener('click', () => {
+      localStorage.setItem(storageKey, 'accepted');
+      root.hidden = true;
+      loadAnalytics();
+    });
+
+    root.querySelector('[data-cookie-decline]')?.addEventListener('click', () => {
+      localStorage.setItem(storageKey, 'declined');
+      root.hidden = true;
+    });
+  })();
+</script>
+
+<style>
+  .cookie-consent {
+    position: fixed;
+    left: 24px;
+    right: 24px;
+    bottom: 20px;
+    z-index: 90;
+    max-width: 760px;
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 18px 28px;
+    align-items: center;
+    padding: 18px 20px;
+    border: 1px solid rgba(255, 255, 255, .2);
+    border-radius: 10px;
+    color: white;
+    background: #102a43;
+    box-shadow: 0 20px 55px rgba(16, 42, 67, .28);
+  }
+
+  .cookie-consent[hidden] { display: none; }
+  .cookie-consent p { margin: 0; color: rgba(255, 255, 255, .78); font: 13px/1.5 Inter, "Segoe UI", Arial, sans-serif; }
+  .cookie-consent a { color: white; }
+  .cookie-consent__actions { display: flex; gap: 8px; }
+  .cookie-consent button {
+    min-height: 42px;
+    padding: 10px 14px;
+    border: 1px solid #de7d24;
+    border-radius: 5px;
+    color: #102a43;
+    background: #f29d49;
+    font: 700 12px/1.2 Inter, "Segoe UI", Arial, sans-serif;
+    cursor: pointer;
+  }
+  .cookie-consent .cookie-consent__secondary { color: white; background: transparent; border-color: rgba(255, 255, 255, .38); }
+
+  @media (max-width: 650px) {
+    .cookie-consent { left: 12px; right: 12px; bottom: 12px; grid-template-columns: 1fr; padding: 16px; }
+    .cookie-consent__actions { display: grid; grid-template-columns: 1fr; }
+    .cookie-consent button { width: 100%; }
+  }
+</style>
