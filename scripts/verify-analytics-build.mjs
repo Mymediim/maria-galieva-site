@@ -26,6 +26,18 @@ for (const [eventName, placements] of expectedEvents) {
   }
 }
 
+for (const caseName of ['locapp', 'hmb-bank']) {
+  const casePattern = new RegExp(
+    `<a(?=[^>]+data-analytics-event=["']case_click["'])(?=[^>]+data-analytics-case-name=["']${caseName}["'])[^>]*>`,
+    'i',
+  );
+  if (!casePattern.test(html)) fail(`missing case_name for ${caseName}`);
+}
+
+if (!/case_name:\s*link\.dataset\.analyticsCaseName/.test(html)) {
+  fail('case_name is not sent with delegated analytics events');
+}
+
 if (!/data-cookie-settings/.test(html)) fail('missing analytics settings control');
 if (!/analytics_consent_granted/.test(html)) fail('missing consent event');
 if (!/data-analytics-event/.test(html)) fail('missing delegated analytics tracking');

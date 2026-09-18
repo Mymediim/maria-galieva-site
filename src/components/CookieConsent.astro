@@ -112,6 +112,7 @@ const googleAnalyticsId = import.meta.env.PUBLIC_GA_ID ?? '';
       if (!link) return;
       sendEvent(link.dataset.analyticsEvent, {
         placement: link.dataset.analyticsPlacement || 'unknown',
+        case_name: link.dataset.analyticsCaseName || undefined,
       });
     });
   })();

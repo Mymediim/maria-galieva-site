@@ -11,6 +11,7 @@
     "verify:analytics": "node scripts/verify-analytics-build.mjs",
     "verify:analytics:configured": "node scripts/verify-analytics-build.mjs configured",
     "verify:images": "node scripts/verify-image-budget.mjs",
+    "verify:production": "node scripts/verify-production-launch.mjs",
     "verify:seo:closed": "node scripts/verify-seo-build.mjs closed",
     "verify:seo:open": "node scripts/verify-seo-build.mjs open"
   },

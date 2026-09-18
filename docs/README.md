@@ -5,6 +5,7 @@
 - Долгосрочные решения: `decision-log.md`.
 - Повторяющиеся ошибки и проверки: `bugs-and-gotchas.md`.
 - SEO-аудит и план запуска аналитики/индексации: `seo-analytics-launch-plan.md`.
+- Подключение Google Search Console и Яндекс Вебмастера: `webmaster-setup.md`.
 - Материалы по кейсам: `cases/`.
 - Технический запуск: `../README.md`.
 
