@@ -7,7 +7,12 @@
     "dev": "cross-env ASTRO_TELEMETRY_DISABLED=1 astro dev",
     "build": "cross-env ASTRO_TELEMETRY_DISABLED=1 astro check && cross-env ASTRO_TELEMETRY_DISABLED=1 astro build",
     "preview": "cross-env ASTRO_TELEMETRY_DISABLED=1 astro preview",
-    "check": "cross-env ASTRO_TELEMETRY_DISABLED=1 astro check"
+    "check": "cross-env ASTRO_TELEMETRY_DISABLED=1 astro check",
+    "verify:analytics": "node scripts/verify-analytics-build.mjs",
+    "verify:analytics:configured": "node scripts/verify-analytics-build.mjs configured",
+    "verify:images": "node scripts/verify-image-budget.mjs",
+    "verify:seo:closed": "node scripts/verify-seo-build.mjs closed",
+    "verify:seo:open": "node scripts/verify-seo-build.mjs open"
   },
   "dependencies": {
     "astro": "^7.3.3"

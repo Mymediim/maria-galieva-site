@@ -39,7 +39,15 @@ jobs:
         run: npm run build
         env:
           PUBLIC_SITE_URL: https://maria-galieva.ru
-          PUBLIC_SITE_INDEXING: 'false'
+          PUBLIC_SITE_INDEXING: 'true'
+          PUBLIC_YANDEX_METRIKA_ID: ${{ vars.PUBLIC_YANDEX_METRIKA_ID }}
+          PUBLIC_GA_ID: ${{ vars.PUBLIC_GA_ID }}
+
+      - name: Проверить открытую SEO-сборку
+        run: npm run verify:seo:open
+
+      - name: Проверить аналитику и изображения
+        run: npm run verify:analytics:configured && npm run verify:images
 
       - name: Загрузить сборку
         uses: actions/upload-pages-artifact@v4

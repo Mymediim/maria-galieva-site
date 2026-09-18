@@ -8,6 +8,9 @@ const siteUrl = (import.meta.env.PUBLIC_SITE_URL ?? '').replace(/\/$/, '');
 const allowIndexing = import.meta.env.PUBLIC_SITE_INDEXING === 'true' && Boolean(siteUrl);
 const pageTitle = 'Мария Галиева — продуктовый консультант';
 const pageDescription = 'Помогаю собственникам бизнеса спроектировать цифровой продукт, разобрать процесс перед автоматизацией и освоить ИИ на реальной рабочей задаче.';
+const canonicalUrl = siteUrl ? `${siteUrl}/` : '';
+const socialImageUrl = siteUrl ? `${siteUrl}/maria-social-1200x630.webp` : '';
+const personId = siteUrl ? `${siteUrl}/#maria-galieva` : '#maria-galieva';
 const originalBody = prototypeSource.match(/<body>([\s\S]*?)<\/body>/)?.[1] ?? '';
 const clientScript = originalBody.match(/<script>([\s\S]*?)<\/script>/)?.[1] ?? '';
 const pageContent = originalBody
@@ -64,30 +67,45 @@ const navigationScript = `
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />
     <meta name="robots" content={allowIndexing ? 'index, follow' : 'noindex, nofollow'} />
-    {siteUrl && <link rel="canonical" href={`${siteUrl}/`} />}
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="ru_RU" />
+    <meta property="og:site_name" content="Мария Галиева" />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={pageDescription} />
-    {siteUrl && <meta property="og:url" content={`${siteUrl}/`} />}
-    {siteUrl && <meta property="og:image" content={`${siteUrl}/maria-hero-soft-blur.png`} />}
+    {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
+    {socialImageUrl && <meta property="og:image" content={socialImageUrl} />}
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Мария Галиева — продуктовый консультант и основатель IT Production" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    {socialImageUrl && <meta name="twitter:image" content={socialImageUrl} />}
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <script
       type="application/ld+json"
       set:html={JSON.stringify({
         '@context': 'https://schema.org',
-        '@type': 'Person',
-        name: 'Мария Галиева',
-        jobTitle: 'Продуктовый консультант',
-        email: 'mailto:hello@it-production.dev',
+        '@type': 'ProfilePage',
+        '@id': canonicalUrl ? `${canonicalUrl}#profile` : '#profile',
+        name: pageTitle,
         description: pageDescription,
-        url: siteUrl || undefined,
-        sameAs: ['https://t.me/Mediim', 'https://it-production.dev/'],
-        worksFor: {
-          '@type': 'Organization',
-          name: 'IT Production',
-          url: 'https://it-production.dev/',
+        url: canonicalUrl || undefined,
+        mainEntity: {
+          '@id': personId,
+          '@type': 'Person',
+          name: 'Мария Галиева',
+          jobTitle: 'Продуктовый консультант',
+          email: 'mailto:hello@it-production.dev',
+          image: siteUrl ? `${siteUrl}/maria-hero-900.webp` : undefined,
+          url: canonicalUrl || undefined,
+          sameAs: ['https://t.me/Mediim', 'https://it-production.dev/'],
+          worksFor: {
+            '@type': 'Organization',
+            name: 'IT Production',
+            url: 'https://it-production.dev/',
+          },
         },
       })}
     ></script>

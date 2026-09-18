@@ -21,6 +21,10 @@ const googleAnalyticsId = import.meta.env.PUBLIC_GA_ID ?? '';
   </div>
 </aside>
 
+<button type="button" class="cookie-settings" data-cookie-settings hidden>
+  Настройки аналитики
+</button>
+
 <script is:inline>
   (() => {
     const root = document.querySelector('[data-cookie-consent]');
@@ -29,6 +33,17 @@ const googleAnalyticsId = import.meta.env.PUBLIC_GA_ID ?? '';
     const storageKey = 'maria-galieva-analytics-consent';
     const yandexId = root.dataset.yandexId;
     const googleId = root.dataset.googleId;
+    const settingsButton = document.querySelector('[data-cookie-settings]');
+
+    const sendEvent = (eventName, params = {}) => {
+      if (localStorage.getItem(storageKey) !== 'accepted') return;
+      if (yandexId && /^\d+$/.test(yandexId) && typeof window.ym === 'function') {
+        window.ym(Number(yandexId), 'reachGoal', eventName, params);
+      }
+      if (googleId && /^G-[A-Z0-9]+$/i.test(googleId) && typeof window.gtag === 'function') {
+        window.gtag('event', eventName, params);
+      }
+    };
 
     const loadAnalytics = () => {
       if (root.dataset.analyticsLoaded === 'true') return;
@@ -64,19 +79,40 @@ const googleAnalyticsId = import.meta.env.PUBLIC_GA_ID ?? '';
     const savedConsent = localStorage.getItem(storageKey);
     if (savedConsent === 'accepted') {
       loadAnalytics();
+      settingsButton.hidden = false;
       return;
     }
-    if (savedConsent !== 'declined') root.hidden = false;
+    if (savedConsent === 'declined') settingsButton.hidden = false;
+    else root.hidden = false;
 
     root.querySelector('[data-cookie-accept]')?.addEventListener('click', () => {
       localStorage.setItem(storageKey, 'accepted');
       root.hidden = true;
       loadAnalytics();
+      settingsButton.hidden = false;
+      sendEvent('analytics_consent_granted');
     });
 
     root.querySelector('[data-cookie-decline]')?.addEventListener('click', () => {
+      const wasLoaded = root.dataset.analyticsLoaded === 'true';
       localStorage.setItem(storageKey, 'declined');
       root.hidden = true;
+      settingsButton.hidden = false;
+      if (wasLoaded) window.location.reload();
+    });
+
+    settingsButton?.addEventListener('click', () => {
+      settingsButton.hidden = true;
+      root.hidden = false;
+      root.querySelector('[data-cookie-accept]')?.focus();
+    });
+
+    document.addEventListener('click', (event) => {
+      const link = event.target.closest('[data-analytics-event]');
+      if (!link) return;
+      sendEvent(link.dataset.analyticsEvent, {
+        placement: link.dataset.analyticsPlacement || 'unknown',
+      });
     });
   })();
 </script>
@@ -117,6 +153,24 @@ const googleAnalyticsId = import.meta.env.PUBLIC_GA_ID ?? '';
     cursor: pointer;
   }
   .cookie-consent .cookie-consent__secondary { color: white; background: transparent; border-color: rgba(255, 255, 255, .38); }
+
+  .cookie-settings {
+    position: fixed;
+    left: 14px;
+    bottom: 14px;
+    z-index: 80;
+    min-height: 34px;
+    padding: 7px 10px;
+    border: 1px solid rgba(16, 42, 67, .3);
+    border-radius: 4px;
+    color: #102a43;
+    background: rgba(255, 255, 255, .94);
+    font: 600 11px/1.2 Inter, "Segoe UI", Arial, sans-serif;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(16, 42, 67, .12);
+  }
+
+  .cookie-settings[hidden] { display: none; }
 
   @media (max-width: 650px) {
     .cookie-consent { left: 12px; right: 12px; bottom: 12px; grid-template-columns: 1fr; padding: 16px; }
