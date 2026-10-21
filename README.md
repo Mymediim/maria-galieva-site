@@ -26,6 +26,7 @@ npm run preview
 
 - `/` — лендинг;
 - `/cases/avtomatizaciya-rabochego-mesta-myasnika/` — кейс автоматизации рабочего места мясника для сети «Мясорубка»;
+- `/cases/locapp-pervaya-versiya-prilozheniya/` — кейс запуска мобильного приложения LocApp в сфере туризма;
 - `/privacy/` — политика обработки персональных данных;
 - `/agreement/` — пользовательское соглашение.
 

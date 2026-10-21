@@ -75,7 +75,7 @@ assert.match(agreement.text, /<meta name="robots" content="noindex, follow">/, '
 
 assert.match(robots.text, /^User-agent: \*\nAllow: \/\nSitemap: https:\/\/maria-galieva\.ru\/sitemap\.xml\n$/);
 assert.match(sitemap.text, /^<\?xml version="1\.0" encoding="UTF-8"\?>/);
-assert.equal((sitemap.text.match(/<url>/g) || []).length, 2, 'sitemap must contain two indexable URLs');
+assert.equal((sitemap.text.match(/<url>/g) || []).length, 3, 'sitemap must contain three indexable URLs');
 assert.match(sitemap.text, /<loc>https:\/\/maria-galieva\.ru\/cases\/avtomatizaciya-rabochego-mesta-myasnika\/<\/loc>/);
 assert.match(sitemap.text, /<loc>https:\/\/maria-galieva\.ru\/<\/loc>/);
 
@@ -92,5 +92,15 @@ for (const source of redirectChecks) {
   assert.equal(new URL(result.location, source).href, 'https://maria-galieva.ru/', `${source} has an invalid redirect target`);
   if (source.startsWith('https://')) assert.equal(result.tlsAuthorized, true, `${source} has an invalid TLS certificate`);
 }
+
+
+const locapp = await fetchText('/cases/locapp-pervaya-versiya-prilozheniya/');
+assert.equal(locapp.response.status, 200, 'LocApp must return 200');
+assert.match(locapp.text, /<meta name="robots" content="index, follow"/);
+assert.match(locapp.text, /"@type":"Article"/);
+assert.match(locapp.text, /data-cookie-consent/);
+assert.ok(locapp.text.includes('https://maria-galieva.ru/cases/locapp-pervaya-versiya-prilozheniya/'));
+assert.ok(sitemap.text.includes('<loc>https://maria-galieva.ru/cases/locapp-pervaya-versiya-prilozheniya/</loc>'));
+assert.ok(home.text.includes('href="/cases/locapp-pervaya-versiya-prilozheniya/"'));
 
 console.log('Production launch verification passed: indexability, sitemap, canonical, analytics consent gate, redirects and TLS are valid.');

@@ -336,7 +336,10 @@
     <section class="section" id="cases" aria-labelledby="cases-title">
       <div class="wrap">
         <div class="section-head reveal"><span class="eyebrow">03 / Практика</span><h2 id="cases-title">Кейсы и разборы проектов</h2></div>
-        <article class="myasorubka-teaser reveal" aria-labelledby="myasorubka-teaser-title">
+        <div class="case-gallery" data-case-gallery>
+          <div class="case-gallery-nav" hidden><div class="case-gallery-picker" role="group" aria-label="Выбрать кейс"></div><div class="case-gallery-controls"><button type="button" data-case-prev aria-label="Предыдущий кейс" aria-controls="personal-cases">←</button><span data-case-count aria-live="polite" aria-atomic="true">1 / 2</span><button type="button" data-case-next aria-label="Следующий кейс" aria-controls="personal-cases">→</button></div></div>
+          <div class="case-gallery-rail" id="personal-cases" role="region" aria-label="Подробные кейсы Марии" tabindex="0">
+        <article class="myasorubka-teaser" data-case-title="Автоматизация бизнеса" aria-labelledby="myasorubka-teaser-title">
           <div class="myasorubka-teaser-visual">
             <span class="myasorubka-teaser-label">Рабочее место мясника / интерфейс</span>
             <figure><img src="assets/cases/myasorubka/cutting.webp" width="2000" height="1167" loading="lazy" alt="Интерфейс рабочего места мясника: ввод веса продукции и контроль выхода после разруба"></figure>
@@ -350,10 +353,16 @@
             <a class="button myasorubka-teaser-link" href="/cases/avtomatizaciya-rabochego-mesta-myasnika/" data-analytics-event="case_click" data-analytics-placement="myasorubka" data-analytics-case-name="myasorubka">Как я решила задачу <span aria-hidden="true">→</span></a>
           </div>
         </article>
-        <div class="case-index-head reveal"><h3>Другие проекты</h3><a href="https://it-production.dev/projects/" target="_blank" rel="noopener noreferrer" data-analytics-event="it_production_click" data-analytics-placement="cases">Все проекты IT Production ↗</a></div>
+        <article class="myasorubka-teaser locapp-teaser" data-case-title="Идея приложения" aria-labelledby="locapp-teaser-title">
+          <div class="myasorubka-teaser-visual"><span class="myasorubka-teaser-label">LocApp / Мобильное приложение для путешественников</span><figure><img src="assets/cases/locapp/cover.jpg" width="1920" height="1080" loading="lazy" alt="LocApp: интерфейсы мобильного приложения с авторскими маршрутами"></figure><div class="myasorubka-teaser-shift"><span>Было<strong>Много идей без чётких границ продукта</strong></span><b aria-hidden="true">→</b><span>Стало<strong>Согласованная первая версия и выпущенное приложение</strong></span></div></div>
+          <div class="myasorubka-teaser-copy"><span class="case-kicker">LocApp · Туризм и путешествия</span><h3 id="locapp-teaser-title">От идеи до своего мобильного приложения</h3><p>Как я помогла собрать замысел в конкретный продукт, определить функции и провести проект через разработку и приёмку.</p><p class="myasorubka-teaser-result"><span aria-hidden="true">✓</span> Публичный выпуск — апрель 2025 года</p><a class="button myasorubka-teaser-link" href="/cases/locapp-pervaya-versiya-prilozheniya/" data-analytics-event="case_click" data-analytics-placement="locapp" data-analytics-case-name="locapp">Как мы создали приложение <span aria-hidden="true">→</span></a></div>
+        </article>
+          </div>
+        </div>
+        <div class="case-index-head reveal"><h3>Другие проекты IT Production</h3><a href="https://it-production.dev/projects/" target="_blank" rel="noopener noreferrer" data-analytics-event="it_production_click" data-analytics-placement="cases">Все проекты IT Production ↗</a></div>
         <div class="support-cases reveal">
-          <article class="support-case"><span class="case-kicker">Новый цифровой продукт</span><h4>LocApp: от идеи к первой версии приложения</h4><p><strong>Роль:</strong> требования, структура, действия пользователя и координация команды со стороны IT Production. <strong>Результат:</strong> приложение выпущено.</p><a href="https://it-production.dev/projects/locapp-prilozhenie-dlya-turistov/" target="_blank" rel="noopener noreferrer" data-analytics-event="case_click" data-analytics-placement="locapp" data-analytics-case-name="locapp">Посмотреть проект ↗</a></article>
-          <article class="support-case"><span class="case-kicker">Действующий сайт / проект команды</span><h4>ХМБ Банк: обновление действующего сайта</h4><p>Пока показываем как проект команды IT Production. Личную роль, этапы и результаты уточним перед отдельным разбором.</p><a href="https://it-production.dev/projects/razrabotka-sajta-pod-klyuch-dlya-hakasskij-municzipalnyj-bank-hmb-bank/" target="_blank" rel="noopener noreferrer" data-analytics-event="case_click" data-analytics-placement="hmb-bank" data-analytics-case-name="hmb-bank">Посмотреть проект ↗</a></article>
+          <article class="support-case"><span class="case-kicker">Мобильное приложение / проект команды</span><h4>OMMT: бортовой журнал и соцсеть для автолюбителей</h4><p>Проект команды IT Production: приложение для публикаций, общения и ведения бортового журнала автомобиля.</p><a href="https://it-production.dev/projects/mobilnoe-prilozhenie-ommt-bortovoj-zhurnal-i-socz-set-dlya-vladelczev-avto-usa/" target="_blank" rel="noopener noreferrer" data-analytics-event="case_click" data-analytics-placement="ommt" data-analytics-case-name="ommt">Кейс IT Production ↗</a></article>
+          <article class="support-case"><span class="case-kicker">Действующий сайт / проект команды</span><h4>ХМБ Банк: обновление действующего сайта</h4><p>Проект команды IT Production: обновление действующего сайта Хакасского муниципального банка.</p><a href="https://it-production.dev/projects/razrabotka-sajta-pod-klyuch-dlya-hakasskij-municzipalnyj-bank-hmb-bank/" target="_blank" rel="noopener noreferrer" data-analytics-event="case_click" data-analytics-placement="hmb-bank" data-analytics-case-name="hmb-bank">Посмотреть проект ↗</a></article>
         </div>
       </div>
     </section>

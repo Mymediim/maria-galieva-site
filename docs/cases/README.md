@@ -26,5 +26,9 @@
 
 ## Подготовленные материалы
 
+- [Как готовить и публиковать следующие кейсы: выжимка и порядок работы](case-workflow.md)
+- [Бриф следующего кейса](case-brief-template.md)
+- [«Мясорубка» — SEO-карта](myasorubka-seo.md)
+- [«Мясорубка» — опубликованный кейс](https://maria-galieva.ru/cases/avtomatizaciya-rabochego-mesta-myasnika/)
 - [LocApp — публичный редакционный черновик](locapp-product-consulting-draft.md)
 - [LocApp — внутренняя проверка фактов и публикации](locapp-product-consulting-review.md)

@@ -50,7 +50,7 @@ assert.match(home, /<meta name="twitter:image"/);
 if (mode === 'open') {
   assert.equal(metaRobots(home), 'index, follow');
   assert.match(robots, /^User-agent: \*\nAllow: \/\nSitemap: https:\/\/maria-galieva\.ru\/sitemap\.xml\n$/);
-  assert.equal(urlCount(sitemap), 2);
+  assert.equal(urlCount(sitemap), 3);
   assert.equal(metaRobots(casePage), 'index, follow');
   assert.match(sitemap, /<loc>https:\/\/maria-galieva\.ru\/cases\/avtomatizaciya-rabochego-mesta-myasnika\/<\/loc>/);
   assert.match(sitemap, /<loc>https:\/\/maria-galieva\.ru\/<\/loc>/);
@@ -60,5 +60,17 @@ if (mode === 'open') {
   assert.match(robots, /^User-agent: \*\nDisallow: \/\n$/);
   assert.equal(urlCount(sitemap), 0);
 }
+
+
+const locapp = await read('cases/locapp-pervaya-versiya-prilozheniya/index.html');
+assert.equal(canonical(locapp), 'https://maria-galieva.ru/cases/locapp-pervaya-versiya-prilozheniya/');
+assert.equal(metaRobots(locapp), mode === 'open' ? 'index, follow' : 'noindex, nofollow');
+assert.equal((locapp.match(/<h1\b/g) ?? []).length, 1);
+assert.match(locapp, /"@type":"Article"/);
+assert.match(locapp, /"@type":"BreadcrumbList"/);
+assert.match(locapp, /<meta property="og:image"/);
+assert.match(locapp, /data-cookie-consent/);
+assert.match(home, /href="\/cases\/locapp-pervaya-versiya-prilozheniya\/"/);
+if (mode === 'open') assert.ok(sitemap.includes('<loc>https://maria-galieva.ru/cases/locapp-pervaya-versiya-prilozheniya/</loc>'));
 
 console.log(`SEO build verification passed (${mode}).`);

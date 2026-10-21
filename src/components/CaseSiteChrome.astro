@@ -1,14 +1,18 @@
 ---
 import prototypeSource from '../../prototype-desktop.html?raw';
 import desktopStyles from '../../desktop-design.css?raw';
-const { part } = Astro.props;
+const { part, compact = false } = Astro.props;
 const baseStyles = prototypeSource.match(/<style>([\s\S]*?)<\/style>/)?.[1] ?? '';
 let markup = part === 'header'
   ? prototypeSource.match(/<header class="site-header">[\s\S]*?<\/header>/)?.[0] ?? ''
   : prototypeSource.match(/<footer class="final"[\s\S]*?<\/footer>/)?.[0] ?? '';
+if (part === 'footer' && compact) {
+ markup = markup.replace(/<div class="final-grid reveal">[\s\S]*?(?=<div class="footer-bottom">)/, '');
+ markup = markup.replace('class="final"', 'class="final final-compact"');
+}
 markup = markup.replaceAll('href="#', 'href="/#');
 if (part === 'header') markup = markup.replace('<nav class="nav" aria-label="Разделы сайта">', '<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="case-site-nav"><span class="sr-only">Открыть меню</span><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></button><nav class="nav" id="case-site-nav" aria-label="Разделы сайта">');
-const styles = `@scope (.site-chrome) { ${baseStyles.replaceAll(':root', ':scope')} ${desktopStyles.replaceAll(':root', ':scope')} .reveal { opacity: 1; transform: none; } }`;
+const styles = `@scope (.site-chrome) { ${baseStyles.replaceAll(':root', ':scope')} ${desktopStyles.replaceAll(':root', ':scope')} .reveal { opacity: 1; transform: none; } .final.final-compact { padding-top: 32px; } .final-compact .footer-bottom { margin-top: 0; } }`;
 ---
 {part === 'header' && <style is:global set:html={styles} />}
 <div class="site-chrome" style="display: contents"><Fragment set:html={markup} /></div>

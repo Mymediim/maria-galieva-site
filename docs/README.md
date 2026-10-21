@@ -7,6 +7,8 @@
 - SEO-аудит и план запуска аналитики/индексации: `seo-analytics-launch-plan.md`.
 - Подключение Google Search Console и Яндекс Вебмастера: `webmaster-setup.md`.
 - Материалы по кейсам: `cases/`.
+- Повторяемый порядок подготовки кейсов: [cases/case-workflow.md](cases/case-workflow.md).
+- Бриф следующего кейса: [cases/case-brief-template.md](cases/case-brief-template.md).
 - Технический запуск: `../README.md`.
 
 Исследования, версии текстов и прототипы пока остаются в корне проекта до отдельного согласованного упорядочивания. Не считать их архивом и не перемещать автоматически.

@@ -1,0 +1,88 @@
+---
+import CaseSiteChrome from '../../components/CaseSiteChrome.astro';
+import CookieConsent from '../../components/CookieConsent.astro';
+import '../../styles/locapp.css';
+const allowIndexing = import.meta.env.PUBLIC_SITE_INDEXING === 'true';
+const canonicalUrl = 'https://maria-galieva.ru/cases/locapp-pervaya-versiya-prilozheniya/';
+const pageTitle = 'Запуск мобильного приложения для туризма: LocApp | Мария Галиева';
+const pageDescription = 'Как запустить своё мобильное приложение в сфере туризма: от идеи и выбора функций до разработки и приёмки. Продуктовый кейс Марии Галиевой — LocApp.';
+const socialImage = 'https://maria-galieva.ru/cases/locapp/cover.jpg';
+const structuredData = {
+ '@context': 'https://schema.org', '@graph': [
+  {'@type': 'Article', headline: 'От идеи до своего приложения: LocApp', description: pageDescription, url: canonicalUrl, mainEntityOfPage: canonicalUrl, inLanguage: 'ru-RU', image: [socialImage], author: {'@type': 'Person', name: 'Мария Галиева', url: 'https://maria-galieva.ru/'}},
+  {'@type': 'BreadcrumbList', itemListElement: [
+   {'@type': 'ListItem', position: 1, name: 'Главная', item: 'https://maria-galieva.ru/'},
+   {'@type': 'ListItem', position: 2, name: 'LocApp', item: canonicalUrl}
+  ]}
+ ]
+};
+const booking = 'https://calendar.app.google/4Qmx1NCCWEhLcsV78';
+const demos = [
+ ['ga3btZ9qRmVVRHSm1oqENg', 'Найти свой маршрут', 'Подборки и фильтры по странам и категориям.'],
+ ['keMBhLvENqjvTM2YBWm29G', 'Изучить путешествие по точкам', 'Точки с фотографиями, описаниями и локациями.'],
+ ['7FvdVmX3uvgrv6bUhuUkRp', 'Создать собственный маршрут', 'Добавление мест и материалов в нужном порядке.'],
+];
+const decisions = [
+ ['01', 'Быстрые фильтры', 'Сложная фильтрация по множеству категорий и признаков.', 'Сделали быстрые фильтры маршрутов для основных вариантов поиска.'],
+ ['02', 'Управляемая главная', 'Разные способы показывать и продвигать маршруты.', 'Собрали подборки, которыми можно управлять через простой кабинет администратора.'],
+ ['03', 'Базовый набор функций', 'Большой список идей для первого выпуска.', 'Помимо работы с маршрутами, оставили профиль, избранное и рекламный баннер на главной. Управление контентом — в простом кабинете администратора.'],
+ ['04', 'Монетизация на старте', 'Покупки, подписки, партнёрские программы.', 'Выбрали платные маршруты как стартовую модель. Сценарий оплаты проверяли в тестовом режиме.'],
+ ['05', 'Карта: точки вместо линии', 'Показать весь путь единой линией.', 'Автор вручную задаёт порядок мест. У каждого — фото, описание и локация.'],
+ ['06', 'Выплаты авторам — позже', 'Автоматически рассчитывать и перечислять комиссии с продаж.', 'Систему выплат отложили до следующих этапов.'],
+];
+const roleSteps = [
+ ['Работа с клиентом', 'Разбирала задумку, помогала выбрать функции и удерживала общую концепцию продукта.'],
+ ['Прототип с дизайнером', 'Вместе с дизайнером и Дарьей искала решения. Проверяла разделы, экраны и переходы, чтобы они складывались в согласованный сценарий.'],
+ ['Проверка технического задания', 'Сверяла ТЗ с макетами, целями и логикой работы. Вносила правки перед передачей в разработку.'],
+ ['Координация команды', 'Передавала замечания между дизайнером и разработчиком. В очевидных продуктовых вопросах брала решение на себя, опираясь на согласованную концепцию.'],
+ ['Контроль разработки', 'Следила за сроками и проверяла, что работающая сборка соответствует согласованным сценариям.'],
+ ['Подготовка к сдаче', 'Организовывала проверку результата с Дарьей. Как проходила приёмка — ниже.'],
+];
+---
+<!doctype html>
+<html lang="ru">
+<head>
+ <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+ <meta name="robots" content={allowIndexing ? 'index, follow' : 'noindex, nofollow'} />
+ <title>{pageTitle}</title><meta name="description" content={pageDescription} />
+ <link rel="canonical" href={canonicalUrl} />
+ <meta property="og:type" content="article" /><meta property="og:locale" content="ru_RU" />
+ <meta property="og:title" content={pageTitle} /><meta property="og:description" content={pageDescription} />
+ <meta property="og:url" content={canonicalUrl} /><meta property="og:image" content={socialImage} />
+ <meta property="og:image:width" content="1920" /><meta property="og:image:height" content="1080" />
+ <meta property="og:image:alt" content="LocApp — мобильное приложение для путешественников" />
+ <meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content={pageTitle} />
+ <meta name="twitter:description" content={pageDescription} /><meta name="twitter:image" content={socialImage} />
+ <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+</head>
+<body>
+<a class="lc-skip" href="#main">К содержанию</a>
+<CaseSiteChrome part="header" />
+<main id="main" class="lc">
+ <div class="lc-preview"><a href="/#cases">← Все кейсы</a><span>LocApp · Туризм и путешествия</span></div>
+ <section class="lc-hero lc-wrap">
+  <div class="lc-hero-copy"><div class="lc-kicker">LocApp / Мобильное приложение для путешественников</div><h1>От идеи до <em>своего приложения</em></h1><p class="lc-lead">Дарья Ивушкина задумала LocApp — мобильное приложение с авторскими маршрутами. Я помогла выбрать функции и вместе с <a href="https://it-production.dev/" target="_blank" rel="noopener noreferrer">IT Production</a> довести проект до выпуска.</p><a class="lc-button" href="#idea">Как мы это сделали <span aria-hidden="true">↓</span></a></div>
+  <figure class="lc-cover"><img src="/cases/locapp/cover.jpg" width="1920" height="1080" alt="Презентационная обложка LocApp с интерфейсами приложения" fetchpriority="high" /><figcaption><strong>Сфера Туризм и путешествия</strong></figcaption></figure>
+  <div class="lc-hero-foot"><span>Моя роль</span><p>Продуктовое управление: концепция и требования, прототипирование, координация дизайна и разработки, тестирование и сдача клиенту</p><a href="#product">Посмотреть LocApp ↗</a></div>
+ </section>
+
+ <section class="lc-section lc-soft" id="idea"><div class="lc-wrap lc-split"><div><div class="lc-kicker">01 / Задача</div><h2>С чего начать<br />создание приложения?</h2><p class="lc-lead">Идей было много: разные аудитории, форматы маршрутов, способы заработка. Вместе они ещё не складывались в конкретный продукт.</p><p>Я помогла упорядочить этот поток: определить, для кого создаём приложение, как оно будет работать и что войдёт в первую версию.</p></div><div class="lc-idea-map"><div class="lc-map-center">Идея LocApp<span>Авторские маршруты для путешествий</span></div><div class="lc-map-grid"><div><b>Для кого?</b><p>Блогеры, путешественники, турагенты</p></div><div><b>Какой контент?</b><p>Подборки мест, прогулки, полноценные туры</p></div><div><b>Как зарабатывать?</b><p>Платные маршруты и выплаты авторам</p></div><div><b>Каким будет продукт?</b><p>Выразительный дизайн уже в первой версии</p></div></div><p class="lc-small">Первоначальный замысел</p></div></div></section>
+
+ <section class="lc-section lc-wrap"><div class="lc-kicker">02 / Аудитория</div><div class="lc-heading"><h2>Кто создаёт контент<br />и кому он нужен</h2><p>Я сравнивала потребности разных групп. Для старта мы выбрали блогеров и их аудиторию: авторы дают контент и могут привести первых читателей.</p></div><div class="lc-focus"><div><span>Кто создаёт</span><h3>Блогер</h3><p>Делится местами, которые знает и рекомендует.</p></div><b class="lc-arrow" aria-hidden="true">→</b><div><span>Что связывает</span><h3>Авторский маршрут</h3><p>План поездки или тематическая подборка мест.</p></div><b class="lc-arrow" aria-hidden="true">→</b><div><span>Кто использует</span><h3>Его аудитория</h3><p>Выбирает рекомендации для своего путешествия.</p></div></div></section>
+
+ <section class="lc-section lc-dark" id="decisions"><div class="lc-wrap"><div class="lc-kicker">03 / Продуктовые решения</div><div class="lc-heading"><h2>Что вошло в первую версию</h2><p>Сложные механики разделили по этапам. Основной путь сохранили: создать маршрут, найти его и добавить в избранное.</p></div><div class="lc-decisions">{decisions.map(([n,title,before,choice]) => <article><div class="lc-decision-title"><span>{n}</span><h3>{title}</h3></div><div class="lc-decision-body"><div><small>Было в планах</small><p>{before}</p></div><div><small>Что выбрали</small><p>{choice}</p></div></div></article>)}</div></div></section>
+
+ <section class="lc-section lc-wrap" id="role"><div class="lc-kicker">04 / Моя работа</div><div class="lc-heading"><h2>От обсуждения идеи<br />до сдачи клиенту</h2><p>Я связывала работу клиента, дизайнера и разработчиков: следила, чтобы решения соответствовали общей концепции и доводились до реализации.</p></div><ol class="lc-role-steps">{roleSteps.map(([title,text],i)=><li><span>0{i+1}</span><div><h3>{title}</h3><p>{text}</p></div></li>)}</ol><div class="lc-team"><h3>Команда проекта</h3><p><a href="https://it-production.dev/" target="_blank" rel="noopener noreferrer"><b>IT Production</b></a> — дизайн и разработка под руководством техлида. <b>Дарья</b> — согласование решений и тестирование со своей группой.</p></div></section>
+
+ <section class="lc-section lc-soft" id="product"><div class="lc-wrap"><div class="lc-kicker">05 / Готовый продукт</div><div class="lc-heading"><h2>Как работает LocApp</h2></div><div class="lc-product-demos">{demos.map(([id,title,text],i)=><article><div class="lc-demo-copy"><div class="lc-demo-number">0{i+1} / В приложении</div><h3>{title}</h3><p>{text}</p><a href={`https://kinescope.io/${id}`} target="_blank" rel="noopener noreferrer">Открыть видео отдельно ↗</a></div><div class="lc-player"><iframe src={`https://kinescope.io/embed/${id}`} title={`LocApp: ${title}`} loading="lazy" allow="fullscreen; picture-in-picture; encrypted-media" allowfullscreen></iframe></div></article>)}</div><p class="lc-small lc-media-note">Видео команды <a href="https://it-production.dev/" target="_blank" rel="noopener noreferrer">IT Production</a></p></div></section>
+
+ <section class="lc-section lc-wrap"><div class="lc-split"><div><div class="lc-kicker">06 / Тестирование и приёмка</div><h2>Помогаю принять<br />готовое приложение</h2><p class="lc-lead">На сдаче клиенту важно понять: всё ли работает так, как договаривались, и удобно ли этим пользоваться.</p><p>В LocApp я сопровождала приёмку: разбирала замечания с Дарьей и добивалась доработок от команды. Так заказчица получала помощь и на последнем этапе — до публичного выпуска.</p></div><ol class="lc-checks"><li><span>01</span><div><h3>Проверяла в работе</h3><p>Находила баги и неудобства, которые становились заметны только в работающей сборке.</p></div></li><li><span>02</span><div><h3>Разбирала замечания с клиентом</h3><p>Проходила приложение с Дарьей, согласовывала список правок и находила простые способы их реализации.</p></div></li><li><span>03</span><div><h3>Добивалась исправлений</h3><p>Передавала задачи команде и добивалась устранения найденных ошибок и неудобств без увеличения бюджета разработки.</p></div></li></ol></div></section>
+
+ <section class="lc-result lc-section" id="result"><div class="lc-wrap"><div class="lc-kicker">07 / Результат</div><h2>У Дарьи появилось <em>своё приложение.</em></h2><p class="lc-lead">LocApp выпустили в публичный доступ: с каталогом, избранным, профилем и созданием авторских маршрутов.</p><div class="lc-stats"><div><strong>до 1,5 млн ₽</strong><span>стоимость работ</span></div><div><strong>≈ 3 месяца</strong><span>активная разработка</span></div><div><strong>апрель 2025</strong><span>публичный выпуск</span></div></div><a class="lc-text-link" href="https://it-production.dev/projects/locapp-prilozhenie-dlya-turistov/" target="_blank" rel="noopener noreferrer">Кейс команды IT Production ↗</a></div></section>
+
+ <section class="lc-section lc-wrap lc-faq" aria-labelledby="locapp-faq-title"><div class="lc-kicker">Для вашего проекта</div><h2 id="locapp-faq-title">Как начать свой проект в туризме</h2><details><summary>Есть идея туристического приложения. С чего начать?</summary><p>С аудитории и её задачи: кто будет создавать контент, кто им пользоваться и зачем. Затем — выбрать основные действия и состав первой версии. В LocApp мы связали блогеров и их аудиторию, а разные форматы рекомендаций собрали в авторские маршруты.</p></details><details><summary>Поможете пройти путь от идеи до запуска?</summary><p>Могу помочь сформулировать концепцию, спроектировать сценарии, согласовать прототип и требования, организовать работу команды и сопровождать приёмку. Разработку можно вести с вашей командой или подключить <a href="https://it-production.dev/" target="_blank" rel="noopener noreferrer">IT Production</a>. Состав работ и бюджет согласуем до старта.</p></details><details><summary>Сколько стоит создать мобильное приложение?</summary><p>Стоимость зависит от функций, дизайна и интеграций. В LocApp стоимость работ составила до 1,5 млн ₽, активная разработка заняла около трёх месяцев. Для вашего проекта оценку нужно делать после разбора идеи и выбора первой версии.</p></details></section>
+ <section class="lc-section lc-wrap lc-contact"><div><div class="lc-kicker">Теперь — ваша идея</div><h2>Хотите запустить своё мобильное приложение?</h2><p class="lc-lead">Обсудим, для кого вы его создаёте, что оно должно делать и с чего начать разработку.</p></div><div class="lc-contact-action"><a class="lc-button" href={booking} target="_blank" rel="noopener noreferrer" data-analytics-event="calendar_click" data-analytics-placement="locapp_contact">Обсудить идею приложения ↗</a><span>Бесплатная встреча · 30 минут</span><a class="lc-telegram" href="https://t.me/Mediim" target="_blank" rel="noopener noreferrer" data-analytics-event="telegram_click" data-analytics-placement="locapp_contact">Написать в Telegram ↗</a></div></section>
+</main>
+<CaseSiteChrome part="footer" compact /><CookieConsent />
+
+</body></html>

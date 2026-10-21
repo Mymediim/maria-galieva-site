@@ -114,6 +114,7 @@ const navigationScript = `
   <body>
     <Fragment set:html={pageContent} />
     <CookieConsent />
+    <script>import '../scripts/cases-carousel';</script>
     <script is:inline set:html={`${clientScript}\n${navigationScript}`}></script>
   </body>
 </html>
