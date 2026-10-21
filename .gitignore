@@ -1,4 +1,5 @@
 node_modules/
+.agent/tasks/
 dist/
 .astro/
 .npm-cache/

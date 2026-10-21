@@ -36,16 +36,23 @@ const head = (url) => new Promise((resolve, reject) => {
   request.end();
 });
 
-const [home, privacy, agreement, robots, sitemap, missing] = await Promise.all([
+const [home, privacy, agreement, robots, sitemap, missing, casePage] = await Promise.all([
   fetchText('/'),
   fetchText('/privacy/'),
   fetchText('/agreement/'),
   fetchText('/robots.txt'),
   fetchText('/sitemap.xml'),
   fetchText('/definitely-missing-production-check'),
+  fetchText('/cases/avtomatizaciya-rabochego-mesta-myasnika/'),
 ]);
 
 assert.equal(home.response.status, 200, 'home must return 200');
+assert.equal(casePage.response.status, 200, 'case must return 200');
+assert.match(home.text, /href="\/cases\/avtomatizaciya-rabochego-mesta-myasnika\/"/, 'homepage must link to case');
+assert.match(casePage.text, /<meta name="robots" content="index, follow">/, 'case must be indexable');
+assert.match(casePage.text, /<link rel="canonical" href="https:\/\/maria-galieva\.ru\/cases\/avtomatizaciya-rabochego-mesta-myasnika\/">/, 'case canonical');
+assert.match(casePage.text, /"@type":"Article"/, 'case structured data');
+assert.match(casePage.text, /data-cookie-consent/, 'case analytics consent');
 assert.equal(privacy.response.status, 200, 'privacy page must return 200');
 assert.equal(agreement.response.status, 200, 'agreement page must return 200');
 assert.equal(robots.response.status, 200, 'robots.txt must return 200');
@@ -68,7 +75,8 @@ assert.match(agreement.text, /<meta name="robots" content="noindex, follow">/, '
 
 assert.match(robots.text, /^User-agent: \*\nAllow: \/\nSitemap: https:\/\/maria-galieva\.ru\/sitemap\.xml\n$/);
 assert.match(sitemap.text, /^<\?xml version="1\.0" encoding="UTF-8"\?>/);
-assert.equal((sitemap.text.match(/<url>/g) || []).length, 1, 'sitemap must contain one indexable URL');
+assert.equal((sitemap.text.match(/<url>/g) || []).length, 2, 'sitemap must contain two indexable URLs');
+assert.match(sitemap.text, /<loc>https:\/\/maria-galieva\.ru\/cases\/avtomatizaciya-rabochego-mesta-myasnika\/<\/loc>/);
 assert.match(sitemap.text, /<loc>https:\/\/maria-galieva\.ru\/<\/loc>/);
 
 const redirectChecks = [
