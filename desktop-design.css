@@ -263,9 +263,10 @@ h1 {
 }
 
 .hero-option {
+  min-width: 0;
   min-height: 94px;
   display: grid;
-  grid-template-columns: 34px 1fr;
+  grid-template-columns: 34px minmax(0, 1fr);
   gap: 12px;
   align-items: center;
   padding: 19px 20px;
@@ -275,6 +276,7 @@ h1 {
   font-size: 16px;
   font-weight: 620;
   line-height: 1.42;
+  overflow-wrap: anywhere;
   transition: background .2s ease;
 }
 
@@ -495,7 +497,9 @@ h1 {
   letter-spacing: -.048em;
 }
 
-.experience-copy { max-width: 760px; }
+.experience-copy { min-width: 0; max-width: 760px; }
+.experience-block > * { min-width: 0; }
+.experience-block h3 { overflow-wrap: anywhere; }
 
 .experience-copy > p {
   margin: 0;
@@ -1289,6 +1293,9 @@ details p {
   }
 
   .hero-copy { padding: 52px 38px 46px; }
+  .hero-options { grid-template-columns: 1fr; }
+  .hero-option:nth-child(odd) { border-right: 0; }
+  .hero-option:nth-child(-n+3) { border-bottom: 1px solid var(--line); }
   .hero-copy::before { top: 52px; }
   h1 { font-size: clamp(45px, 5.5vw, 56px); }
   .portrait-placeholder,
@@ -1507,6 +1514,7 @@ details p {
 }
 
 @media (max-width: 390px) {
+  .experience-block h3 { font-size: 30px; }
   .wrap,
   .hero { width: calc(100% - 24px); }
   .hero-copy { padding-inline: 18px; }
