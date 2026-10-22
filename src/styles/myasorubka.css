@@ -64,3 +64,38 @@
 .case-faq details>p{padding-bottom:25px;max-width:960px;font-size:15px}
 .case-faq summary:focus-visible{outline:3px solid var(--orange);outline-offset:4px}
 @media(max-width:700px){.case-faq summary{font-size:16px}.case-faq details>p{font-size:14px}}
+
+/* Process transformation: comparable sequences and changed roles. */
+.process-intro{max-width:850px;margin-bottom:32px;font-size:17px}
+.process-comparison{display:grid;gap:24px}
+.process-version{border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.process-caption{display:flex;align-items:center;gap:20px;padding:22px 25px;background:var(--soft)}
+.process-caption>span{font-size:12px;font-weight:750;text-transform:uppercase;letter-spacing:.1em;min-width:60px}
+.process-caption h3{font-size:22px}
+.process-version .process{margin:0;border:0;border-radius:0}
+.process-version .process li{padding:22px 18px;min-height:175px}
+.process-version .process strong{font-size:14px;line-height:1.5}
+.process-version .process li:last-child{border-right:0}
+.process-version.after{border-color:#afcfc2}
+.after .process-caption,.process li.changed{background:#edf5f1}
+.after .process-caption>span{color:#28634e}
+.process-role{border-top:1px solid var(--line);padding:20px 25px}
+.process-role>strong{font-size:16px;color:var(--navy)}
+.process-role p{font-size:14px;margin-top:6px}
+.process-takeaway{margin-top:30px;padding:28px 30px;border-left:3px solid var(--orange);background:var(--soft)}
+.process-takeaway>span{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:#a55314;margin-bottom:12px}
+.process-takeaway p{margin-top:12px;max-width:900px;font-size:15px}
+.solution .gallery-heading{margin-top:30px}
+@media(max-width:1050px){.process-version .process li{min-height:135px}}
+@media(max-width:700px){
+.process-intro{font-size:15px;margin-bottom:24px}
+.process-caption{align-items:flex-start;gap:12px;padding:20px 16px}
+.process-caption>span{min-width:48px;padding-top:5px;font-size:10px}
+.process-caption h3{font-size:20px}
+.process-version .process{grid-template-columns:1fr}
+.process-version .process li{min-height:0;padding:18px 16px;display:flex;align-items:baseline;gap:16px;border-right:0}
+.process-version .step-number{margin:0;flex-shrink:0}
+.process-version .process .arrow{display:none}
+.process-role{padding:20px 16px}
+.process-takeaway{padding:23px 20px}
+.process-takeaway h3{font-size:21px}}
