@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="ru">
 <head>
+  <link rel="icon" href="assets/monogram-mg.png" type="image/png" sizes="96x96" />
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
@@ -38,7 +39,7 @@
     .prototype-bar .wrap { display: flex; justify-content: space-between; gap: 20px; }
     .site-header { position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,.96); border-bottom: 1px solid var(--line); backdrop-filter: blur(12px); }
     .header-inner { min-height: 75px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
-    .wordmark-logo { flex: none; }
+    .wordmark-logo { flex: none; border-radius: 4px; }
     .wordmark { display: inline-flex; align-items: center; gap: 8px; font-size: 17px; font-weight: 800; letter-spacing: -.045em; white-space: nowrap; text-decoration: none; }
     .nav { display: flex; gap: clamp(15px, 2vw, 32px); align-items: center; letter-spacing: .015em; text-transform: none; }
     .nav a { text-decoration: none; white-space: nowrap; }
@@ -261,7 +262,7 @@
   <a class="skip" href="#content">Перейти к содержанию</a>
   <header class="site-header">
     <div class="wrap header-inner">
-      <a class="wordmark" href="#top" aria-label="Мария Галиева — наверх"><svg class="wordmark-logo" width="28" height="28" viewBox="0 0 28 28" aria-hidden="true" focusable="false"><rect width="28" height="28" rx="7" fill="var(--navy-950, #18243a)"/><path d="M5.5 18V10l4 5 4-5v8m4 0v-8h5" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Мария Галиева</a>
+      <a class="wordmark" href="#top" aria-label="Мария Галиева — наверх"><img class="wordmark-logo" src="assets/monogram-mg.png" width="28" height="28" alt="">Мария Галиева</a>
       <nav class="nav" aria-label="Разделы сайта">
         <a href="#situations">Задачи</a><a href="#expertise">Экспертиза</a><a href="#cases">Кейсы</a><a href="#method">Подход</a><a href="#formats">Услуги</a><a href="#faq">FAQ</a>
       </nav>
