@@ -20,6 +20,8 @@ for (const tag of tags) {
   if (src.includes('maria-hero')) {
     assert.match(tag, /\bfetchpriority="high"/, 'Hero image must have high fetch priority');
     assert.ok(bytes <= 300 * 1024, `Hero image is too large: ${bytes} bytes`);
+  } else if (/\bclass="wordmark-logo"/.test(tag)) {
+    assert.doesNotMatch(tag, /\bloading="lazy"/, 'Header logo must load immediately');
   } else {
     assert.match(tag, /\bloading="lazy"/, `Below-the-fold image must be lazy: ${src}`);
   }
