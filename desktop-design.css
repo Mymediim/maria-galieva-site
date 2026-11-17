@@ -81,8 +81,6 @@ p { color: var(--muted); }
 }
 
 .wordmark {
-  position: relative;
-  padding-left: 19px;
   color: var(--navy-950);
   font-size: 18px;
   font-weight: 800;
@@ -1331,6 +1329,7 @@ details p {
   }
 
   .wordmark { font-size: 16px; }
+  .wordmark-logo { width: 36px; height: 36px; }
   .header-cta { display: none; }
   .nav { padding-inline: 18px; }
 
