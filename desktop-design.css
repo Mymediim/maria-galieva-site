@@ -90,20 +90,6 @@ p { color: var(--muted); }
   text-decoration: none;
 }
 
-.wordmark::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: var(--orange-500);
-  transform: translateY(-50%);
-}
-
-.wordmark span { color: var(--orange-600); }
-
 .nav {
   justify-self: center;
   display: flex;
