@@ -1,4 +1,6 @@
 ---
+import '../styles/button-shape.css';
+import CaseSiteChrome from '../components/CaseSiteChrome.astro';
 import CookieConsent from '../components/CookieConsent.astro';
 
 interface Props {
@@ -29,12 +31,9 @@ const canonicalUrl = siteUrl ? `${siteUrl}${Astro.url.pathname}` : '';
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   </head>
   <body>
-    <header><a href="/">← На главную</a><span>Мария Галиева</span></header>
+    <CaseSiteChrome part="header" />
     <main><slot /></main>
-    <footer>
-      <span>ИП Галиева Мария Альбертовна · ИНН 667221959508 · ОГРНИП 321665800158422</span>
-      <nav><a href="/privacy/">Политика</a><a href="/agreement/">Пользовательское соглашение</a></nav>
-    </footer>
+    <CaseSiteChrome part="footer" />
     <CookieConsent />
   </body>
 </html>
@@ -43,19 +42,15 @@ const canonicalUrl = siteUrl ? `${siteUrl}${Astro.url.pathname}` : '';
   :root { font-family: Inter, "Segoe UI", Arial, sans-serif; color: #142131; background: #fff; }
   * { box-sizing: border-box; }
   body { margin: 0; }
-  a { color: #173b5e; text-underline-offset: 4px; }
-  header, footer { width: min(900px, calc(100% - 40px)); margin-inline: auto; display: flex; justify-content: space-between; gap: 24px; }
-  header { padding: 28px 0; border-bottom: 1px solid #dbe3ea; font-weight: 700; }
+  main a { color: #173b5e; text-underline-offset: 4px; }
   main { width: min(780px, calc(100% - 40px)); margin: 64px auto 90px; overflow-wrap: anywhere; }
-  h1 { margin: 0 0 18px; color: #102a43; font-size: clamp(38px, 6vw, 62px); line-height: 1.03; letter-spacing: -.05em; }
-  h2 { margin: 48px 0 16px; color: #102a43; font-size: 26px; letter-spacing: -.03em; }
-  h3 { margin: 28px 0 12px; color: #102a43; font-size: 19px; }
-  p, li { color: #536476; font-size: 16px; line-height: 1.68; }
-  li + li { margin-top: 8px; }
+  main h1 { margin: 0 0 18px; color: #102a43; font-size: clamp(38px, 6vw, 62px); line-height: 1.03; letter-spacing: -.05em; }
+  main h2 { margin: 48px 0 16px; color: #102a43; font-size: 26px; letter-spacing: -.03em; }
+  main h3 { margin: 28px 0 12px; color: #102a43; font-size: 19px; }
+  main p, main li { color: #536476; font-size: 16px; line-height: 1.68; }
+  main li + li { margin-top: 8px; }
   .legal-meta { margin-bottom: 42px; color: #de7d24; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
   .legal-note { padding: 18px 20px; border-left: 4px solid #f29d49; background: #fff1e3; }
-  footer { align-items: flex-start; padding: 28px 0 40px; border-top: 1px solid #dbe3ea; color: #617184; font-size: 12px; line-height: 1.5; }
-  footer nav { display: flex; flex-wrap: wrap; gap: 12px 20px; }
-  @media (max-width: 650px) { header, footer { flex-direction: column; } main { margin-top: 44px; } }
+  @media (max-width: 650px) { main { margin-top: 44px; } }
   @media (max-width: 390px) { h1 { font-size: clamp(30px, 9vw, 38px); } }
 </style>

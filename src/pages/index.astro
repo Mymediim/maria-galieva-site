@@ -1,6 +1,7 @@
 ---
+import '../styles/button-shape.css';
 import '../../desktop-design.css';
-import '../styles/header-application-button.css';
+import CaseSiteChrome from '../components/CaseSiteChrome.astro';
 import CookieConsent from '../components/CookieConsent.astro';
 import prototypeSource from '../../prototype-desktop.html?raw';
 
@@ -15,48 +16,11 @@ const personId = siteUrl ? `${siteUrl}/#maria-galieva` : '#maria-galieva';
 const originalBody = prototypeSource.match(/<body>([\s\S]*?)<\/body>/)?.[1] ?? '';
 const clientScript = originalBody.match(/<script>([\s\S]*?)<\/script>/)?.[1] ?? '';
 const pageContent = originalBody
+  .replace(/<header class="site-header">[\s\S]*?<\/header>/, '')
+  .replace(/<footer class="final"[^>]*>[\s\S]*?<\/footer>/, '')
   .replace(/<script>[\s\S]*?<\/script>/, '')
-  .replaceAll('src="assets/', 'src="/')
-  .replace(
-    '<nav class="nav" aria-label="Разделы сайта">',
-    `<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
-      <span class="sr-only">Открыть меню</span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </button>
-    <nav class="nav" id="site-nav" aria-label="Разделы сайта">`,
-  );
+  .replaceAll('src="assets/', 'src="/');
 
-const navigationScript = `
-  const siteHeader = document.querySelector('.site-header');
-  const menuToggle = document.querySelector('.menu-toggle');
-  const closeMenu = () => {
-    if (!siteHeader || !menuToggle) return;
-    siteHeader.removeAttribute('data-menu-open');
-    menuToggle.setAttribute('aria-expanded', 'false');
-    menuToggle.querySelector('.sr-only').textContent = 'Открыть меню';
-  };
-
-  menuToggle?.addEventListener('click', () => {
-    const isOpen = siteHeader?.hasAttribute('data-menu-open') ?? false;
-    if (isOpen) {
-      closeMenu();
-      return;
-    }
-    siteHeader?.setAttribute('data-menu-open', '');
-    menuToggle.setAttribute('aria-expanded', 'true');
-    menuToggle.querySelector('.sr-only').textContent = 'Закрыть меню';
-  });
-
-  document.querySelectorAll('#site-nav a').forEach((link) => link.addEventListener('click', closeMenu));
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') closeMenu();
-  });
-  window.addEventListener('resize', () => {
-    if (window.innerWidth >= 1100) closeMenu();
-  });
-`;
 ---
 
 <!doctype html>
@@ -113,9 +77,11 @@ const navigationScript = `
     <style is:global set:html={baseStyles}></style>
   </head>
   <body>
+    <CaseSiteChrome part="header" />
     <Fragment set:html={pageContent} />
+    <CaseSiteChrome part="footer" />
     <CookieConsent />
     <script>import '../scripts/cases-carousel';</script>
-    <script is:inline set:html={`${clientScript}\n${navigationScript}`}></script>
+    <script is:inline set:html={clientScript}></script>
   </body>
 </html>

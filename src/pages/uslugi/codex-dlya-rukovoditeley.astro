@@ -1,5 +1,6 @@
 ---
-import '../../styles/header-application-button.css';
+import '../../styles/button-shape.css';
+import CaseSiteChrome from '../../components/CaseSiteChrome.astro';
 import CookieConsent from '../../components/CookieConsent.astro';
 import source from '../../../products/codex-for-leaders/research/prototype/index.html?raw';
 import '../../../products/codex-for-leaders/research/prototype/style.css';
@@ -15,6 +16,8 @@ const formId = 1798;
 const formEndpoint = `https://it-production.dev/wp-json/contact-form-7/v1/contact-forms/${formId}/feedback`;
 const body = (source.match(/<body>([\s\S]*?)<\/body>/)?.[1] ?? '')
   .replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, '')
+  .replace(/<header>[\s\S]*?<\/header>/, '')
+  .replace(/<footer>[\s\S]*?<\/footer>/, '')
   .replaceAll('src="maria-color.png"', 'src="/maria-codex-practicum.webp"')
   .replace('src="../../../../assets/practicum-work-review.webp"', 'src="/practicum-work-review.webp"')
   .replace('data-endpoint=""', `data-endpoint="${formEndpoint}" data-contact-form-id="${formId}"`);
@@ -72,7 +75,9 @@ const schema = {
     <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
   </head>
   <body>
+    <CaseSiteChrome part="header" application />
     <Fragment set:html={body} />
+    <CaseSiteChrome part="footer" />
     <CookieConsent showSettings={false} />
     <script>import '../../../products/codex-for-leaders/research/prototype/script.js';</script>
   </body>

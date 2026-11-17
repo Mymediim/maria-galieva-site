@@ -1,0 +1,10 @@
+/* Материал подготовлен Марией Галиевой | IT Production */
+
+:root {
+  --button-radius: 6px;
+}
+
+.button,
+.small-button {
+  border-radius: var(--button-radius);
+}
