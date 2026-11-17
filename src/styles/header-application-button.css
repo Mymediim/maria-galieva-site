@@ -1,0 +1,19 @@
+/* Материал подготовлен Марией Галиевой | IT Production */
+.site-header .header-cta.site-primary-cta,header .small-button.site-primary-cta{
+  display:inline-flex;align-items:center;justify-content:center;min-height:42px;
+  padding:9px 15px;border:1px solid #a74614;border-radius:5px;
+  background:#a74614;color:#fff;font:700 13px/1.2 Inter,"Segoe UI",Arial,sans-serif;
+  text-align:center;text-decoration:none;white-space:nowrap
+}
+.site-header .header-cta.site-primary-cta:hover,header .small-button.site-primary-cta:hover{
+  color:#fff;background:#89370e;border-color:#89370e;transform:none;box-shadow:none
+}
+.site-header .header-cta.site-primary-cta:focus-visible,header .small-button.site-primary-cta:focus-visible{
+  outline:3px solid #a74614;outline-offset:3px
+}
+@media(max-width:740px){
+  .site-header .header-inner{grid-template-columns:minmax(0,1fr) auto auto;gap:8px}
+  .site-header .header-cta.site-primary-cta,header .small-button.site-primary-cta{
+    padding-inline:8px;font-size:11px;white-space:normal
+  }
+}

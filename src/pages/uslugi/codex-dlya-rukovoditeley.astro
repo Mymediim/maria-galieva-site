@@ -1,4 +1,5 @@
 ---
+import '../../styles/header-application-button.css';
 import CookieConsent from '../../components/CookieConsent.astro';
 import source from '../../../products/codex-for-leaders/research/prototype/index.html?raw';
 import '../../../products/codex-for-leaders/research/prototype/style.css';
@@ -15,6 +16,7 @@ const formEndpoint = `https://it-production.dev/wp-json/contact-form-7/v1/contac
 const body = (source.match(/<body>([\s\S]*?)<\/body>/)?.[1] ?? '')
   .replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, '')
   .replaceAll('src="maria-color.png"', 'src="/maria-codex-practicum.webp"')
+  .replace('src="../../../../assets/practicum-work-review.webp"', 'src="/practicum-work-review.webp"')
   .replace('data-endpoint=""', `data-endpoint="${formEndpoint}" data-contact-form-id="${formId}"`);
 const schema = {
   '@context': 'https://schema.org',
@@ -71,7 +73,7 @@ const schema = {
   </head>
   <body>
     <Fragment set:html={body} />
-    <CookieConsent />
+    <CookieConsent showSettings={false} />
     <script>import '../../../products/codex-for-leaders/research/prototype/script.js';</script>
   </body>
 </html>

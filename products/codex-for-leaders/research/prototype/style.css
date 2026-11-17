@@ -237,3 +237,6 @@ h3{font-size:var(--type-h3);line-height:1.25;letter-spacing:-.02em}
 .scenario-picker select{min-width:0;max-width:100%;font:inherit;color:var(--ink);background:#fff;border:1px solid var(--line);padding:8px 12px}
 @media(max-width:620px){.scenario-metrics .scenario-comparison{grid-template-columns:minmax(0,1fr)}}
 
+.approach-visual{width:min(100%,420px);margin-inline:auto;align-self:center}
+.approach-visual img{display:block;width:100%;height:auto;border-radius:6px}
+@media(max-width:700px){.approach-visual{width:min(100%,320px);margin-bottom:24px}}

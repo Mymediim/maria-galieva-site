@@ -1,4 +1,5 @@
 ---
+const { showSettings = true } = Astro.props;
 const yandexMetrikaId = import.meta.env.PUBLIC_YANDEX_METRIKA_ID ?? '';
 const googleAnalyticsId = import.meta.env.PUBLIC_GA_ID ?? '';
 ---
@@ -21,9 +22,11 @@ const googleAnalyticsId = import.meta.env.PUBLIC_GA_ID ?? '';
   </div>
 </aside>
 
-<button type="button" class="cookie-settings" data-cookie-settings hidden>
-  Настройки аналитики
-</button>
+{showSettings && (
+  <button type="button" class="cookie-settings" data-cookie-settings hidden>
+    Настройки аналитики
+  </button>
+)}
 
 <script is:inline>
   (() => {
@@ -79,7 +82,7 @@ const googleAnalyticsId = import.meta.env.PUBLIC_GA_ID ?? '';
     const savedConsent = localStorage.getItem(storageKey);
     if (savedConsent === 'accepted') {
       loadAnalytics();
-      settingsButton.hidden = false;
+      if (settingsButton) settingsButton.hidden = false;
       return;
     }
     if (savedConsent === 'declined') settingsButton.hidden = false;
@@ -89,7 +92,7 @@ const googleAnalyticsId = import.meta.env.PUBLIC_GA_ID ?? '';
       localStorage.setItem(storageKey, 'accepted');
       root.hidden = true;
       loadAnalytics();
-      settingsButton.hidden = false;
+      if (settingsButton) settingsButton.hidden = false;
       sendEvent('analytics_consent_granted');
     });
 
@@ -97,7 +100,7 @@ const googleAnalyticsId = import.meta.env.PUBLIC_GA_ID ?? '';
       const wasLoaded = root.dataset.analyticsLoaded === 'true';
       localStorage.setItem(storageKey, 'declined');
       root.hidden = true;
-      settingsButton.hidden = false;
+      if (settingsButton) settingsButton.hidden = false;
       if (wasLoaded) window.location.reload();
     });
 
