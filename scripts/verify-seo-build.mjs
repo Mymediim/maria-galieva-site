@@ -50,7 +50,7 @@ assert.match(home, /<meta name="twitter:image"/);
 if (mode === 'open') {
   assert.equal(metaRobots(home), 'index, follow');
   assert.match(robots, /^User-agent: \*\nAllow: \/\nSitemap: https:\/\/maria-galieva\.ru\/sitemap\.xml\n$/);
-  assert.equal(urlCount(sitemap), 3);
+  assert.equal(urlCount(sitemap), 4);
   assert.equal(metaRobots(casePage), 'index, follow');
   assert.match(sitemap, /<loc>https:\/\/maria-galieva\.ru\/cases\/avtomatizaciya-rabochego-mesta-myasnika\/<\/loc>/);
   assert.match(sitemap, /<loc>https:\/\/maria-galieva\.ru\/<\/loc>/);
@@ -72,5 +72,16 @@ assert.match(locapp, /<meta property="og:image"/);
 assert.match(locapp, /data-cookie-consent/);
 assert.match(home, /href="\/cases\/locapp-pervaya-versiya-prilozheniya\/"/);
 if (mode === 'open') assert.ok(sitemap.includes('<loc>https://maria-galieva.ru/cases/locapp-pervaya-versiya-prilozheniya/</loc>'));
+
+const practicumPath = '/uslugi/codex-dlya-rukovoditeley/';
+const practicum = await read(practicumPath.slice(1) + 'index.html');
+assert.ok(home.includes(`href="${practicumPath}"`));
+assert.equal(canonical(practicum), 'https://maria-galieva.ru' + practicumPath);
+assert.equal(metaRobots(practicum), mode === 'open' ? 'index, follow' : 'noindex, nofollow');
+assert.match(practicum, /"@type":"Course"/);
+assert.match(practicum, /"@type":"BreadcrumbList"/);
+assert.equal((practicum.match(/<h1\b/g) ?? []).length, 1);
+assert.match(practicum, /data-cookie-consent/);
+if (mode === 'open') assert.ok(sitemap.includes('<loc>https://maria-galieva.ru' + practicumPath + '</loc>'));
 
 console.log(`SEO build verification passed (${mode}).`);

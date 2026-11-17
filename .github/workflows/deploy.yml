@@ -40,6 +40,7 @@ jobs:
         env:
           PUBLIC_SITE_URL: https://maria-galieva.ru
           PUBLIC_SITE_INDEXING: 'true'
+          PUBLIC_PRACTICUM_FORMSPREE_URL: ${{ vars.PUBLIC_PRACTICUM_FORMSPREE_URL }}
           PUBLIC_YANDEX_METRIKA_ID: ${{ vars.PUBLIC_YANDEX_METRIKA_ID }}
           PUBLIC_GA_ID: ${{ vars.PUBLIC_GA_ID }}
 
