@@ -10,16 +10,12 @@ const indexable = import.meta.env.PUBLIC_SITE_INDEXING === 'true' && Boolean(sit
 const title = 'Обучение Codex для руководителей и предпринимателей — Мария Галиева';
 const description = '3 индивидуальных занятия в Zoom на задачах вашего бизнеса. Настройте Codex или Claude Code, установите 30+ навыков и автоматизируйте рабочий процесс.';
 const socialImage = siteUrl + '/maria-social-1200x630.webp';
-const endpoint = import.meta.env.PUBLIC_PRACTICUM_FORMSPREE_URL?.trim() ?? '';
-const formEndpoint = /^https:\/\/formspree\.io\/f\/[a-zA-Z0-9]+$/.test(endpoint) ? endpoint : '';
+const formId = 1798;
+const formEndpoint = `https://it-production.dev/wp-json/contact-form-7/v1/contact-forms/${formId}/feedback`;
 const body = (source.match(/<body>([\s\S]*?)<\/body>/)?.[1] ?? '')
   .replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, '')
   .replaceAll('src="maria-color.png"', 'src="/maria-codex-practicum.webp"')
-  .replace('data-endpoint=""', formEndpoint ? `data-endpoint="${formEndpoint}"` : 'data-endpoint="" hidden')
-  .replace(
-    'После заявки Мария предложит время для знакомства в Zoom.',
-    formEndpoint ? 'После заявки Мария предложит время для знакомства в Zoom.' : 'Напишите Марии в Telegram, чтобы договориться о встрече в Zoom.',
-  );
+  .replace('data-endpoint=""', `data-endpoint="${formEndpoint}" data-contact-form-id="${formId}"`);
 const schema = {
   '@context': 'https://schema.org',
   '@graph': [

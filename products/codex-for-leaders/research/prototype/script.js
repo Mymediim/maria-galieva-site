@@ -1,6 +1,9 @@
 const heroScene = document.querySelector('.hero-portrait-scene');
 
 if (heroScene && 'IntersectionObserver' in window) {
+  const heroTrigger = window.matchMedia('(max-width: 760px)').matches
+    ? heroScene.querySelector('.hero-portrait-question')
+    : heroScene;
   heroScene.classList.add('is-ready');
   const heroObserver = new IntersectionObserver(([entry], observer) => {
     if (entry.intersectionRatio < 0.45) return;
@@ -9,7 +12,7 @@ if (heroScene && 'IntersectionObserver' in window) {
     observer.disconnect();
   }, { threshold: 0.45 });
 
-  heroObserver.observe(heroScene);
+  heroObserver.observe(heroTrigger);
 }
 
 const scenarios = [
@@ -143,6 +146,8 @@ const applicationStatus = document.querySelector('#application-status');
 const tariffSelect = document.querySelector('#application-tariff');
 
 const sourceField = applicationForm.elements.namedItem('source');
+const contactFormId = applicationForm.dataset.contactFormId;
+let formOpenedAt = Math.floor(Date.now() / 1000);
 
 document.querySelectorAll('[data-application-source]').forEach((link) => {
   link.addEventListener('click', () => {
@@ -176,6 +181,12 @@ applicationForm.addEventListener('submit', async (event) => {
     fields.set(field, value);
   }
 
+  if (contactFormId) {
+    fields.set('_wpcf7_unit_tag', 'wpcf7-f' + contactFormId + '-o1');
+    fields.set('_itprod_ts', String(formOpenedAt));
+    fields.set('website_url', '');
+  }
+
   submitApplication.disabled = true;
   submitApplication.textContent = 'Отправляем…';
   showApplicationStatus('');
@@ -194,9 +205,10 @@ applicationForm.addEventListener('submit', async (event) => {
     }
     if (!response.ok) throw new Error('Submission failed');
     const result = await response.json();
-    if (result?.ok !== true) throw new Error('Submission not confirmed');
+    if (result?.status !== 'mail_sent') throw new Error('Submission not confirmed');
 
     applicationForm.reset();
+    formOpenedAt = Math.floor(Date.now() / 1000);
     showApplicationStatus('Заявка отправлена');
   } catch {
     showApplicationStatus('Не удалось подтвердить отправку. Попробуйте снова или напишите в Telegram.');
