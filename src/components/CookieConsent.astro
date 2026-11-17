@@ -159,19 +159,17 @@ const googleAnalyticsId = import.meta.env.PUBLIC_GA_ID ?? '';
   .cookie-consent .cookie-consent__secondary { color: white; background: transparent; border-color: rgba(255, 255, 255, .38); }
 
   .cookie-settings {
-    position: fixed;
-    left: 14px;
-    bottom: 14px;
-    z-index: 80;
-    min-height: 34px;
-    padding: 7px 10px;
-    border: 1px solid rgba(16, 42, 67, .3);
-    border-radius: 4px;
-    color: #102a43;
-    background: rgba(255, 255, 255, .94);
-    font: 600 11px/1.2 Inter, "Segoe UI", Arial, sans-serif;
+    display: block;
+    min-height: 44px;
+    margin: 0 auto;
+    padding: 8px 14px;
+    border: 0;
+    color: #173b5e;
+    background: #fff;
+    font: 600 13px/1.4 Inter, "Segoe UI", Arial, sans-serif;
+    text-decoration: underline;
+    text-underline-offset: 3px;
     cursor: pointer;
-    box-shadow: 0 6px 18px rgba(16, 42, 67, .12);
   }
 
   .cookie-settings[hidden] { display: none; }
