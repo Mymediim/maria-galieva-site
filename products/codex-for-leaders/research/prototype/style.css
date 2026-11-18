@@ -125,7 +125,9 @@
 .audience-icon-chat::before{width:18px;height:13px;border-radius:4px;left:10px;top:10px}
 .audience-icon-chat::after{width:5px;height:5px;left:14px;top:23px;border-width:0 0 2px 2px;background:#fff0e5;transform:skewY(-35deg)}
 
-#results .results-grid article{border:0;background:var(--soft,#f7f5f1)}
+#results .results-grid article{display:grid;justify-items:center;align-content:start;gap:12px;padding:18px 10px;border:0;background:none;text-align:center}
+#results .results-grid h3{max-width:24ch;margin:0;text-wrap:balance}
+#results .results-grid svg{width:32px;height:32px;fill:none;stroke:#9d4719;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round}
 /* Keep the same content edges and let cards grow with their text. */
 .hero,.approach-grid,.contacts,.lesson{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
 .hero-copy,.quote,.lesson-title,.lesson-body,.scenario-comparison,.price{min-width:0}

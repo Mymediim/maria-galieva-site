@@ -10,7 +10,7 @@ const siteUrl = (import.meta.env.PUBLIC_SITE_URL ?? Astro.site?.origin ?? '').re
 const canonical = siteUrl + route;
 const indexable = import.meta.env.PUBLIC_SITE_INDEXING === 'true' && Boolean(siteUrl);
 const title = 'Обучение Codex для руководителей и предпринимателей — Мария Галиева';
-const description = '3 индивидуальных занятия в Zoom на задачах вашего бизнеса. Настройте Codex или Claude Code, установите 30+ навыков и автоматизируйте рабочий процесс.';
+const description = '3 индивидуальных занятия в Zoom на задачах вашего бизнеса. Настройте Codex, установите 30+ навыков и автоматизируйте рабочий процесс.';
 const socialImage = siteUrl + '/maria-social-1200x630.webp';
 const formId = 1798;
 const formEndpoint = `https://it-production.dev/wp-json/contact-form-7/v1/contact-forms/${formId}/feedback`;
