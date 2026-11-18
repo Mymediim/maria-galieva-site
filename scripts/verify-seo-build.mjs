@@ -84,4 +84,15 @@ assert.equal((practicum.match(/<h1\b/g) ?? []).length, 1);
 assert.match(practicum, /data-cookie-consent/);
 if (mode === 'open') assert.ok(sitemap.includes('<loc>https://maria-galieva.ru' + practicumPath + '</loc>'));
 
+const hmbPath = '/cases/hmb-bank/';
+const hmb = await read(hmbPath.slice(1) + 'index.html');
+assert.equal(canonical(hmb), 'https://maria-galieva.ru' + hmbPath);
+assert.equal(metaRobots(hmb), 'noindex, nofollow');
+assert.ok(home.includes(`href="${hmbPath}"`));
+assert.ok(!sitemap.includes(hmbPath));
+assert.match(hmb, /"@type":"Article"/);
+assert.match(hmb, /"@type":"BreadcrumbList"/);
+assert.match(hmb, /<meta property="og:image" content="https:\/\/maria-galieva\.ru\/cases\/hmb-bank\/cover\.webp"/);
+assert.match(hmb, /<meta name="twitter:image"/);
+
 console.log(`SEO build verification passed (${mode}).`);

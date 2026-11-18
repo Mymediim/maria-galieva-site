@@ -4,13 +4,41 @@ import CaseSiteChrome from '../../components/CaseSiteChrome.astro';
 import CookieConsent from '../../components/CookieConsent.astro';
 import '../../styles/locapp.css';
 
+const siteUrl = 'https://maria-galieva.ru/';
+const canonicalUrl = new URL('cases/hmb-bank/', siteUrl).href;
+const pageTitle = 'Редизайн сайта ХМБ Банка за 5 месяцев | Мария Галиева';
+const pageDescription = 'Как Мария Галиева собрала требования ХМБ Банка, согласовала концепцию и организовала редизайн сайта. За пять месяцев команда обновила более 75 страниц.';
+const socialImage = new URL('cases/hmb-bank/cover.webp', siteUrl).href;
+const socialImageAlt = 'Обновлённый сайт ХМБ Банка на компьютере и телефоне';
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Article',
+      headline: 'Редизайн сайта ХМБ Банка за пять месяцев',
+      description: pageDescription,
+      mainEntityOfPage: canonicalUrl,
+      inLanguage: 'ru-RU',
+      image: socialImage,
+      author: { '@type': 'Person', name: 'Мария Галиева', url: siteUrl },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Главная', item: siteUrl },
+        { '@type': 'ListItem', position: 2, name: 'ХМБ Банк', item: canonicalUrl },
+      ],
+    },
+  ],
+};
+
 const booking = 'https://calendar.app.google/4Qmx1NCCWEhLcsV78';
 const studio = 'https://it-production.dev/';
 const studioCase = new URL('projects/razrabotka-sajta-pod-klyuch-dlya-hakasskij-municzipalnyj-bank-hmb-bank/', studio);
 const work = [
-  { title: 'Собрала концепцию', text: 'Свела материалы подразделений в одну структуру сайта и упростила подачу продуктов.', icon: 'M4 5h6l2 2h8v12H4z M8 12h8m-8 4h5' },
-  { title: 'Определила объём работ', text: 'Помогла выбрать, где хватит общего шаблона, а где нужна отдельная страница. Это помогло уложиться в бюджет.', icon: 'M4 5h16v14H4z M4 9h16m-10 0v10' },
-  { title: 'Провела согласование', text: 'Руководители проверили свои разделы. Я следила, чтобы команда вовремя получала материалы и ответы.', icon: 'M8 5H5v15h14V5h-3 M8 3h8v4H8z M8 13l3 3 5-6' },
+  { title: 'Собрала концепцию', text: 'Свела материалы подразделений в одну структуру сайта и упростила подачу продуктов.' },
+  { title: 'Определила объём работ', text: 'Помогла выбрать, где хватит общего шаблона, а где нужна отдельная страница. Это помогло уложиться в бюджет.' },
+  { title: 'Провела согласование', text: 'Руководители проверили свои разделы. Я следила, чтобы команда вовремя получала материалы и ответы.' },
 ];
 ---
 <!doctype html>
@@ -19,10 +47,26 @@ const work = [
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
-  <link rel="canonical" href="https://maria-galieva.ru/cases/hmb-bank/" />
-  <meta name="description" content="Как Мария Галиева организовала согласование и перезапуск сайта ХМБ Банка за пять месяцев." />
+  <link rel="canonical" href={canonicalUrl} />
+  <meta name="description" content={pageDescription} />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <title>Перезапуск сайта ХМБ Банка за пять месяцев | Мария Галиева</title>
+  <title>{pageTitle}</title>
+  <meta property="og:type" content="article" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={pageDescription} />
+  <meta property="og:image" content={socialImage} />
+  <meta property="og:image:type" content="image/webp" />
+  <meta property="og:image:width" content="1080" />
+  <meta property="og:image:height" content="540" />
+  <meta property="og:image:alt" content={socialImageAlt} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={pageTitle} />
+  <meta name="twitter:description" content={pageDescription} />
+  <meta name="twitter:image" content={socialImage} />
+  <meta name="twitter:image:alt" content={socialImageAlt} />
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 </head>
 <body>
   <a class="lc-skip" href="#main">К содержанию</a>
@@ -37,14 +81,13 @@ const work = [
         <p class="lc-lead">Ссылку неловко отправлять клиентам. На сайте старый номер, форма заявки не работает, а разработчики давно ушли. Редизайн снова откладывается, потому что вести его некому.</p>
         <a class="lc-button" href="#contact">Обсудить обновление сайта</a>
       </div>
-      <aside class="hmb-overview lc-dark" aria-labelledby="hmb-summary">
-        <h2 id="hmb-summary">Перезапуск сайта ХМБ Банка</h2>
-        <dl class="hmb-metrics">
-          <div><dt>До запуска</dt><dd>5 месяцев</dd></div>
-          <div><dt>В новом сайте</dt><dd>75+ страниц</dd></div>
-        </dl>
-        <p>Я взяла на себя требования, согласования и работу с командой до запуска.</p>
-      </aside>
+      <figure class="hmb-cover">
+        <img src="/cases/hmb-bank/cover.webp" width="1080" height="540" fetchpriority="high" alt={socialImageAlt} />
+        <figcaption>
+          <span><strong>5 месяцев</strong> до запуска</span>
+          <span><strong>75+ страниц</strong> в новом сайте</span>
+        </figcaption>
+      </figure>
     </section>
 
     <section class="lc-section lc-soft hmb-problem" aria-labelledby="problem">
@@ -60,33 +103,31 @@ const work = [
       </div>
     </section>
 
-    <section class="lc-section lc-wrap" id="work" aria-labelledby="work-title">
-      <h2 id="work-title">Что я сделала, чтобы проект пошёл</h2>
-      <ol class="hmb-steps">
-        {work.map(({ title, text, icon }) => (
-          <li>
-            <svg class="hmb-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <path d={icon} />
-            </svg>
-            <h3>{title}</h3>
-            <p>{text}</p>
-          </li>
-        ))}
-      </ol>
-      <p class="hmb-team">Дизайн и разработку выполнила команда <a href={studio} target="_blank" rel="noopener noreferrer">IT Production</a>.</p>
+    <section class="lc-section lc-dark hmb-work" id="work" aria-labelledby="work-title">
+      <div class="lc-wrap hmb-work-layout">
+        <div>
+          <h2 id="work-title">Как я провела проект от требований до запуска</h2>
+          <p>Банк проверял условия продуктов. Я вела согласования и работу по проекту. <a href={studio} target="_blank" rel="noopener noreferrer">IT Production</a> отвечала за дизайн и разработку.</p>
+        </div>
+        <ol class="hmb-flow">
+          {work.map(({ title, text }) => (
+            <li><h3>{title}</h3><p>{text}</p></li>
+          ))}
+        </ol>
+      </div>
     </section>
 
-    <section class="lc-section hmb-result" aria-labelledby="result">
-      <div class="lc-wrap hmb-result-layout">
-        <svg class="hmb-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <path d="M4 5h16v14H4z M4 9h16m-11 5 2 2 4-4" />
-        </svg>
-        <div>
-        <h2 id="result">Банк сам обновляет сайт</h2>
-        <p class="lc-lead">Например, сотрудник может изменить условия вклада и параметры калькулятора без разработчика.</p>
-        <a class="lc-text-link" href={studioCase.href} target="_blank" rel="noopener noreferrer">Интерфейсы и отзыв банка на сайте IT Production</a>
-        </div>
+    <section class="lc-section lc-wrap hmb-result" aria-labelledby="result">
+      <div class="hmb-result-copy">
+        <h2 id="result">Как выглядит новый сайт</h2>
+        <p>Клиенты находят нужный продукт и рассчитывают условия вклада. Сотрудники банка сами обновляют параметры расчёта и курсы валют.</p>
+        <a class="lc-button hmb-bank-link" href="https://kbhmb.ru/" target="_blank" rel="noopener noreferrer">Перейти на сайт ХМБ Банка</a>
+        <a class="lc-text-link" href={studioCase.href} target="_blank" rel="noopener noreferrer">Кейс на сайте IT Production</a>
       </div>
+      <figure class="hmb-screen">
+        <img src="/cases/hmb-bank/website.webp" width="1062" height="1326" loading="lazy" decoding="async" alt="Главная страница ХМБ Банка с предложениями и калькулятором вкладов" />
+        <figcaption>Главная с калькулятором вкладов</figcaption>
+      </figure>
     </section>
 
     <section class="lc-section lc-wrap lc-contact hmb-contact" id="contact" aria-labelledby="contact-title">
@@ -116,46 +157,32 @@ const work = [
     text-wrap: balance;
   }
 
-  .hmb-overview {
-    padding: clamp(22px, 3.4vw, 44px);
+  .hmb-cover {
+    overflow: hidden;
     border-radius: 12px;
+    background: #102a43;
   }
 
-  .hmb-overview h2 {
-    font-size: clamp(19px, 2.2vw, 28px);
-    line-height: 1.25;
+  .hmb-cover img, .hmb-screen img {
+    display: block;
+    width: 100%;
+    height: auto;
   }
 
-  .hmb-metrics {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px;
-    margin: 24px 0 18px;
-    padding-block: 18px;
-    border-block: 1px solid #ffffff40;
-  }
-
-  .hmb-metrics > div {
+  .hmb-cover figcaption {
     display: flex;
-    flex-direction: column-reverse;
-    gap: 6px;
-  }
-
-  .hmb-metrics dd {
-    margin: 0;
-    color: #ffd4ac;
-    font-size: clamp(21px, 3vw, 38px);
-    font-weight: 750;
-    letter-spacing: -.04em;
-    line-height: 1.15;
-  }
-
-  .hmb-metrics dt {
+    flex-wrap: wrap;
+    gap: 10px 26px;
+    padding: 18px 22px;
     color: #d3e0eb;
-    font-size: 13px;
+    font-size: 14px;
   }
 
-  .hmb-problem, .hmb-result {
+  .hmb-cover strong {
+    color: #ffd4ac;
+  }
+
+  .hmb-problem {
     padding-block: clamp(36px, 5vw, 64px);
   }
 
@@ -164,74 +191,86 @@ const work = [
     padding-inline-start: 20px;
   }
 
-  .hmb-blocker p {
-    margin-top: 10px;
+  .hmb-blocker p, .hmb-work-layout h2 + p {
+    margin-top: 16px;
   }
 
-  .hmb-steps {
+  .hmb-work-layout {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px;
+    grid-template-columns: minmax(0, .9fr) minmax(0, 1fr);
+    gap: clamp(32px, 8vw, 104px);
+  }
+
+  .hmb-flow {
+    margin: 0;
+    padding-inline-start: 24px;
+    border-inline-start: 1px solid #a9becf70;
     list-style: none;
-    margin: 30px 0 0;
-    padding: 0;
   }
 
-  .hmb-steps li {
-    padding: clamp(16px, 2.2vw, 26px);
-    border: 1px solid #dbe3ea;
-    border-radius: 9px;
+  .hmb-flow li {
+    position: relative;
+    padding-bottom: 24px;
   }
 
-  .hmb-icon {
-    display: block;
-    width: 40px;
-    height: 40px;
-    padding: 8px;
-    border-radius: 8px;
-    background: #fff1e3;
-    fill: none;
-    stroke: #9c4910;
-    stroke-width: 1.65;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+  .hmb-flow li:last-child {
+    padding-bottom: 0;
   }
 
-  .hmb-steps h3 {
-    margin-top: 15px;
+  .hmb-flow li::before {
+    position: absolute;
+    inset-inline-start: -29px;
+    top: .65em;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #ffd4ac;
+    content: '';
   }
 
-  .hmb-steps p, .hmb-team {
-    margin-top: 10px;
-  }
-
-  .lc .hmb-team {
-    margin-top: 18px;
-    font-size: 14px;
+  .hmb-flow p {
+    margin-top: 6px;
   }
 
   .hmb-result {
-    background: #fff1e3;
-  }
-
-  .hmb-result-layout {
     display: grid;
-    grid-template-columns: auto minmax(0, 1fr);
-    gap: 18px;
-    align-items: start;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+    gap: clamp(26px, 6vw, 80px);
+    align-items: center;
   }
 
-  .hmb-result .hmb-icon {
+  .hmb-result-copy p {
+    margin-top: 16px;
+    max-width: 420px;
+  }
+
+  .hmb-bank-link {
+    margin-top: 22px;
+    color: #102a43 !important;
     background: #fff;
+    border: 1px solid #667d90;
   }
 
-  .hmb-result .lc-lead {
-    margin-top: 12px;
-    max-width: 680px;
+  .hmb-bank-link:hover {
+    background: #f4f7fa;
   }
 
-  .hmb-result .lc-text-link {
-    margin-top: 14px;
+  .hmb-result-copy .lc-text-link {
+    display: block;
+    width: fit-content;
+    margin-top: 16px;
+  }
+
+  .hmb-screen img {
+    border: 1px solid #dbe3ea;
+    border-radius: 9px;
+    background: #f4f7fa;
+  }
+
+  .hmb-screen figcaption {
+    margin-top: 8px;
+    color: #617184;
+    font-size: 14px;
   }
 
   .hmb-contact .lc-button {
@@ -249,14 +288,8 @@ const work = [
   }
 
   @media (max-width: 760px) {
-    .hmb-steps {
+    .hmb-work-layout, .hmb-result {
       grid-template-columns: 1fr;
-      gap: 10px;
-    }
-
-    .hmb-result-layout {
-      grid-template-columns: 1fr;
-      gap: 12px;
     }
   }
 </style>
