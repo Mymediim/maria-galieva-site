@@ -1641,3 +1641,8 @@ details p {
 @media (max-width: 767px) {
   .practicum-layout { grid-template-columns: minmax(0, 1fr); }
 }
+
+.hmb-teaser-stats{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 20px;color:#ffd4ac}
+.hmb-teaser-stats strong{font-size:clamp(30px,4vw,52px);line-height:1.12;letter-spacing:-.045em}
+.hmb-teaser-stats span{font-size:clamp(17px,2vw,23px);color:#fff}
+.hmb-teaser .myasorubka-teaser-link{margin-top:24px}
