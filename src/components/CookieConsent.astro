@@ -136,7 +136,7 @@ const googleAnalyticsId = import.meta.env.PUBLIC_GA_ID ?? '';
     align-items: center;
     padding: 18px 20px;
     border: 1px solid rgba(255, 255, 255, .2);
-    border-radius: 10px;
+    border-radius: var(--card-radius, 10px);
     color: white;
     background: #102a43;
     box-shadow: 0 20px 55px rgba(16, 42, 67, .28);
