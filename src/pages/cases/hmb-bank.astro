@@ -34,7 +34,6 @@ const structuredData = {
 
 const booking = 'https://calendar.app.google/4Qmx1NCCWEhLcsV78';
 const studio = 'https://it-production.dev/';
-const studioCase = new URL('projects/razrabotka-sajta-pod-klyuch-dlya-hakasskij-municzipalnyj-bank-hmb-bank/', studio);
 const work = [
   { title: 'Собрала концепцию', text: 'Свела материалы подразделений в одну структуру сайта и упростила подачу продуктов.' },
   { title: 'Определила объём работ', text: 'Помогла выбрать, где хватит общего шаблона, а где нужна отдельная страница. Это помогло уложиться в бюджет.' },
@@ -122,23 +121,23 @@ const work = [
         <h2 id="result">Как выглядит новый сайт</h2>
         <p>Клиенты находят нужный продукт и рассчитывают условия вклада. Сотрудники банка сами обновляют параметры расчёта и курсы валют.</p>
         <a class="lc-button hmb-bank-link" href="https://kbhmb.ru/" target="_blank" rel="noopener noreferrer">Перейти на сайт ХМБ Банка</a>
-        <a class="lc-text-link" href={studioCase.href} target="_blank" rel="noopener noreferrer">Кейс на сайте IT Production</a>
       </div>
       <figure class="hmb-screen">
         <img src="/cases/hmb-bank/website.webp" width="1062" height="1326" loading="lazy" decoding="async" alt="Главная страница ХМБ Банка с предложениями и калькулятором вкладов" />
-        <figcaption>Главная с калькулятором вкладов</figcaption>
       </figure>
     </section>
 
-    <section class="lc-section lc-wrap lc-contact hmb-contact" id="contact" aria-labelledby="contact-title">
-      <div>
+    <section class="lc-section lc-soft hmb-contact" id="contact" aria-labelledby="contact-title">
+      <div class="lc-wrap lc-contact">
+        <div>
         <h2 id="contact-title">Обновление сайта можно поручить мне</h2>
         <p class="lc-lead">Помогу определить, что войдёт в ваш бюджет, и проведу проект от требований до запуска.</p>
         <p>С вашей командой, другим подрядчиком или <a href={studio} target="_blank" rel="noopener noreferrer">IT Production</a>.</p>
-      </div>
-      <div class="lc-contact-action">
-        <a class="lc-button" href={booking} target="_blank" rel="noopener noreferrer" data-analytics-event="calendar_click" data-analytics-placement="hmb_case_contact">Записаться на бесплатную встречу</a>
-        <span>За 30 минут обсудим, что тормозит проект и что можно поручить мне.</span>
+        </div>
+        <div class="lc-contact-action">
+          <a class="lc-button" href={booking} target="_blank" rel="noopener noreferrer" data-analytics-event="calendar_click" data-analytics-placement="hmb_case_contact">Записаться на бесплатную встречу</a>
+          <span>За 30 минут обсудим, что тормозит проект и что можно поручить мне.</span>
+        </div>
       </div>
     </section>
   </main>
@@ -255,22 +254,18 @@ const work = [
     background: #f4f7fa;
   }
 
-  .hmb-result-copy .lc-text-link {
-    display: block;
-    width: fit-content;
-    margin-top: 16px;
-  }
-
   .hmb-screen img {
+    height: clamp(200px, 27vw, 320px);
+    object-fit: cover;
+    object-position: center 15%;
     border: 1px solid #dbe3ea;
     border-radius: 9px;
     background: #f4f7fa;
   }
 
-  .hmb-screen figcaption {
-    margin-top: 8px;
-    color: #617184;
-    font-size: 14px;
+  .hmb-contact {
+    border-top: 1px solid #dbe3ea;
+    padding-block: clamp(48px, 6vw, 76px);
   }
 
   .hmb-contact .lc-button {
