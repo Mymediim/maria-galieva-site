@@ -53,9 +53,6 @@
     h1 { max-width: 850px; font-size: clamp(42px, 4.25vw, 64px); line-height: 1.055; letter-spacing: -.058em; font-weight: 650; margin-bottom: 31px; }
     .hero-verb { font-size: 1.07em; font-weight: 800; }
     .hero-result { display: inline-block; padding: .02em .14em .08em; color: white; background: var(--ink); font-weight: 800; letter-spacing: -.045em; }
-    .hero-options { width: min(760px, 100%); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 0 0 31px; border-top: 1px solid var(--ink); border-left: 1px solid var(--line); }
-    .hero-option { min-height: 86px; display: grid; grid-template-columns: 31px 1fr; gap: 12px; align-items: start; padding: 16px 19px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); font-size: 14px; line-height: 1.38; }
-    .hero-option .number { padding-top: 2px; }
     .actions { display: flex; flex-wrap: wrap; gap: 11px 22px; align-items: center; }
     .button { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 14px 19px; background: var(--ink); border: 1px solid var(--ink); color: white; font-weight: 700; text-decoration: none; font-size: 14px; transition: background .2s, color .2s, transform .2s; }
     .button:hover { background: white; color: var(--ink); transform: translateY(-2px); }
@@ -205,7 +202,6 @@
       .hero-copy { padding: 67px 18px 55px; }
       .hero-kicker { margin-bottom: 29px; }
       h1 { font-size: clamp(42px, 9.3vw, 66px); }
-      .hero-options { grid-template-columns: 1fr; }
       .portrait-placeholder { min-height: 420px; border-left: 0; border-top: 1px solid var(--ink); }
       .portrait-placeholder img { min-height: 420px; max-height: 560px; object-position: 50% 34%; }
       .section { padding: 73px 0 83px; }
@@ -268,13 +264,7 @@
     <section class="hero" id="top" aria-labelledby="hero-title">
       <div class="hero-copy">
         <p class="hero-kicker">Мария Галиева · Продуктовый консультант · Основатель IT Production</p>
-        <h1 id="hero-title">Определим, что нужно бизнесу — <span class="hero-result">до затрат</span> на разработку</h1>
-        <div class="hero-options" aria-label="Направления работы">
-          <div class="hero-option"><span class="number">01</span><span>Определяю состав первой версии для новых идей</span></div>
-          <div class="hero-option"><span class="number">02</span><span>Изменяю существующие сайты и приложения</span></div>
-          <div class="hero-option"><span class="number">03</span><span>Автоматизирую проблемные процессы бизнеса</span></div>
-          <div class="hero-option"><span class="number">04</span><span>Обучаю руководителей бизнеса применять ИИ</span></div>
-        </div>
+        <h1 id="hero-title">Определим, что запускать или менять, <span class="hero-result">до затрат</span> на разработку</h1>
         <div class="actions"><a class="button" href="https://calendar.app.google/4Qmx1NCCWEhLcsV78" target="_blank" rel="noopener noreferrer" data-analytics-event="calendar_click" data-analytics-placement="hero">Записаться на бесплатную встречу</a><a class="text-link" href="https://t.me/Mediim" target="_blank" rel="noopener noreferrer" data-analytics-event="telegram_click" data-analytics-placement="hero"><svg width="17" height="17" viewBox="0 0 24 24" aria-hidden="true" style="vertical-align:-4px;margin-right:6px"><path d="M21 3 3.7 9.7c-1.2.5-1.2 1.2-.2 1.5l4.4 1.4 1.7 5.2c.2.7.1 1 .8 1 .5 0 .8-.2 1-.4l2.2-2.1 4.5 3.3c.8.4 1.4.2 1.6-.8L22.5 5c.3-1.1-.4-1.7-1.5-2Z" fill="currentColor"/></svg>Написать в Telegram</a></div>
       </div>
       <div class="portrait-placeholder"><img src="assets/maria-hero-900.webp" alt="Мария Галиева" width="900" height="770" fetchpriority="high" decoding="async"></div>
