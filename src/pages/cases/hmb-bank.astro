@@ -1,5 +1,4 @@
 ---
-// Материал подготовлен Марией Галиевой | IT Production
 import CaseSiteChrome from '../../components/CaseSiteChrome.astro';
 import CookieConsent from '../../components/CookieConsent.astro';
 import '../../styles/locapp.css';
@@ -7,7 +6,7 @@ import '../../styles/locapp.css';
 const siteUrl = 'https://maria-galieva.ru/';
 const canonicalUrl = new URL('cases/hmb-bank/', siteUrl).href;
 const pageTitle = 'Редизайн сайта ХМБ Банка за 5 месяцев | Мария Галиева';
-const pageDescription = 'Как Мария Галиева собрала требования ХМБ Банка, согласовала концепцию и организовала редизайн сайта. За пять месяцев команда обновила более 75 страниц.';
+const pageDescription = 'Как Мария Галиева собрала требования ХМБ Банка, согласовала концепцию и организовала редизайн сайта. За 5 месяцев команда обновила более 75 страниц.';
 const socialImage = new URL('cases/hmb-bank/cover.webp', siteUrl).href;
 const socialImageAlt = 'Обновлённый сайт ХМБ Банка на компьютере и телефоне';
 const structuredData = {
@@ -15,7 +14,7 @@ const structuredData = {
   '@graph': [
     {
       '@type': 'Article',
-      headline: 'Редизайн сайта ХМБ Банка за пять месяцев',
+      headline: 'Редизайн сайта ХМБ Банка за 5 месяцев',
       description: pageDescription,
       mainEntityOfPage: canonicalUrl,
       inLanguage: 'ru-RU',
@@ -32,7 +31,6 @@ const structuredData = {
   ],
 };
 
-const booking = 'https://calendar.app.google/4Qmx1NCCWEhLcsV78';
 const studio = 'https://it-production.dev/';
 const work = [
   { title: 'Собрала концепцию', text: 'Свела материалы подразделений в одну структуру сайта и упростила подачу продуктов.' },
@@ -67,7 +65,7 @@ const work = [
   <meta name="twitter:image:alt" content={socialImageAlt} />
   <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 </head>
-<body>
+<body class="hmb-page">
   <a class="lc-skip" href="#main">К содержанию</a>
   <CaseSiteChrome part="header" />
   <main class="lc" id="main">
@@ -77,8 +75,12 @@ const work = [
       <div class="lc-hero-copy">
         <div class="lc-kicker">Кейс ХМБ Банка</div>
         <h1>Сайт давно пора обновить. <em>Кому поручить проект?</em></h1>
-        <p class="lc-lead">Ссылку неловко отправлять клиентам. На сайте старый номер, форма заявки не работает, а разработчики давно ушли. Редизайн снова откладывается, потому что вести его некому.</p>
-        <a class="lc-button" href="#contact">Обсудить обновление сайта</a>
+        <ul class="hmb-pain-list">
+          <li>Ссылку неловко отправлять клиентам.</li>
+          <li>На сайте старый номер, форма заявки не работает.</li>
+          <li>Разработчики давно ушли. Вести редизайн некому.</li>
+        </ul>
+        <a class="lc-button" href="#value">Что можно поручить мне</a>
       </div>
       <figure class="hmb-cover">
         <img src="/cases/hmb-bank/cover.webp" width="1080" height="540" fetchpriority="high" alt={socialImageAlt} />
@@ -106,38 +108,67 @@ const work = [
       <div class="lc-wrap hmb-work-layout">
         <div>
           <h2 id="work-title">Как я провела проект от требований до запуска</h2>
-          <p>Банк проверял условия продуктов. Я вела согласования и работу по проекту. <a href={studio} target="_blank" rel="noopener noreferrer">IT Production</a> отвечала за дизайн и разработку.</p>
         </div>
+        <div>
         <ol class="hmb-flow">
           {work.map(({ title, text }) => (
             <li><h3>{title}</h3><p>{text}</p></li>
           ))}
+          <li>
+            <h3>Контролировала работу команды <a href={studio} target="_blank" rel="noopener noreferrer">IT Production</a></h3>
+            <p>Дизайн и разработку сайта.</p>
+          </li>
         </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="lc-section lc-wrap hmb-change" aria-labelledby="change-title">
+      <div class="hmb-change-heading">
+        <h2 id="change-title">У каждого подразделения свой продукт.<br />У сайта — общая концепция.</h2>
+        <p>Я свела разрозненные материалы в структуру, которую руководители могли проверить, а команда — реализовать.</p>
+      </div>
+      <div class="hmb-alignment">
+        <div>
+          <h3>Что нужно было собрать</h3>
+          <ul><li>Материалы из разных источников</li><li>Требования руководителей</li><li>Объём работ под бюджет</li></ul>
+        </div>
+        <div class="hmb-alignment-result">
+          <h3>С чем команда пошла в работу</h3>
+          <ul><li>Общая структура сайта</li><li>Проверенные условия продуктов</li><li>Согласованный состав страниц</li></ul>
+        </div>
       </div>
     </section>
 
     <section class="lc-section lc-wrap hmb-result" aria-labelledby="result">
-      <div class="hmb-result-copy">
-        <h2 id="result">Как выглядит новый сайт</h2>
-        <p>Клиенты находят нужный продукт и рассчитывают условия вклада. Сотрудники банка сами обновляют параметры расчёта и курсы валют.</p>
+      <div class="hmb-result-heading">
+        <div><h2 id="result">Как выглядит новый сайт</h2><p>Главная с калькулятором и меню банковских продуктов.</p></div>
         <a class="lc-button hmb-bank-link" href="https://kbhmb.ru/" target="_blank" rel="noopener noreferrer">Перейти на сайт ХМБ Банка</a>
       </div>
-      <figure class="hmb-screen">
-        <img src="/cases/hmb-bank/website.webp" width="1062" height="1326" loading="lazy" decoding="async" alt="Главная страница ХМБ Банка с предложениями и калькулятором вкладов" />
-      </figure>
+      <div class="hmb-monitors">
+        <figure class="hmb-monitor">
+          <div class="hmb-monitor-display"><div class="hmb-monitor-viewport hmb-monitor-full"><img src="/cases/hmb-bank/website.webp" width="1062" height="1326" loading="lazy" decoding="async" alt="Главная страница ХМБ Банка с предложениями и калькулятором вкладов" /></div></div>
+          <div class="hmb-monitor-stand" aria-hidden="true"></div>
+        </figure>
+        <figure class="hmb-monitor">
+          <div class="hmb-monitor-display"><div class="hmb-monitor-viewport"><img src="/cases/hmb-bank/products.webp" width="1280" height="720" loading="lazy" decoding="async" alt="Раскрытое меню сайта ХМБ Банка с перечнем вкладов и счетов" /></div></div>
+          <div class="hmb-monitor-stand" aria-hidden="true"></div>
+        </figure>
+      </div>
     </section>
 
-    <section class="lc-section lc-soft hmb-contact" id="contact" aria-labelledby="contact-title">
-      <div class="lc-wrap lc-contact">
-        <div>
-        <h2 id="contact-title">Обновление сайта можно поручить мне</h2>
-        <p class="lc-lead">Помогу определить, что войдёт в ваш бюджет, и проведу проект от требований до запуска.</p>
-        <p>С вашей командой, другим подрядчиком или <a href={studio} target="_blank" rel="noopener noreferrer">IT Production</a>.</p>
+    <section class="lc-section lc-soft hmb-value" id="value" aria-labelledby="value-title">
+      <div class="lc-wrap">
+        <div class="hmb-value-heading"><h2 id="value-title">У вашего сайта появится человек,<br />который доведёт проект до запуска</h2><p>Возьму на себя требования, согласования и организацию команды. С вашей стороны нужны экспертиза в продуктах и проверка решений.</p></div>
+        <div class="hmb-benefits">
+          <article><h3>Согласованная задача</h3><p>Соберу разрозненные материалы и требования подразделений в общую концепцию сайта.</p></article>
+          <article><h3>Объём работ под бюджет</h3><p>Помогу выбрать необходимые страницы и функции, найти возможности для повторного использования решений.</p></article>
+          <article><h3>Сроки под контролем</h3><p>Организую получение материалов и ответов, чтобы команда могла продолжать работу без затяжных согласований.</p></article>
+          <article><h3>Команда с общим планом</h3><p>Свяжу работу руководителей, дизайнера и разработчиков. Буду контролировать выполнение согласованных задач.</p></article>
+          <article><h3>Подготовленный переезд</h3><p>Организую проверку форм, расчётов и входов в сервисы перед переключением со старого сайта на новый.</p></article>
+          <article><h3>Управление после запуска</h3><p>Помогу определить, что сотрудники должны менять сами, и организую передачу сайта, кода и доступов.</p></article>
         </div>
-        <div class="lc-contact-action">
-          <a class="lc-button" href={booking} target="_blank" rel="noopener noreferrer" data-analytics-event="calendar_click" data-analytics-placement="hmb_case_contact">Записаться на бесплатную встречу</a>
-          <span>За 30 минут обсудим, что тормозит проект и что можно поручить мне.</span>
-        </div>
+        <p class="hmb-value-team">Могу вести вашу команду, помочь выбрать подрядчика или подключить <a href={studio} target="_blank" rel="noopener noreferrer">IT Production</a>.</p>
       </div>
     </section>
   </main>
@@ -231,60 +262,87 @@ const work = [
     margin-top: 6px;
   }
 
-  .hmb-result {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
-    gap: clamp(26px, 6vw, 80px);
-    align-items: center;
+  .hmb-change { padding-bottom:48px; }
+  .hmb-result { border-top:1px solid #dbe3ea; padding-top:48px; }
+  .hmb-result-heading { display:flex; justify-content:space-between; align-items:center; gap:30px; margin-bottom:36px; }
+  .hmb-result-heading p { margin-top:14px; }
+  .hmb-bank-link { flex-shrink:0; color:#102a43!important; background:#fff; border:1px solid #667d90; box-shadow:0 3px 0 #dbe3ea; }
+  .hmb-bank-link:hover { background:#f4f7fa; border-color:#102a43; }
+  .hmb-monitors { display:grid; grid-template-columns:1fr 1fr; gap:36px; align-items:start; }
+  .hmb-monitor-display { padding:9px 9px 16px; background:#233344; border:1px solid #102a43; border-radius:12px; }
+  .hmb-monitor-viewport { aspect-ratio:16/10; overflow:hidden; background:white; border-radius:4px; }
+  .hmb-monitor-viewport img { display:block; width:100%; height:auto; }
+  .hmb-monitor-full { display:flex; justify-content:center; }
+  .hmb-monitor-full img { width:auto; height:100%; max-width:100%; object-fit:contain; }
+  .hmb-monitor-stand { width:28%; height:30px; background:#dbe3ea; margin:auto; position:relative; }
+  .hmb-monitor-stand::after { content:''; position:absolute; height:6px; width:160%; left:-30%; bottom:0; background:#acbac6; border-radius:6px; }
+  .hmb-value-heading { max-width:900px; }
+  .hmb-value-heading p { margin-top:20px; max-width:670px; }
+  .hmb-benefits { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; margin-top:36px; }
+  .hmb-benefits article { background:#fff; padding:25px; border:1px solid #dbe3ea; border-radius:8px; }
+  .hmb-benefits h3 { font-size:21px; }
+  .hmb-benefits p { margin-top:12px; font-size:15px; }
+  .lc .hmb-value-team { margin-top:25px; font-size:15px; }
+
+  .hmb-pain-list {
+    margin: 25px 0 0;
+    padding: 0;
+    list-style: none;
+    color: #617184;
+    font-size: 18px;
+    line-height: 1.55;
   }
 
-  .hmb-result-copy p {
-    margin-top: 16px;
-    max-width: 420px;
+  .hmb-pain-list li {
+    position: relative;
+    padding-inline-start: 22px;
+    margin-top: 12px;
   }
 
-  .hmb-bank-link {
-    margin-top: 22px;
-    color: #102a43 !important;
-    background: #fff;
-    border: 1px solid #667d90;
+  .hmb-pain-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: .65em;
+    width: 6px;
+    height: 6px;
+    background: #de7d24;
+    border-radius: 50%;
   }
 
-  .hmb-bank-link:hover {
-    background: #f4f7fa;
+  .hmb-change-heading {
+    max-width: 870px;
   }
 
-  .hmb-screen img {
-    height: clamp(200px, 27vw, 320px);
-    object-fit: cover;
-    object-position: center 15%;
-    border: 1px solid #dbe3ea;
-    border-radius: 9px;
-    background: #f4f7fa;
+  .hmb-change-heading p {
+    max-width: 650px;
+    margin-top: 20px;
   }
 
-  .hmb-contact {
-    border-top: 1px solid #dbe3ea;
-    padding-block: clamp(48px, 6vw, 76px);
-  }
-
-  .hmb-contact .lc-button {
-    background: #a54f15;
-  }
-
-  .hmb-contact .lc-button:hover {
-    background: #833c0c;
-  }
-
-  .lc-contact-action > span {
-    text-align: center;
-    line-height: 1.5;
-    max-width: 270px;
-  }
-
+  .hmb-alignment { display:grid; grid-template-columns:1fr 1fr; border-block:1px solid #dbe3ea; margin-top:32px; }
+  .hmb-alignment > div { padding:28px; }
+  .hmb-alignment-result { background:#fff1e3; }
+  .hmb-alignment h3 { font-size:22px; }
+  .hmb-alignment ul { margin:18px 0 0; padding-left:20px; line-height:1.7; color:#617184; }
+  .hmb-alignment li + li { margin-top:7px; }
   @media (max-width: 760px) {
-    .hmb-work-layout, .hmb-result {
-      grid-template-columns: 1fr;
+    .hmb-work-layout,.hmb-alignment,.hmb-monitors { grid-template-columns:1fr; }
+    .hmb-result-heading { align-items:flex-start; flex-direction:column; gap:20px; }
+    .hmb-bank-link { width:100%; }
+    .hmb-benefits { grid-template-columns:1fr; }
+    .hmb-monitors { gap:30px; }
+    .hmb-alignment > div { padding:22px 18px; }
+  }
+</style>
+
+<style is:global>
+  @media (max-width: 360px) {
+    .hmb-page .site-header .header-inner {
+      grid-template-columns: minmax(0, 1fr) auto;
+    }
+
+    .hmb-page .site-header .header-cta.site-primary-cta {
+      display: none;
     }
   }
 </style>
