@@ -1,6 +1,7 @@
 ---
 import CaseSiteChrome from '../../components/CaseSiteChrome.astro';
 import CookieConsent from '../../components/CookieConsent.astro';
+import '../../styles/case-editorial.css';
 import '../../styles/locapp.css';
 
 const siteUrl = 'https://maria-galieva.ru/';
@@ -65,7 +66,7 @@ const work = [
   <meta name="twitter:image:alt" content={socialImageAlt} />
   <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 </head>
-<body class="hmb-page">
+<body class="case-reviewed hmb-page">
   <a class="lc-skip" href="#main">К содержанию</a>
   <CaseSiteChrome part="header" />
   <main class="lc" id="main">
@@ -74,32 +75,22 @@ const work = [
     <section class="lc-wrap lc-hero">
       <div class="lc-hero-copy">
         <div class="lc-kicker">Кейс ХМБ Банка</div>
-        <h1>Сайт давно пора обновить. <em>Кому поручить проект?</em></h1>
-        <ul class="hmb-pain-list">
-          <li>Ссылку неловко отправлять клиентам.</li>
-          <li>На сайте старый номер, форма заявки не работает.</li>
-          <li>Разработчики давно ушли. Вести редизайн некому.</li>
-        </ul>
-        <a class="lc-button" href="#value">Что можно поручить мне</a>
+        <h1>Организовала редизайн <em>сайта ХМБ Банка</em></h1>
+        <p class="lc-lead">Собрала материалы подразделений, согласовала требования с руководителями и организовала работу команды в рамках бюджета.</p>
+        <a class="lc-button" href="#contact">Обсудить проект</a>
       </div>
       <figure class="hmb-cover">
         <img src="/cases/hmb-bank/cover.webp" width="1080" height="540" fetchpriority="high" alt={socialImageAlt} />
-        <figcaption>
-          <span><strong>5 месяцев</strong> до запуска</span>
-          <span><strong>75+ страниц</strong> в новом сайте</span>
-        </figcaption>
       </figure>
     </section>
 
     <section class="lc-section lc-soft hmb-problem" aria-labelledby="problem">
-      <div class="lc-wrap lc-split">
-        <div>
-          <h2 id="problem">Почему банк откладывал редизайн</h2>
-          <p class="lc-lead">Банк давно хотел обновить сайт. Сметы превышали бюджет, а готового ТЗ ещё не было.</p>
-        </div>
-        <div class="hmb-blocker">
-          <h3>Выбрали подрядчика. Кто соберёт материалы?</h3>
-          <p>Информация лежала в разных местах. За продукты отвечали разные руководители, а собрать материалы для сайта было некому.</p>
+      <div class="lc-wrap">
+        <h2 id="problem">Почему банк откладывал редизайн</h2>
+        <div class="case-audit-grid">
+          <article><h3>Сайт устарел</h3><p>Банк давно хотел обновить сайт, но проект откладывали: не было готового задания и ответственного за материалы.</p></article>
+          <article><h3>Сметы выше бюджета</h3><p>Готового ТЗ не было. Банк долго не мог определить объём работ и выбрать подрядчика.</p></article>
+          <article><h3>Некому собрать материалы</h3><p>Информация лежала в разных местах. Руководителей много, а своего копирайтера и маркетолога нет.</p></article>
         </div>
       </div>
     </section>
@@ -107,7 +98,7 @@ const work = [
     <section class="lc-section lc-dark hmb-work" id="work" aria-labelledby="work-title">
       <div class="lc-wrap hmb-work-layout">
         <div>
-          <h2 id="work-title">Как я провела проект от требований до запуска</h2>
+          <h2 id="work-title">Провела проект от требований до запуска</h2>
         </div>
         <div>
         <ol class="hmb-flow">
@@ -125,8 +116,8 @@ const work = [
 
     <section class="lc-section lc-wrap hmb-change" aria-labelledby="change-title">
       <div class="hmb-change-heading">
-        <h2 id="change-title">У каждого подразделения свой продукт.<br />У сайта — общая концепция.</h2>
-        <p>Я свела разрозненные материалы в структуру, которую руководители могли проверить, а команда — реализовать.</p>
+        <h2 id="change-title">Собрала общую концепцию сайта</h2>
+        
       </div>
       <div class="hmb-alignment">
         <div>
@@ -142,7 +133,7 @@ const work = [
 
     <section class="lc-section lc-wrap hmb-result" aria-labelledby="result">
       <div class="hmb-result-heading">
-        <div><h2 id="result">Как выглядит новый сайт</h2><p>Главная с калькулятором и меню банковских продуктов.</p></div>
+        <div><h2 id="result">Новый сайт ХМБ Банка</h2><p>75+ страниц за 5 месяцев. Банк обновляет сайт сам.</p></div>
         <a class="lc-button hmb-bank-link" href="https://kbhmb.ru/" target="_blank" rel="noopener noreferrer">Перейти на сайт ХМБ Банка</a>
       </div>
       <div class="hmb-monitors">
@@ -159,14 +150,11 @@ const work = [
 
     <section class="lc-section lc-soft hmb-value" id="value" aria-labelledby="value-title">
       <div class="lc-wrap">
-        <div class="hmb-value-heading"><h2 id="value-title">У вашего сайта появится человек,<br />который доведёт проект до запуска</h2><p>Возьму на себя требования, согласования и организацию команды. С вашей стороны нужны экспертиза в продуктах и проверка решений.</p></div>
-        <div class="hmb-benefits">
-          <article><h3>Согласованная задача</h3><p>Соберу разрозненные материалы и требования подразделений в общую концепцию сайта.</p></article>
-          <article><h3>Объём работ под бюджет</h3><p>Помогу выбрать необходимые страницы и функции, найти возможности для повторного использования решений.</p></article>
-          <article><h3>Сроки под контролем</h3><p>Организую получение материалов и ответов, чтобы команда могла продолжать работу без затяжных согласований.</p></article>
-          <article><h3>Команда с общим планом</h3><p>Свяжу работу руководителей, дизайнера и разработчиков. Буду контролировать выполнение согласованных задач.</p></article>
-          <article><h3>Подготовленный переезд</h3><p>Организую проверку форм, расчётов и входов в сервисы перед переключением со старого сайта на новый.</p></article>
-          <article><h3>Управление после запуска</h3><p>Помогу определить, что сотрудники должны менять сами, и организую передачу сайта, кода и доступов.</p></article>
+        <div class="hmb-value-heading"><h2 id="value-title">Возьму обновление сайта под контроль</h2></div>
+        <div class="case-benefit-rows">
+          <article><h3>Понятная задача и бюджет</h3><p>Соберу материалы и требования в общую концепцию. Помогу выбрать необходимые страницы и повторно использовать решения.</p></article>
+          <article><h3>Команда и сроки под контролем</h3><p>Организую согласования и получение материалов. Свяжу работу руководителей, дизайнера и разработчиков.</p></article>
+          <article><h3>Подготовленный запуск и передача</h3><p>Организую проверку форм и сервисов перед переездом, передачу кода и доступов. Помогу определить, что сотрудники смогут обновлять сами.</p></article>
         </div>
         <p class="hmb-value-team">Могу вести вашу команду, помочь выбрать подрядчика или подключить <a href={studio} target="_blank" rel="noopener noreferrer">IT Production</a>.</p>
       </div>

@@ -1,0 +1,100 @@
+/* Editorial refinements scoped to the reviewed case pages. */
+.case-reviewed main { overflow-wrap: break-word; }
+.case-reviewed main :is(h1,h2,h3) { text-wrap: wrap; white-space: normal !important; }
+.case-reviewed main.lc .lc-hero .lc-hero-copy h1 { font-size: clamp(36px,3.8vw,54px); }
+.case-reviewed main .lc-cover { align-self: center; }
+.case-reviewed main .hero-photo::after { content: none; }
+.case-reviewed main .interview-grid > h2 { grid-column: 1/-1; }
+.case-reviewed main :is(.lc-section,.section) { padding-block: clamp(36px,5vw,64px); }
+.case-reviewed main :is(.lc-heading,.hmb-work-layout) { grid-template-columns: minmax(0,1fr); gap: 22px; }
+.case-reviewed main .lc-heading { margin-bottom: 28px; }
+.case-reviewed main .lc-heading > p { padding: 0; max-width: 780px; }
+.case-reviewed main h2 { font-size: clamp(27px,2.65vw,38px); line-height: 1.2; }
+.case-reviewed main :is(.lc-heading,.lc-split,.lc-hero,.role-grid,.interview-grid,.case-audit-grid) > * { min-width: 0; }
+.case-reviewed main :is(.lc-kicker,.eyebrow) { margin-bottom: 16px; }
+.case-reviewed main :is(.lc-hero,.ab-hero,.ommt-hero,.tc-hero) { padding-block: 40px 48px; }
+.case-reviewed main :is(.ommt-hero-heading,.tc-hero-grid) { grid-template-columns: minmax(0,1fr); gap: 20px; }
+.case-reviewed main :is(.ommt-hero-intro,.tc-intro) { max-width: 780px; }
+.case-reviewed main :is(.ommt-hero-heading,.tc-hero-grid) h1 { max-width: 1050px; }
+.case-reviewed main .ommt-hero-heading { margin-bottom: 28px; }
+.case-reviewed main .ommt-hero-intro .lc-button { margin-top: 22px; }
+.case-reviewed main .ab-hero { grid-template-columns: minmax(0,1.2fr) minmax(0,1fr); }
+.case-reviewed main .ab-hero h1 { font-size: clamp(32px,3.2vw,46px); }
+.case-reviewed main .ab-intro + .lc-button { margin-top: 24px; }
+.case-reviewed main .case-audit-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 18px; margin-top: 28px; }
+.case-reviewed main .case-audit-grid article { padding: 24px; background: #fff; border: 1px solid #dbe3ea; border-radius: 10px; }
+.case-reviewed main .case-audit-grid article:first-child { border-top: 3px solid #de7d24; padding-top: 22px; }
+.case-reviewed main .case-audit-grid h3 { font-size: 21px; }
+.case-reviewed main .case-audit-grid p { margin-top: 12px; font-size: 16px; }
+.case-reviewed main .case-benefit-rows { margin-top: 28px; border-top: 1px solid #dbe3ea; }
+.case-reviewed main .case-benefit-rows article { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1.5fr); gap: 36px; padding-block: 24px; border-bottom: 1px solid #dbe3ea; }
+.case-reviewed main .case-benefit-rows p { margin: 0; }
+.case-reviewed main .hmb-change-heading { max-width: none; }
+.case-reviewed main .hmb-flow { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px 40px; padding: 0; border: 0; }
+.case-reviewed main .hmb-flow li { padding: 20px 0 0; border-top: 1px solid #a9becf70; }
+.case-reviewed main .hmb-flow li::before { content: none !important; }
+.case-reviewed main .hmb-flow h3 { font-size: 21px; }
+.case-reviewed main .hmb-alignment { overflow: hidden; border: 1px solid #dbe3ea; border-radius: 10px; }
+.case-reviewed main .hmb-result-heading { flex-wrap: wrap; }
+.case-reviewed main .lc-result h2 { font-size: clamp(28px,3vw,42px); white-space: normal; }
+.case-reviewed main .lc-decision-body { gap: 24px; }
+.case-reviewed main .lc-decisions article { padding-block: 22px; }
+.case-reviewed main .lc-decision-title { margin-bottom: 14px; }
+.case-reviewed main .lc-checks li { padding-block: 20px; }
+.case-reviewed main .lc-checks li > div { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1.4fr); gap: 24px; }
+.case-reviewed main .lc-checks p { margin: 0; }
+.case-reviewed main .lc-split:has(> .lc-checks) { grid-template-columns: minmax(0,1fr); gap: 26px; }
+.case-reviewed main .ommt-preparation { gap: 18px; }
+.case-reviewed main .ommt-preparation article { display: grid; grid-template-columns: auto minmax(0,1fr); gap: 14px; padding: 24px; border: 1px solid #dbe3ea; border-radius: 10px; }
+.case-reviewed main .ommt-preparation :is(.ommt-number,h3) { margin: 0; }
+.case-reviewed main .ommt-preparation p { grid-column: 1/-1; }
+.case-reviewed main .lc-split:has(.ommt-responsibility) { grid-template-columns: minmax(0,1fr); gap: 24px; }
+.case-reviewed main .ommt-responsibility { padding: 24px; }
+.case-reviewed main .ommt-responsibility > h3 { display: none; }
+.case-reviewed main .ommt-responsibility dl { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 28px; margin: 0; }
+.case-reviewed main .ommt-responsibility dl > div { padding: 0; }
+.case-reviewed main .tc-findings article { display: block; padding: 24px; border-radius: 8px; }
+.case-reviewed main .tc-findings p { margin-top: 12px; }
+.case-reviewed main .tc-findings .tc-action { padding-top: 12px; }
+.case-reviewed main .lc-split:has(.tc-roles) { grid-template-columns: minmax(0,1fr); gap: 24px; }
+.case-reviewed main .tc-roles > h3 { display: none; }
+.case-reviewed main .tc-roles dl { display: grid; grid-template-columns: minmax(140px,.65fr) minmax(0,2fr); gap: 14px 28px; margin: 0; }
+.case-reviewed main .tc-roles :is(dt,dd) { margin: 0; }
+.case-reviewed main .tc-decision { gap: 32px; padding-top: 24px; }
+.case-reviewed main .tc-product { gap: 40px; }
+.case-reviewed main .tc-outcomes { margin-top: 28px; }
+.case-reviewed main .tc-review { gap: 32px; }
+.case-reviewed main .tc-review-note { background: #f4f7fa; padding: 26px; }
+.case-reviewed main .contact, .case-reviewed main .lc-contact { padding: 32px; margin-block: 24px 40px; border: 1px solid #e7bc91; border-radius: 12px; background: #fff1e3; }
+.case-reviewed main .lc-soft:has(> .lc-contact) { background: #fff; padding-block: 0; }
+.case-reviewed main .contact h2 { color: #102a43; }
+.case-reviewed main .contact p { color: #617184; }
+.case-reviewed .site-chrome .footer-contact-row { display: none; }
+.case-reviewed .site-chrome .final .final-grid > div > .eyebrow { display: none; }
+.case-reviewed main .hero-meta { display: none; }
+.case-reviewed main .hero { padding-block: 40px 48px; }
+.case-reviewed main .hero h1 { font-size: clamp(36px,3.8vw,56px); }
+.case-reviewed main .role-grid { grid-template-columns: minmax(0,1fr); gap: 28px; }
+.case-reviewed main .role-list { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 32px; }
+.case-reviewed main .section-heading { display: block; }
+.case-reviewed main .section-heading > p { margin-top: 18px; max-width: 780px; }
+.case-reviewed main .problems { gap: 16px; }
+.case-reviewed main .problem-icon { display: none; }
+.case-reviewed main .process-intro { margin-bottom: 24px; }
+@media (max-width:800px) {
+  .case-reviewed main .interview-grid > h2 { margin-bottom: 24px; }
+  .case-reviewed main :is(.ab-hero,.case-audit-grid,.hmb-flow,.case-benefit-rows article,.ommt-responsibility dl,.role-list,.lc-checks li > div) { grid-template-columns: minmax(0,1fr); }
+  .case-reviewed main .case-benefit-rows article { gap: 12px; }
+  .case-reviewed main .ommt-preparation { grid-template-columns: minmax(0,1fr); }
+  .case-reviewed main .ommt-preparation p { grid-column: 1/-1; }
+  .case-reviewed main :is(.contact,.lc-contact) { padding: 24px 20px; }
+  .case-reviewed main .tc-roles dl { grid-template-columns: minmax(0,1fr); gap: 8px; }
+  .case-reviewed main .tc-roles dt:not(:first-child) { margin-top: 16px; }
+  .case-reviewed main :is(.lc-hero,.ab-hero,.ommt-hero,.tc-hero,.hero) { padding-block: 28px 36px; }
+  .case-reviewed main .case-audit-grid article { padding: 22px; }
+}
+@media (max-width:420px) {
+  .case-reviewed .site-chrome .site-header .header-cta.site-primary-cta { display: none; }
+  .case-reviewed .site-chrome .site-header .header-inner { grid-template-columns: minmax(0,1fr) auto; }
+  .case-reviewed main .tc-flow { overflow-wrap: anywhere; }
+}
