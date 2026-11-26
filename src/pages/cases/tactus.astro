@@ -1,0 +1,77 @@
+---
+import CaseSiteChrome from '../../components/CaseSiteChrome.astro';
+import CookieConsent from '../../components/CookieConsent.astro';
+import '../../styles/case-project-button.css';
+import '../../styles/case-editorial.css';
+import '../../styles/locapp.css';
+import '../../styles/tactus.css';
+const title = 'Tactus: MVP стартапа в рамках гранта | Мария Галиева';
+const description = 'Продуктовый аудит готовых макетов, организация команды и контроль бюджета: моя роль в выпуске мобильной соцсети Tactus на средства государственного гранта.';
+const canonical = 'https://maria-galieva.ru/cases/tactus/';
+const findings = [
+  { title: 'Рейтинг без правил', text: 'Страницу рейтинга нарисовали, но ещё не определили, как проекты будут в него попадать.' },
+  { title: 'Профиль без редактирования', text: 'Профиль пользователя предусмотрели, а его заполнение и редактирование не попали в макеты и исходный бюджет.' },
+  { title: 'Карточки без нужных данных', text: 'В дизайне не хватало сведений о проекте и авторе. Если добавить всё сразу, карточки становились перегруженными.' },
+  { title: 'Неучтённая модерация', text: 'В первоначальном объёме не было обработки жалоб на контент и кабинета администратора.' },
+];
+const schema = { '@context': 'https://schema.org', '@type': 'Article', headline: 'Tactus: MVP стартапа в рамках гранта', description, inLanguage: 'ru-RU', mainEntityOfPage: canonical, author: { '@type': 'Person', name: 'Мария Галиева', url: 'https://maria-galieva.ru/' }, image: 'https://maria-galieva.ru/cases/tactus/cover.webp' };
+---
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title><meta name="description" content={description} />
+  <meta name="robots" content="noindex, nofollow" /><link rel="canonical" href={canonical} />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta property="og:type" content="article" /><meta property="og:locale" content="ru_RU" />
+  <meta property="og:title" content={title} /><meta property="og:description" content={description} /><meta property="og:url" content={canonical} />
+  <meta property="og:image" content="https://maria-galieva.ru/cases/tactus/cover.webp" /><meta property="og:image:alt" content="Tactus: экраны мобильной соцсети студенческих стартапов" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+</head>
+<body class="case-reviewed tactus-page">
+  <a class="lc-skip" href="#main">К содержанию</a><CaseSiteChrome part="header" />
+  <main class="lc tc" id="main">
+    <div class="lc-preview"><a href="/#cases">← Все кейсы</a><span>Tactus / Студенческие стартапы</span></div>
+    <section class="lc-wrap tc-hero">
+      <div class="tc-hero-grid">
+        <div class="tc-hero-copy">
+          <h1>Tactus: MVP стартапа в рамках гранта</h1>
+          <ul class="tc-hero-points"><li>Проверила продуктовую логику.</li><li>Помогла уложить объём работ в грант.</li><li>Вела команду до выпуска.</li></ul>
+          <a class="lc-button case-project-button" href="#case-request">Обсудить свой проект</a>
+        </div>
+        <figure class="tc-cover"><img src="/cases/tactus/hero.webp" width="1040" height="550" fetchpriority="high" alt="Tactus: экраны студенческой соцсети из кейса IT Production" /></figure>
+      </div>
+    </section>
+
+    <section class="lc-section lc-soft"><div class="lc-wrap"><h2>С чем команда Tactus пришла в проект</h2><div class="case-audit-grid">
+      <article><h3>Идея и готовые экраны</h3><p>У команды студенческой соцсети был государственный грант и макеты основных экранов. Приложение создавали для представления проектов и поиска единомышленников.</p></article>
+      <article><h3>Незавершённые сценарии</h3><p>Макеты показывали, как выглядит приложение, но часть действий пользователей и источников данных оставалась неопределённой.</p></article>
+      <article><h3>Фиксированный бюджет</h3><p>Исходная оценка превышала грант, хотя часть необходимых функций в неё ещё не вошла. Возможности доплатить у основателей не было.</p></article>
+    </div></div></section>
+
+    <section class="lc-section lc-wrap" id="audit"><div class="lc-heading"><div><div class="lc-kicker">Продуктовый аудит</div><h2>Нашла пробелы в сценариях до разработки</h2></div></div><div class="tc-findings">{findings.map(f => <article><h3>{f.title}</h3><p>{f.text}</p></article>)}</div></section>
+
+    <section class="lc-section lc-dark"><div class="lc-wrap">
+      <h2>Доработала логику продукта вместе с командой</h2>
+      <div class="tc-work-grid">
+        <article><h3>Уточнили логику</h3><p>Помогла определить недостающие действия, связи между функциями и источники данных. Так отдельные экраны складывались в завершённые пользовательские сценарии.</p></article>
+        <article><h3>Доработали интерфейс</h3><p>Вместе с командой уточнила содержание экранов и помогла упростить подачу информации. Дизайнер доработал макеты, в том числе для узких телефонов.</p></article>
+        <article><h3>Упростили реализацию</h3><p>С командой пересмотрели отдельные процессы и выбрали более простые решения. Это помогло включить необходимые доработки в согласованный объём.</p></article>
+      </div>
+    </div></section>
+
+    <section class="lc-section lc-wrap">
+      <h2>Распределение ролей в проекте</h2>
+      <div class="tc-role-cards">
+        <article><h3>Мария Галиева</h3><p>Как продакт отвечала за проработку продукта. Как проджект — за организацию команды, выполнение требований, соблюдение сроков и бюджета.</p></article>
+        <article><h3>Команда IT Production</h3><p>Дизайн, разработка и тестирование приложения. Реализация согласованных сценариев и передача продукта.</p><a class="lc-text-link" href="https://it-production.dev/" target="_blank" rel="noopener noreferrer">О команде IT Production</a></article>
+        <article><h3>Основатели Tactus</h3><p>Замысел продукта и исходные макеты. После передачи — продвижение приложения, отчётность по гранту и презентации проекта.</p></article>
+      </div>
+    </section>
+
+    <section class="lc-section tc-result"><div class="lc-wrap"><div class="lc-kicker">Результат проекта</div><h2>Что получили основатели Tactus</h2><div class="tc-outcomes"><article><h3>5 недель основных работ</h3><p>Команда выполнила основной объём в согласованные сроки. Проверки магазинами и последующая поддержка проходили отдельно.</p></article><article><h3>Без дополнительного финансирования</h3><p>Согласованный объём реализовали в рамках гранта. Основателям не пришлось искать средства на доплату за эту версию.</p></article><article><h3>Работающий продукт, код и доступы</h3><p>Основатели получили приложение для продвижения. Затем использовали его для отчётности, защиты в университете и демонстраций на международных мероприятиях.</p></article></div></div></section>
+
+  </main><CaseSiteChrome part="footer" /><CookieConsent />
+</body>
+</html>
