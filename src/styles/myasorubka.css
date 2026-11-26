@@ -65,37 +65,71 @@
 .case-faq summary:focus-visible{outline:3px solid var(--orange);outline-offset:4px}
 @media(max-width:700px){.case-faq summary{font-size:16px}.case-faq details>p{font-size:14px}}
 
-/* Process transformation: comparable sequences and changed roles. */
-.process-intro{max-width:850px;margin-bottom:32px;font-size:17px}
-.process-comparison{display:grid;gap:24px}
-.process-version{border:1px solid var(--line);border-radius:var(--card-radius, 10px);overflow:hidden}
-.process-caption{display:flex;align-items:center;gap:20px;padding:22px 25px;background:var(--soft)}
-.process-caption>span{font-size:12px;font-weight:750;text-transform:uppercase;letter-spacing:.1em;min-width:60px}
-.process-caption h3{font-size:22px}
-.process-version .process{margin:0;border:0;border-radius:0}
-.process-version .process li{padding:22px 18px;min-height:175px}
-.process-version .process strong{font-size:14px;line-height:1.5}
-.process-version .process li:last-child{border-right:0}
-.process-version.after{border-color:#afcfc2}
-.after .process-caption,.process li.changed{background:#edf5f1}
-.after .process-caption>span{color:#28634e}
-.process-role{border-top:1px solid var(--line);padding:20px 25px}
-.process-role>strong{font-size:16px;color:var(--navy)}
-.process-role p{font-size:14px;margin-top:6px}
-.process-takeaway{margin-top:30px;padding:28px 30px;border-left:3px solid var(--orange);background:var(--soft)}
-.process-takeaway>span{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:#a55314;margin-bottom:12px}
-.process-takeaway p{margin-top:12px;max-width:900px;font-size:15px}
-.solution .gallery-heading{margin-top:30px}
-@media(max-width:1050px){.process-version .process li{min-height:135px}}
-@media(max-width:700px){
-.process-intro{font-size:15px;margin-bottom:24px}
-.process-caption{align-items:flex-start;gap:12px;padding:20px 16px}
-.process-caption>span{min-width:48px;padding-top:5px;font-size:10px}
-.process-caption h3{font-size:20px}
-.process-version .process{grid-template-columns:1fr}
-.process-version .process li{min-height:0;padding:18px 16px;display:flex;align-items:baseline;gap:16px;border-right:0}
-.process-version .step-number{margin:0;flex-shrink:0}
-.process-version .process .arrow{display:none}
-.process-role{padding:20px 16px}
-.process-takeaway{padding:23px 20px}
-.process-takeaway h3{font-size:21px}}
+/* Compact case hero aligned with the other editorial case pages. */
+.avtomatizaciya-rabochego-mesta-myasnika-page.case-reviewed main .hero {
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 48px;
+}
+.avtomatizaciya-rabochego-mesta-myasnika-page .hero-copy { min-width: 0; }
+.avtomatizaciya-rabochego-mesta-myasnika-page.case-reviewed main .hero h1 {
+  font-size: clamp(32px, 3.2vw, 46px);
+  line-height: 1.12;
+}
+.avtomatizaciya-rabochego-mesta-myasnika-page .hero .lead {
+  margin-top: 24px;
+  font-size: 20px;
+  line-height: 1.55;
+}
+.avtomatizaciya-rabochego-mesta-myasnika-page .hero-photo {
+  height: auto;
+  aspect-ratio: 3 / 2;
+  align-self: center;
+}
+.avtomatizaciya-rabochego-mesta-myasnika-page .hero-photo img {
+  display: block;
+  height: auto;
+  object-position: center;
+}
+@media (max-width: 800px) {
+  .avtomatizaciya-rabochego-mesta-myasnika-page.case-reviewed main .hero {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+  .avtomatizaciya-rabochego-mesta-myasnika-page .hero .lead { font-size: 19px; }
+}
+
+/* Case discovery and comparable four-step sequences. */
+.avtomatizaciya-rabochego-mesta-myasnika-page .case-discovery {
+  display: grid; grid-template-columns: minmax(0,.85fr) minmax(0,1.15fr); gap: 48px; margin-top: 28px; align-items: start;
+}
+.avtomatizaciya-rabochego-mesta-myasnika-page .case-discovery-copy > p { font-size: 17px; }
+.avtomatizaciya-rabochego-mesta-myasnika-page .case-discovery-copy > .note { font-size: 12px; margin-top: 20px; }
+.avtomatizaciya-rabochego-mesta-myasnika-page .case-discovery .chat { margin: 0; }
+.avtomatizaciya-rabochego-mesta-myasnika-page .interview .problems article { border-top-color: #c5d2dd; }
+.case-flow-comparison { display: grid; gap: 24px; }
+.case-flow-version { padding: 26px; border: 1px solid var(--line); border-radius: var(--card-radius,10px); }
+.case-flow-version > header { display: flex; align-items: baseline; gap: 18px; }
+.case-flow-label { font-size: 12px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); font-weight: 750; }
+.case-flow-version h3 { font-size: 22px; }
+.case-flow-after { background: var(--soft); }
+.case-flow-after .case-flow-label { color: #a55314; }
+.case-flow { list-style: none; padding: 0; margin: 24px 0 0; display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 38px; }
+.case-flow > li { position: relative; min-width: 0; display: flex; flex-direction: column; justify-content: center; gap: 10px; min-height: 116px; padding: 18px; border: 1px solid var(--line); border-radius: var(--card-radius,10px); background: #fff; }
+.case-flow > li:not(:last-child)::after { content: ''; position: absolute; width: 20px; height: 8px; left: calc(100% + 9px); top: calc(50% - 4px); background: var(--muted); clip-path: polygon(0 40%,72% 40%,72% 0,100% 50%,72% 100%,72% 60%,0 60%); }
+.case-flow-number { font-size: 12px; color: var(--muted); }
+.case-flow strong { font-size: 16px; line-height: 1.4; color: var(--navy); }
+.case-flow > .case-flow-changed { border-color: #de7d24; background: #fff5eb; }
+.case-flow-role { margin-top: 20px; font-size: 15px; color: var(--navy); }
+.avtomatizaciya-rabochego-mesta-myasnika-page .gallery-heading { margin-top: 24px; margin-bottom: 16px; }
+.avtomatizaciya-rabochego-mesta-myasnika-page .gallery-controls { margin: 0; padding: 6px; gap: 12px; border: 1px solid var(--line); border-radius: var(--card-radius,10px); background: #fff; }
+@media (max-width: 1000px) {
+  .case-flow { grid-template-columns: minmax(0,1fr); gap: 28px; }
+  .case-flow > li { flex-direction: row; align-items: baseline; justify-content: start; min-height: 0; gap: 16px; }
+  .case-flow > li:not(:last-child)::after { left: 26px; top: calc(100% + 9px); transform: rotate(90deg); width: 16px; }
+}
+@media (max-width: 800px) {
+  .avtomatizaciya-rabochego-mesta-myasnika-page .case-discovery { grid-template-columns: minmax(0,1fr); gap: 24px; }
+  .case-flow-version { padding: 20px 16px; }
+  .case-flow-version > header { flex-direction: column; gap: 8px; }
+  .case-flow-version h3 { font-size: 20px; }
+}
