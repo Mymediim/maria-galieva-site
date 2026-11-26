@@ -13,7 +13,7 @@ const expectedEvents = [
   ['calendar_click', ['header', 'hero', 'meeting', 'services', 'footer']],
   ['telegram_click', ['hero', 'meeting', 'footer']],
   ['it_production_click', ['cases', 'method', 'footer']],
-  ['case_click', ['locapp', 'hmb-bank']],
+  ['case_click', ['locapp', 'hmb-bank', 'banana-traders']],
 ];
 
 for (const [eventName, placements] of expectedEvents) {
@@ -26,7 +26,7 @@ for (const [eventName, placements] of expectedEvents) {
   }
 }
 
-for (const caseName of ['locapp', 'hmb-bank']) {
+for (const caseName of ['locapp', 'hmb-bank', 'banana-traders']) {
   const casePattern = new RegExp(
     `<a(?=[^>]+data-analytics-event=["']case_click["'])(?=[^>]+data-analytics-case-name=["']${caseName}["'])[^>]*>`,
     'i',

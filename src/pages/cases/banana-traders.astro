@@ -1,0 +1,146 @@
+---
+import CaseSiteChrome from '../../components/CaseSiteChrome.astro';
+import CookieConsent from '../../components/CookieConsent.astro';
+import '../../styles/locapp.css';
+import '../../styles/banana-traders.css';
+
+const title = 'Banana Traders: запуск приложения и монетизация | Мария Галиева';
+const description = 'Как Мария Галиева помогла собрать требования к зависшему приложению Banana Traders и спроектировать корпоративный тариф после запуска.';
+const canonical = 'https://maria-galieva.ru/cases/banana-traders/';
+const cover = 'https://maria-galieva.ru/cases/banana-traders/cover.webp';
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'Article', headline: 'Banana Traders: запуск приложения и монетизация аналитики', description, mainEntityOfPage: canonical, image: cover, inLanguage: 'ru-RU', author: { '@type': 'Person', name: 'Мария Галиева', url: 'https://maria-galieva.ru/' } },
+    { '@type': 'BreadcrumbList', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Главная', item: 'https://maria-galieva.ru/' },
+      { '@type': 'ListItem', position: 2, name: 'Banana Traders', item: canonical },
+    ] },
+  ],
+};
+
+---
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="canonical" href={canonical} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={cover} />
+    <meta property="og:image:width" content="1440" />
+    <meta property="og:image:height" content="990" />
+    <meta property="og:image:alt" content="Banana Traders — аналитика цен на бананы из Эквадора" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={cover} />
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  </head>
+  <body class="bt-page">
+    <a class="lc-skip" href="#main">К содержанию</a>
+    <CaseSiteChrome part="header" />
+    <main class="lc bt" id="main">
+      <div class="lc-preview"><a href="/#cases">← Все кейсы</a></div>
+      <section class="lc-wrap lc-hero bt-hero">
+        <div class="lc-hero-copy">
+          <div class="lc-kicker">Banana Traders / B2B-аналитика</div>
+          <h1>Помогла запустить приложение <em>и монетизировать аналитику</em></h1>
+          <p class="lc-lead">Banana Traders: от идеи сервиса для рынка бананов — к работающему приложению с подпиской для компаний.</p>
+          <a class="lc-button" href="#contact" data-analytics-event="case_contact_click" data-analytics-placement="banana_hero">Обсудить проект</a>
+        </div>
+        <figure class="bt-cover">
+          <img src="/cases/banana-traders/cover.webp" width="1440" height="990" alt="Приложение Banana Traders с ценами и аналитикой рынка бананов" fetchpriority="high" />
+
+        </figure>
+      </section>
+
+      <section class="lc-section lc-soft">
+        <div class="lc-wrap">
+          <h2>С чем клиент пришёл после почти 2 лет разработки</h2>
+          <div class="bt-audit">
+            <div><h3>Деньги потрачены, запуска нет</h3><p>Предыдущие разработчики подвели. Клиент потерял деньги и доверие к IT-командам.</p></div>
+            <div><h3>Вместо приложения — экраны</h3><p>Аудит команды показал: переданные материалы не содержали рабочей кодовой базы.</p></div>
+            <div><h3>Требования не собраны</h3><p>Не определили расчёты, ежедневный ввод цен и работу администратора.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="lc-section lc-wrap" id="decisions">
+        <h2>Перевела бизнес-идею в требования для разработки</h2>
+        <div class="bt-interview">
+          <ol class="bt-steps">
+            <li><h3>Разобрала задачу через интервью</h3><p>Клиент знал, какие графики хочет видеть. Но правила расчётов ещё не были определены.</p></li>
+            <li><h3>Уточнила логику на конкретном примере</h3><p>Средняя цена: за какой период считать, учитывать ли субботу, на какое количество дней делить сумму?</p></li>
+            <li><h3>Оформила техническое задание</h3><p>Перевела ответы в правила работы приложения, по которым команда смогла реализовать функции.</p></li>
+            <li><h3>Контролировала разработку и запуск</h3><p>Вела работу команды <a href="https://it-production.dev/" target="_blank" rel="noopener noreferrer">IT Production</a> и выход приложения на рынок.</p></li>
+          </ol>
+        <figure class="bt-phone">
+          <a href="/cases/banana-traders/exporters.webp" target="_blank" rel="noopener" aria-label="Открыть экран таблицы экспортёров крупнее">
+            <img src="/cases/banana-traders/exporters.webp" width="1000" height="2168" alt="Таблица цен экспортёров со средними значениями Avg в Banana Traders" loading="lazy" decoding="async" />
+          </a>
+        </figure>
+        </div>
+      </section>
+
+      <section class="lc-section bt-data">
+        <div class="lc-wrap">
+          <h2>Предусмотрела ежедневное обновление цен</h2>
+          <ol class="bt-data-flow" aria-label="Как данные попадают к подписчику">
+            <li><span class="bt-node">01</span><h3>Компания собирает цены</h3><p>Использует аналитику, которую уже готовит для своего бизнеса.</p></li>
+            <li><span class="bt-node">02</span><h3>Администратор вносит показатели</h3><p>Для ежедневного обновления нужен отдельный кабинет.</p></li>
+            <li><span class="bt-node">03</span><h3>Клиент видит аналитику</h3><p>Приложение показывает цены и рассчитанные показатели.</p></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="lc-section lc-dark">
+        <div class="lc-wrap">
+          <h2>Предложила корпоративный тариф без оплаты в приложении</h2>
+          <ol class="bt-process" aria-label="Процесс корпоративной подписки">
+            <li><h3>Компания оплачивает</h3><p>Платит напрямую владельцу Banana Traders, без комиссии за покупку внутри приложения.</p></li>
+            <li><h3>Администратор подключает</h3><p>Оформляет доступ клиенту и его сотрудникам через кабинет.</p></li>
+            <li><h3>Доступ продлевают</h3><p>Администратор обновляет тариф после продления.</p></li>
+          </ol>
+          <aside class="bt-trust" aria-label="Пользователи приложения">
+            <p>Приложением пользовались закупщики крупных ритейлеров</p>
+            <div class="bt-retailers"><img src="/cases/banana-traders/x5.svg" width="109" height="48" alt="X5" loading="lazy" /><img src="/cases/banana-traders/magnit.svg" width="190" height="48" alt="Магнит" loading="lazy" /></div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="lc-section lc-wrap bt-final" aria-labelledby="bt-value">
+        <h2 id="bt-value">Что клиент получил после запуска</h2>
+        <div class="bt-result-grid">
+          <div class="bt-payback"><strong>6 месяцев</strong><span>Инвестиции в приложение окупились за 6 месяцев с начала нашей работы.</span></div>
+          <div class="bt-result-details">
+            <article><h3>Новый источник дохода</h3><p>Аналитику, которую компания уже собирала для бизнеса, стали продавать по подписке. После окупаемости приложение приносило доход.</p></article>
+            <article><h3>Продажи компаниям</h3><p>Корпоративный тариф с прямой оплатой, подключением сотрудников и продлением доступа через кабинет администратора.</p></article>
+            <article><h3>Узнаваемость на рынке</h3><p>На профильных выставках владельцев узнавали как создателей Banana Traders. Это помогало начинать деловые разговоры.</p></article>
+          </div>
+        </div>
+      </section>
+      <section class="lc-section bt-offer" aria-labelledby="bt-offer-title">
+        <div class="lc-wrap">
+          <h2 id="bt-offer-title">Помогу довести ваше приложение до рынка</h2>
+          <dl class="bt-offer-list">
+            <div><dt>Идея → задание для команды</dt><dd>Получите требования, понятные разработчикам.</dd></div>
+            <div><dt>Затянувшаяся разработка → запуск</dt><dd>Разберусь, что мешает выпуску, возьму исполнение под контроль.</dd></div>
+            <div><dt>Приложение → источник дохода</dt><dd>Помогу выбрать модель заработка и продумать продажи.</dd></div>
+            <div><dt>IT-вопросы → понятные решения</dt><dd>Объясню варианты и последствия для бизнеса, чтобы вы могли принять решение без IT-экспертизы.</dd></div>
+          </dl>
+        </div>
+      </section>
+    </main>
+    <CaseSiteChrome part="footer" />
+    <CookieConsent />
+  </body>
+</html>

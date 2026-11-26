@@ -95,4 +95,15 @@ assert.match(hmb, /"@type":"BreadcrumbList"/);
 assert.match(hmb, /<meta property="og:image" content="https:\/\/maria-galieva\.ru\/cases\/hmb-bank\/cover\.webp"/);
 assert.match(hmb, /<meta name="twitter:image"/);
 
+const bananaPath = '/cases/banana-traders/';
+const banana = await read(bananaPath.slice(1) + 'index.html');
+assert.equal(canonical(banana), 'https://maria-galieva.ru' + bananaPath);
+assert.equal(metaRobots(banana), 'noindex, nofollow');
+assert.ok(home.includes(`href="${bananaPath}"`));
+assert.ok(!sitemap.includes(bananaPath));
+assert.equal((banana.match(/<h1\b/g) ?? []).length, 1);
+assert.match(banana, /"@type":"Article"/);
+assert.match(banana, /"@type":"BreadcrumbList"/);
+assert.match(banana, /data-cookie-consent/);
+assert.match(banana, /href="#contact"/);
 console.log(`SEO build verification passed (${mode}).`);
