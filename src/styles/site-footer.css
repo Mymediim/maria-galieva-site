@@ -1,0 +1,21 @@
+/* Shared footer for every live page. Page-specific CTA styles do not apply here. */
+.site-chrome footer.final:has(> .footer-shell){padding:32px 0 24px;margin-top:40px;border-top:1px solid #dbe3ea;background:#102a43;color:#fff}
+.site-chrome .final .footer-shell{width:min(1240px,calc(100% - 80px));margin-inline:auto}
+.site-chrome .final .footer-contact-row{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-bottom:28px;border-bottom:1px solid #ffffff30}
+.site-chrome .final .footer-contact-row h2{font-size:22px;line-height:1.35;letter-spacing:-.02em;font-weight:600;max-width:none;color:#fff;margin:0}
+.site-chrome .final .footer-contact-row h2 br{display:none}
+.site-chrome .final .footer-contact-actions{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.site-chrome .final .footer-booking{display:inline-flex;justify-content:center;padding:12px 18px;border:1px solid #9aafc0;border-radius:var(--button-radius,6px);background:transparent;color:#fff;font-size:15px;line-height:1.4;font-weight:600;text-decoration:none;box-shadow:none}
+.site-chrome .final .footer-booking:hover{background:#214e73;border-color:#fff}
+.site-chrome .final .footer-telegram{font-size:15px;color:#fff;text-decoration:underline;text-underline-offset:4px;font-weight:400}
+.site-chrome .final .footer-columns{display:grid;grid-template-columns:1fr 1.15fr 1fr 1.1fr;gap:48px;padding-top:28px}
+.site-chrome .final .footer-columns>div,.site-chrome .final .footer-columns>nav{display:flex;flex-direction:column;align-items:flex-start;gap:10px;min-width:0}
+.site-chrome .final .footer-columns h3{font-size:16px;line-height:1.4;font-weight:600;letter-spacing:0;color:#fff;margin:0 0 4px;text-transform:none}
+.site-chrome .final .footer-columns p,.site-chrome .final .footer-columns a{font-size:14px;line-height:1.6;color:#ced9e3;margin:0;font-weight:400;text-transform:none;letter-spacing:0;overflow-wrap:anywhere}
+.site-chrome .final .footer-columns a{text-decoration:underline;text-decoration-color:#7890a4;text-underline-offset:4px}
+.site-chrome .final .footer-columns a:hover,.site-chrome .final .footer-telegram:hover{color:#f29d49}
+.site-chrome .final .footer-design-credit{font-size:12px;line-height:1.6;color:#a9becf;margin:24px 0 0;padding-top:18px;border-top:1px solid #ffffff20;max-width:none}
+.site-chrome .final .footer-design-credit a{font-size:inherit;color:inherit;text-underline-offset:3px}
+.site-chrome .final a:focus-visible{outline:2px solid #f29d49;outline-offset:5px}
+@media(max-width:1100px){.site-chrome .final .footer-contact-row{align-items:flex-start;flex-direction:column;gap:18px}.site-chrome .final .footer-contact-row h2{font-size:21px}.site-chrome .final .footer-columns{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}}
+@media(max-width:700px){.site-chrome footer.final:has(> .footer-shell){margin-top:28px;padding-top:26px}.site-chrome .final .footer-shell{width:calc(100% - 40px)}.site-chrome .final .footer-contact-row h2{font-size:20px;max-width:330px}.site-chrome .final .footer-contact-actions{gap:16px;align-items:flex-start;flex-direction:column}.site-chrome .final .footer-columns{grid-template-columns:1fr;gap:26px}.site-chrome .final .footer-columns>div,.site-chrome .final .footer-columns>nav{gap:8px}}

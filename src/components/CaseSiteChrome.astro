@@ -1,5 +1,7 @@
 ---
 import '../styles/button-shape.css';
+import '../styles/site-footer.css';
+import CaseCallback from './CaseCallback.astro';
 import '../styles/header-application-button.css';
 import prototypeSource from '../../prototype-desktop.html?raw';
 import desktopStyles from '../../desktop-design.css?raw';
@@ -31,6 +33,7 @@ if (part === 'header') {
 const styles = `@scope (.site-chrome) { ${baseStyles.replaceAll(':root', ':scope')} ${desktopStyles.replaceAll(':root', ':scope')} .reveal { opacity: 1; transform: none; } }`;
 ---
 {part === 'header' && <style is:global set:html={styles} />}
+{part === 'footer' && Astro.url.pathname.startsWith('/cases/') && <CaseCallback />}
 <div class="site-chrome" style="display: contents"><Fragment set:html={markup} /></div>
 <script>
   const header = document.querySelector('.site-chrome .site-header');

@@ -1,0 +1,101 @@
+---
+import CaseSiteChrome from '../../components/CaseSiteChrome.astro';
+import CookieConsent from '../../components/CookieConsent.astro';
+import '../../styles/case-project-button.css';
+import '../../styles/case-editorial.css';
+import '../../styles/locapp.css';
+const title = 'Artball: из идеи тренера в продукт | Мария Галиева';
+const description = 'Как я сформировала приложение из идеи футбольного тренера, определила объём под его бюджет и координировала команду IT Production.';
+const canonical = 'https://maria-galieva.ru/cases/artball/';
+const decisions = [
+ {title:'Структура тренировок',text:'Помогла распределить упражнения тренера по категориям и продумала самостоятельные занятия. Его методика стала основой приложения для детей.'},
+ {title:'Геймификация под бюджет',text:'Предложила кубок и прогресс как способ поддержать интерес детей к занятиям. Выбрала простую механику, чтобы обойтись без дорогой игровой разработки.'},
+ {title:'Без лишней разработки',text:'Видео разместили на YouTube вместо разработки своего плеера. Готовая программа не требовала кабинета администратора — на его создание клиенту не пришлось тратиться.'},
+];
+---
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{title}</title><meta name="description" content={description} /><meta name="robots" content="noindex, nofollow" />
+<link rel="canonical" href={canonical} /><link rel="icon" href="/favicon.svg" />
+<meta property="og:type" content="article" /><meta property="og:locale" content="ru_RU" /><meta property="og:title" content={title} /><meta property="og:description" content={description} /><meta property="og:url" content={canonical} /><meta property="og:image" content="https://maria-galieva.ru/cases/artball/cover.jpg" /><meta property="og:image:alt" content="Artball: программа тренировок и упражнение в мобильном приложении" />
+<meta name="twitter:card" content="summary_large_image" />
+</head>
+<body class="case-reviewed artball-page">
+<a class="lc-skip" href="#main">К содержанию</a><CaseSiteChrome part="header" />
+<main class="lc ab" id="main">
+<div class="ab-back lc-wrap"><a href="/#cases">Все кейсы</a></div>
+<section class="lc-wrap ab-hero">
+ <div><div class="lc-kicker">Artball / Обучение и спорт</div><h1>Приложение Artball <em>с нуля</em></h1><p class="ab-intro">Помогла тренеру без опыта в IT определить, каким будет приложение, и реализовать его в рамках бюджета.</p><a class="lc-button case-project-button" href="#case-request">Обсудить свой проект</a></div>
+ <figure class="ab-cover"><img src="/cases/artball/cover.jpg" width="1920" height="1080" fetchpriority="high" alt="Приложение Artball: программа тренировок и экран упражнения" /></figure>
+</section>
+<section class="ab-section lc-wrap ab-context-section">
+ <h2>Задача: тренировки дома</h2>
+ <div class="ab-grid ab-context">
+  <article><h3>Занятия между встречами</h3><p>Тренер хотел, чтобы дети занимались по его методике дома. У него были видео упражнений, но не было понимания, как собрать их в приложение.</p></article>
+  <article><h3>Личный бюджет тренера</h3><p>Клиент вкладывал личные средства. Нужно было выбрать необходимое для занятий и отказаться от остального.</p></article>
+  <article><h3>Нет готовой концепции</h3><p>Тренер не мог самостоятельно определить состав приложения и подготовить задачу для команды.</p></article>
+ </div>
+</section>
+<section class="ab-section ab-dark" id="decisions"><div class="lc-wrap">
+ <h2>Решения под ограниченный бюджет</h2>
+ <div class="ab-grid ab-decisions">{decisions.map(d=><article><h3>{d.title}</h3><p>{d.text}</p></article>)}</div>
+</div></section>
+<section class="ab-section lc-wrap ab-team-section">
+ <h2>Перевела методику в задачи для команды</h2>
+ <div class="ab-work">
+  <ol class="ab-steps">
+   <li><h3>Задачи для исполнителей</h3><p>Передала дизайнеру и разработчику задачи по экранам и их работе. Клиенту не пришлось переводить свою идею в технические требования.</p></li>
+   <li><h3>Проверяла дизайн и логику</h3><p>Уточняла переходы и состояния экранов. Согласовывала дизайн и разработку с учётом детской аудитории.</p></li>
+   <li><h3>Решала вопросы команды</h3><p>Опиралась на согласованную цель и самостоятельно решала текущие вопросы команды. Тренеру не нужно было разбираться в каждой технической детали.</p></li>
+  </ol>
+  <figure class="ab-phone"><img src="/cases/artball/progress.jpg" width="828" height="1792" loading="lazy" decoding="async" alt="Интерфейс Artball с прогрессом занятий" /></figure>
+ </div>
+</section>
+<section class="ab-section ab-result lc-wrap">
+ <h2>Результат: приложение за 2 месяца</h2>
+ <div class="ab-grid">
+  <article><h3>Методика — в приложении</h3><p>Дети могут заниматься по программе тренера между встречами. Приложение создала команда <a href="https://it-production.dev/" target="_blank" rel="noopener noreferrer">IT Production</a>.</p></article>
+  <article><h3>Бюджет соблюдён</h3><p>Уложились в согласованный бюджет. Тренеру не пришлось финансировать собственный плеер и кабинет администратора.</p></article>
+  <article><h3>Без ежемесячной поддержки</h3><p>Тренер сам ведёт кабинет Google Play. Ежемесячная поддержка не понадобилась; команда подключалась для отдельных обновлений.</p></article>
+ </div>
+ <a class="ab-studio" href="https://it-production.dev/projects/edtech-prilozhenie-artball/" target="_blank" rel="noopener noreferrer">Кейс Artball в портфолио команды</a>
+</section>
+</main><CaseSiteChrome part="footer" /><CookieConsent />
+</body></html>
+<style>
+.ab{--ab-line:#dbe3ea}.ab-back{padding-top:22px;font-size:14px}.ab-back a{text-decoration:none}.ab-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:48px;padding-block:40px 56px}.ab h1{font-size:clamp(32px,3vw,42px);line-height:1.12;text-wrap:wrap}.ab .lc-kicker{font-size:14px;letter-spacing:.06em;margin-bottom:20px}.ab .ab-intro{font-size:20px;line-height:1.55;margin-top:24px;max-width:520px}.ab-cover{border-radius:var(--panel-radius,12px);overflow:hidden}.ab-cover img{display:block;width:100%;height:auto}.ab-section{padding-block:56px}.ab h2{font-size:clamp(28px,2.65vw,38px);line-height:1.2;max-width:none;margin-bottom:32px;text-wrap:wrap}.ab h3{font-size:21px;line-height:1.3}.ab p{font-size:16px;line-height:1.65}.ab-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}.ab-grid article{padding-top:22px;border-top:1px solid var(--ab-line)}.ab-grid p,.ab-steps p{margin-top:12px}.ab-dark{background:var(--navy);--ab-line:#ffffff40}.ab-dark h2,.ab-dark h3{color:white}.ab-dark p{color:#c5d2de}.ab-work{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,.65fr);gap:72px;align-items:center}.ab-steps{list-style:none;padding:0;margin:0}.ab-steps li{padding-block:22px;border-top:1px solid var(--ab-line)}.ab-steps li:last-child{padding-bottom:0}.ab-phone{justify-self:center;width:min(100%,220px)}.ab-phone img{display:block;width:100%;height:auto;border:1px solid var(--ab-line);border-radius:var(--panel-radius,12px)}.ab-result{border-top:1px solid var(--ab-line)}.ab-studio{display:inline-block;margin-top:28px;font-size:16px}.ab a:focus-visible{outline:3px solid var(--orange);outline-offset:5px}
+@media(max-width:800px){.ab-hero{grid-template-columns:minmax(0,1fr);gap:28px;padding-block:28px 36px}.ab-section{padding-block:36px}.ab-grid{grid-template-columns:minmax(0,1fr);gap:24px}.ab h2{margin-bottom:26px}.ab-work{grid-template-columns:minmax(0,1fr);gap:32px}.ab .ab-intro{font-size:19px}.ab .lc-kicker{font-size:14px}.ab-back{padding-top:16px}.ab h1{font-size:clamp(32px,6vw,46px)}}
+</style>
+<style is:global>
+.artball-page .site-chrome .final{padding-top:40px}.artball-page .site-chrome .final-grid{padding-bottom:36px}.artball-page .site-chrome .final-grid .eyebrow{display:none}
+@media(max-width:360px){.artball-page .site-header .header-inner{grid-template-columns:minmax(0,1fr) auto}.artball-page .site-header .header-cta.site-primary-cta{display:none}}
+</style>
+
+
+<style>
+.ab-context-section{border-top:1px solid var(--ab-line)}
+.ab-context article{padding:26px;border:1px solid var(--ab-line);border-radius:var(--card-radius,10px);background:#fff}
+.ab-context article:nth-child(2){border-top:4px solid var(--orange);padding-top:23px}
+.ab-decisions{gap:0;border:1px solid #456074;border-radius:var(--panel-radius,12px);overflow:hidden}
+.ab-decisions article{padding:28px;border:0;background:#173b5e}
+.ab-decisions article+article{border-left:1px solid #456074}
+.ab-team-section{padding-top:64px;padding-bottom:64px}
+.ab-steps li{border:0;border-left:3px solid var(--orange);padding:18px 24px;margin-bottom:16px;background:#f4f7fa;border-radius:0 var(--card-radius,10px) var(--card-radius,10px) 0}
+.ab-steps li:last-child{padding-bottom:18px;margin-bottom:0}
+.ab-phone{padding:16px;background:#102a43;border-radius:var(--panel-radius,12px);width:min(100%,252px)}
+.ab-phone img{border:0;border-radius:var(--card-radius,10px)}
+.ab-result{margin-bottom:48px;padding:36px;border:1px solid #e7bc91;border-top:4px solid var(--orange);border-radius:var(--panel-radius,12px);background:#fff1e3}
+.ab-result article{border-color:#d8b794}
+.ab-result h3{font-size:20px}
+@media(min-width:1100px){.ab h1,.ab h2{white-space:nowrap}.ab h2{font-size:clamp(28px,2.6vw,36px)}}
+@media(max-width:800px){.ab-decisions article+article{border-left:0;border-top:1px solid #456074}.ab-decisions article,.ab-context article{padding:22px}.ab-team-section{padding-block:36px}.ab-result{padding:26px 20px;margin-bottom:28px}.ab-steps li{padding:18px}.ab-result h2{font-size:clamp(25px,5vw,32px)}}
+</style>
+
+<style is:global>
+.artball-page.case-reviewed main .ab-hero>div{min-width:0}
+.artball-page.case-reviewed main .ab-hero h1{font-size:clamp(30px,2.7vw,40px);white-space:normal!important;line-height:1.15}
+@media(min-width:1100px){.artball-page.case-reviewed main .ab-hero h1{white-space:nowrap!important}}
+@media(max-width:800px){.artball-page.case-reviewed main .ab-hero{grid-template-columns:minmax(0,1fr)}.artball-page.case-reviewed main .ab-hero h1{font-size:clamp(30px,6vw,40px)}}
+</style>

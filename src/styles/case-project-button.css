@@ -1,0 +1,16 @@
+/* Shared project CTA across case pages. */
+body main a.case-project-button,
+body main a.case-project-button:visited {
+  background: #f3a047;
+  border-color: #f3a047;
+  color: #102a43 !important;
+}
+body main a.case-project-button:hover {
+  background: #e88c30;
+  border-color: #e88c30;
+  color: #102a43 !important;
+}
+body main a.case-project-button:focus-visible {
+  outline: 3px solid #a74614;
+  outline-offset: 4px;
+}
