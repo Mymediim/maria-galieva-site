@@ -75,7 +75,9 @@ assert.match(agreement.text, /<meta name="robots" content="noindex, follow">/, '
 
 assert.match(robots.text, /^User-agent: \*\nAllow: \/\nSitemap: https:\/\/maria-galieva\.ru\/sitemap\.xml\n$/);
 assert.match(sitemap.text, /^<\?xml version="1\.0" encoding="UTF-8"\?>/);
-assert.equal((sitemap.text.match(/<url>/g) || []).length, 3, 'sitemap must contain three indexable URLs');
+const expectedSitemapPaths = ['/', '/cases/avtomatizaciya-rabochego-mesta-myasnika/', '/cases/locapp-pervaya-versiya-prilozheniya/', '/uslugi/codex-dlya-rukovoditeley/'];
+const sitemapUrls = [...sitemap.text.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
+assert.deepEqual(sitemapUrls.sort(), expectedSitemapPaths.map((path) => 'https://maria-galieva.ru' + path).sort());
 assert.match(sitemap.text, /<loc>https:\/\/maria-galieva\.ru\/cases\/avtomatizaciya-rabochego-mesta-myasnika\/<\/loc>/);
 assert.match(sitemap.text, /<loc>https:\/\/maria-galieva\.ru\/<\/loc>/);
 
@@ -102,5 +104,13 @@ assert.match(locapp.text, /data-cookie-consent/);
 assert.ok(locapp.text.includes('https://maria-galieva.ru/cases/locapp-pervaya-versiya-prilozheniya/'));
 assert.ok(sitemap.text.includes('<loc>https://maria-galieva.ru/cases/locapp-pervaya-versiya-prilozheniya/</loc>'));
 assert.ok(home.text.includes('href="/cases/locapp-pervaya-versiya-prilozheniya/"'));
+
+const banana = await fetchText('/cases/banana-traders/');
+assert.equal(banana.response.status, 200, 'Banana Traders must return 200');
+assert.match(banana.text, /<meta name="robots" content="noindex, nofollow"/);
+assert.match(banana.text, /<link rel="canonical" href="https:\/\/maria-galieva\.ru\/cases\/banana-traders\/"/);
+assert.match(banana.text, /data-cookie-consent/);
+assert.ok(home.text.includes('href="/cases/banana-traders/"'));
+assert.ok(!sitemap.text.includes('/cases/banana-traders/'));
 
 console.log('Production launch verification passed: indexability, sitemap, canonical, analytics consent gate, redirects and TLS are valid.');
