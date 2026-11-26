@@ -1,6 +1,7 @@
 ---
 import CaseSiteChrome from '../../components/CaseSiteChrome.astro';
 import CookieConsent from '../../components/CookieConsent.astro';
+import '../../styles/case-project-button.css';
 import '../../styles/locapp.css';
 import '../../styles/banana-traders.css';
 
@@ -55,7 +56,7 @@ const structuredData = {
           <div class="lc-kicker">Banana Traders / B2B-аналитика</div>
           <h1>Помогла запустить приложение <em>и монетизировать аналитику</em></h1>
           <p class="lc-lead">Banana Traders: от идеи сервиса для рынка бананов — к работающему приложению с подпиской для компаний.</p>
-          <a class="lc-button" href="#contact" data-analytics-event="case_contact_click" data-analytics-placement="banana_hero">Обсудить проект</a>
+          <a class="lc-button case-project-button" href="#contact" data-analytics-event="case_contact_click" data-analytics-placement="banana_hero">Обсудить свой проект</a>
         </div>
         <figure class="bt-cover">
           <img src="/cases/banana-traders/cover.webp" width="1440" height="990" alt="Приложение Banana Traders с ценами и аналитикой рынка бананов" fetchpriority="high" />

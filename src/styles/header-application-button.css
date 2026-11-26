@@ -1,7 +1,6 @@
-/* Материал подготовлен Марией Галиевой | IT Production */
 .site-header .header-cta.site-primary-cta,header .small-button.site-primary-cta{
   display:inline-flex;align-items:center;justify-content:center;min-height:42px;
-  padding:9px 15px;border:1px solid #a74614;border-radius:5px;
+  padding:9px 15px;border:1px solid #a74614;border-radius:var(--button-radius, 6px);
   background:#a74614;color:#fff;font:700 13px/1.2 Inter,"Segoe UI",Arial,sans-serif;
   text-align:center;text-decoration:none;white-space:nowrap
 }
