@@ -1,0 +1,143 @@
+---
+import CaseSiteChrome from '../../components/CaseSiteChrome.astro';
+import CookieConsent from '../../components/CookieConsent.astro';
+import '../../styles/case-project-button.css';
+import '../../styles/case-editorial.css';
+import '../../styles/locapp.css';
+import '../../styles/ommt.css';
+
+const site = 'https://maria-galieva.ru/';
+const canonical = new URL('cases/ommt/', site).href;
+const title = 'ОММТ: подготовка стартапа и запуск приложения для США | Мария Галиева';
+const description = 'Продуктовая работа Марии Галиевой над OMMT Club: анализ аудитории и монетизации, материалы для инвесторов и сопровождение разработки приложения для рынка США.';
+const cover = new URL('cases/ommt/cover.webp', site).href;
+const studioCase = 'https://it-production.dev/projects/mobilnoe-prilozhenie-ommt-bortovoj-zhurnal-i-socz-set-dlya-vladelczev-avto-usa/';
+const preparation = [
+  { number: '01', title: 'Аудитория и рынок', text: 'Летом, до разработки, я вела анализ аудитории и объёма рынка. Вместе с маркетологом рассчитывала данные, с основателями обсуждала выводы.' },
+  { number: '02', title: 'Риски и монетизация', text: 'На консультациях разбирали ограничения проекта и варианты заработка. Основатели предложили коллекционные карточки; вместе обсуждали, как включить их в приложение и за что пользователь будет платить.' },
+  { number: '03', title: 'Материалы для инвесторов', text: 'Собрали структуру по логике бизнес-плана. Основатели готовили часть материалов, мы — данные и расчёты модели. Готовую презентацию они использовали на встречах с инвесторами.' },
+];
+const choices = [
+  { before: 'Все виды транспорта', detail: 'От автомобилей и мотоциклов до яхт и вертолётов.', after: 'Автомобили и мотоциклы', reason: 'Сосредоточились на наиболее популярных категориях. Это сузило аудиторию запуска и сократило объём разработки.' },
+  { before: 'Частные и коммерческие профили', detail: 'Разные типы участников с разными возможностями.', after: 'Частные профили и подписки', reason: 'Коммерческие профили перенесли на следующие этапы. В 1-й версии сосредоточились на взаимодействии частных пользователей.' },
+  { before: 'Группы сообществ', detail: 'Отдельные пространства для общения внутри приложения.', after: 'Общая лента и личные истории', reason: 'Разработку групп отложили. В 1-й версии пользователи могли рассказывать о своём транспорте и следить за интересными профилями.' },
+];
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'Article', headline: 'ОММТ: от подготовки стартапа до рабочего приложения', description, mainEntityOfPage: canonical, inLanguage: 'ru-RU', image: cover, author: { '@type': 'Person', name: 'Мария Галиева', url: site } },
+    { '@type': 'BreadcrumbList', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Главная', item: site },
+      { '@type': 'ListItem', position: 2, name: 'ОММТ', item: canonical },
+    ] },
+  ],
+};
+---
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={cover} />
+    <meta property="og:image:type" content="image/webp" />
+    <meta property="og:image:width" content="1754" />
+    <meta property="og:image:height" content="550" />
+    <meta property="og:image:alt" content="OMMT Club: создание публикации и профиль владельца транспорта" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={cover} />
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  </head>
+  <body class="case-reviewed ommt-page">
+    <a class="lc-skip" href="#main">К содержанию</a>
+    <CaseSiteChrome part="header" />
+    <main id="main" class="lc ommt">
+      <div class="lc-preview"><a href="/#cases">Все кейсы</a><span>ОММТ / Авто- и мотосообщество</span></div>
+
+      <section class="lc-wrap ommt-hero" aria-labelledby="case-title">
+        <div class="ommt-hero-heading">
+          <div>
+            <div class="lc-kicker">Продуктовые консультации и сопровождение</div>
+            <h1 id="case-title">OMMT Club: <em>от идеи до запуска в США</em></h1>
+          </div>
+          <div class="ommt-hero-intro">
+            <p class="lc-lead">До разработки разобрали аудиторию, риски и монетизацию. Затем я сопровождала создание приложения в команде IT Production.</p>
+            <a class="lc-button case-project-button" href="#case-request">Обсудить свой проект</a>
+          </div>
+        </div>
+        <figure class="ommt-cover">
+          <img src="/cases/ommt/cover.webp" width="1754" height="550" fetchpriority="high" alt="OMMT Club: экран создания публикации и профиль владельца с автомобилем и мотоциклом" />
+
+        </figure>
+      </section>
+
+      <section class="lc-section lc-soft" id="context">
+        <div class="lc-wrap"><h2>С чем основатели пришли за оценкой разработки</h2><div class="case-audit-grid">
+          <article><h3>Новый рынок</h3><p>У основателей был опыт веб-клуба мотолюбителей в России. Теперь они хотели выпустить мобильную соцсеть для США и привлечь финансирование.</p></article>
+          <article><h3>Замысел шире бюджета</h3><p>В приложение хотели включить много функций и видов транспорта. Полный замысел не укладывался в бюджет 1-го запуска.</p></article>
+          <article><h3>Доход ещё не определён</h3><p>Предстояло выбрать модель монетизации и подготовить расчёты для инвесторов.</p></article>
+        </div></div>
+      </section>
+
+      <section class="lc-section lc-wrap" id="preparation">
+        <div class="lc-heading"><div><h2>Начали с консультаций</h2></div></div>
+        <div class="ommt-preparation">{preparation.map(item => <article><span class="ommt-number">{item.number}</span><h3>{item.title}</h3><p>{item.text}</p></article>)}</div>
+
+      </section>
+
+      <section class="lc-section lc-dark" id="decisions">
+        <div class="lc-wrap">
+          <div class="lc-heading"><div><h2>Выбрали функции для 1-го запуска</h2></div></div>
+          <div class="ommt-choices">{choices.map(choice => <article><div class="ommt-choice-before"><span>Исходный замысел</span><h3>{choice.before}</h3><p>{choice.detail}</p></div><div class="ommt-choice-after"><span>Решение для запуска</span><h3>{choice.after}</h3><p>{choice.reason}</p></div></article>)}</div>
+        </div>
+      </section>
+
+      <section class="lc-section lc-wrap" id="budget">
+        <div class="lc-heading"><div><h2>Как менялась стоимость проекта</h2></div><p>Сначала согласовали базовую рабочую сборку. Дополнительные функции основатели добавили уже по ходу разработки.</p></div>
+        <div class="ommt-budget">
+          <article><span>Исходная оценка</span><strong>≈ 5 млн ₽</strong><p>Полный список возможностей, с которым пришли основатели.</p></article>
+          <article class="ommt-budget-core"><span>Базовая рабочая сборка</span><strong>≈ 1 млн ₽</strong><p>Согласованный объём приложения после продуктовой проработки.</p></article>
+          <article><span>Версия с расширением</span><strong>до 1,5 млн ₽</strong><p>Работы с дополнительными функциями, выбранными по ходу проекта.</p></article>
+        </div>
+      </section>
+
+      <section class="lc-section lc-soft" id="role">
+        <div class="lc-wrap">
+          <h2>Как распределили работу над проектом</h2>
+          <div class="ommt-role-cards">
+            <article><h3>Основатели</h3><p>Идея и экспертиза мотосообщества, часть материалов для инвесторов, согласование состава приложения и дальнейшее развитие бизнеса.</p></article>
+            <article><h3>Мария — продукт и координация</h3><p>Консультации и анализ, участие в решениях по функционалу и монетизации, проверка целостности продукта и координация команды.</p></article>
+            <article><h3>Команда <a href="https://it-production.dev/" target="_blank" rel="noopener noreferrer">IT Production</a></h3><p>Дизайн, разработка и тестирование мобильного приложения.</p></article>
+          </div>
+        </div>
+      </section>
+      <section class="lc-section ommt-result" id="result">
+        <div class="lc-wrap">
+          <h2>Результаты работы</h2>
+          <div class="ommt-result-cards">
+            <article><h3><a href={studioCase} target="_blank" rel="noopener noreferrer">Рабочее приложение</a></h3><p>Версия для iOS и Android, которую основатели могли самостоятельно развивать дальше.</p></article>
+            <article><h3>5 месяцев</h3><p>Разработка и тестирование. Предварительные консультации проходили отдельно и в этот срок не входят.</p></article>
+            <article><h3>Материалы для инвесторов</h3><p>Презентация с расчётами, которую основатели использовали на встречах с инвесторами.</p></article>
+            <article><h3><a href="https://www.producthunt.com/products/ommt/awards" target="_blank" rel="noopener noreferrer">2 награды Product Hunt</a></h3><p>№3 дня и №3 недели за публичный запуск OMMT Club.</p></article>
+          </div>
+        </div>
+      </section>
+
+
+
+    </main>
+    <CaseSiteChrome part="footer" />
+    <CookieConsent />
+  </body>
+</html>
