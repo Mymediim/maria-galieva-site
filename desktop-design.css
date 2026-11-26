@@ -1671,3 +1671,6 @@ details p {
   from { background-position: 0% 50%; }
   to { background-position: 100% 50%; }
 }
+
+.ommt-teaser .myasorubka-teaser-visual figure{aspect-ratio:1.6}
+.ommt-teaser .myasorubka-teaser-visual img{width:100%;height:100%;object-fit:cover;object-position:54% center}
