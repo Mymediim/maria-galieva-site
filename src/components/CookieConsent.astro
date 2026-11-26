@@ -117,10 +117,16 @@ const googleAnalyticsId = import.meta.env.PUBLIC_GA_ID ?? '';
     });
 
     document.addEventListener('maria:form-success', (event) => {
+      if (event.detail?.service === 'site_enquiry') {
+        sendEvent('form_success', { service: 'site_enquiry' });
+        sendEvent('site_form_success', { service: 'site_enquiry' });
+        return;
+      }
       if (event.detail?.service !== 'codex_practicum') return;
       const tariff = ['Базовый', 'С сайтом', 'Для команды'].includes(event.detail.tariff)
         ? event.detail.tariff : 'not_selected';
       sendEvent('form_success', { service: 'codex_practicum', tariff });
+      sendEvent('practicum_form_success', { service: 'codex_practicum', tariff });
     });
 
     document.addEventListener('click', (event) => {

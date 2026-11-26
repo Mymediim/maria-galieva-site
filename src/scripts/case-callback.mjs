@@ -8,7 +8,7 @@ export function makeCallbackFields(form, openedAt, pageUrl) {
   if (fields.get('privacy_consent') !== '1') throw new Error('Подтвердите согласие на обработку данных заявки.');
   fields.set('your-name', 'Имя не указано');
   fields.set('your-phone', contact);
-  fields.set('textarea', 'Заявка: продуктовый консалтинг.\n' + (comment ? 'Комментарий: ' + comment + '\n' : '') + 'Страница кейса: ' + pageUrl);
+  fields.set('textarea', 'Заявка: продуктовый консалтинг.\n' + (comment ? 'Комментарий: ' + comment + '\n' : '') + 'Страница заявки: ' + pageUrl);
   fields.set('_wpcf7_unit_tag', 'wpcf7-f7-o1');
   fields.set('_itprod_ts', String(openedAt)); fields.set('website_url', '');
   fields.set('privacy_consent_version', '2026-11-25');
@@ -34,6 +34,7 @@ export function bindCaseCallback(form) {
       const fields = makeCallbackFields(form, openedAt, location.origin + location.pathname);
       button.disabled = true; button.textContent = 'Отправляем…'; status.textContent = '';
       await sendCallback(fields);
+      document.dispatchEvent(new CustomEvent('maria:form-success', { detail: { service: 'site_enquiry' } }));
       form.reset(); openedAt = Math.floor(Date.now() / 1000);
       status.textContent = 'Заявка отправлена. Свяжусь с вами по указанному контакту.';
     } catch(error) {
