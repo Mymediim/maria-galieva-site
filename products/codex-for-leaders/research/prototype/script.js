@@ -172,6 +172,11 @@ applicationForm.addEventListener('submit', async (event) => {
   }
 
   const fields = new FormData(applicationForm);
+  if (fields.get('privacy_consent') !== '1' || fields.get('privacy_consent_version') !== '2026-11-25') {
+    showApplicationStatus('Подтвердите отдельное согласие на обработку данных заявки.');
+    return;
+  }
+
   for (const field of ['name', 'email', 'message']) {
     const value = String(fields.get(field) ?? '').trim();
     if (!value) {
@@ -206,6 +211,14 @@ applicationForm.addEventListener('submit', async (event) => {
     if (!response.ok) throw new Error('Submission failed');
     const result = await response.json();
     if (result?.status !== 'mail_sent') throw new Error('Submission not confirmed');
+
+    // Read the submitted tariff before reset; never include contact fields.
+    const submittedTariff = String(fields.get('tariff') ?? '');
+    const tariff = ['Базовый', 'С сайтом', 'Для команды'].includes(submittedTariff)
+      ? submittedTariff : 'not_selected';
+    document.dispatchEvent(new CustomEvent('maria:form-success', {
+      detail: { service: 'codex_practicum', tariff },
+    }));
 
     applicationForm.reset();
     formOpenedAt = Math.floor(Date.now() / 1000);
