@@ -294,3 +294,5 @@ dialog {
 }
 
 .application-consent{display:block;font-size:.875rem;line-height:1.5;margin:18px 0 8px}.application-consent input[type=checkbox]{display:inline-block;width:20px;height:20px;margin:0 8px 0 0;vertical-align:middle}.application-consent a{color:inherit;text-decoration:underline}
+
+em,.lesson-number,.contact-link{color:#a95612}

@@ -50,7 +50,7 @@ assert.match(home, /<meta name="twitter:image"/);
 if (mode === 'open') {
   assert.equal(metaRobots(home), 'index, follow');
   assert.match(robots, /^User-agent: \*\nAllow: \/\nSitemap: https:\/\/maria-galieva\.ru\/sitemap\.xml\n$/);
-  assert.equal(urlCount(sitemap), 4);
+  assert.equal(urlCount(sitemap), 9);
   assert.equal(metaRobots(casePage), 'index, follow');
   assert.match(sitemap, /<loc>https:\/\/maria-galieva\.ru\/cases\/avtomatizaciya-rabochego-mesta-myasnika\/<\/loc>/);
   assert.match(sitemap, /<loc>https:\/\/maria-galieva\.ru\/<\/loc>/);
@@ -87,9 +87,9 @@ if (mode === 'open') assert.ok(sitemap.includes('<loc>https://maria-galieva.ru' 
 const hmbPath = '/cases/hmb-bank/';
 const hmb = await read(hmbPath.slice(1) + 'index.html');
 assert.equal(canonical(hmb), 'https://maria-galieva.ru' + hmbPath);
-assert.equal(metaRobots(hmb), 'noindex, nofollow');
+assert.equal(metaRobots(hmb), mode === 'open' ? 'index, follow' : 'noindex, nofollow');
 assert.ok(home.includes(`href="${hmbPath}"`));
-assert.ok(!sitemap.includes(hmbPath));
+assert.equal(sitemap.includes(hmbPath), mode === 'open');
 assert.match(hmb, /"@type":"Article"/);
 assert.match(hmb, /"@type":"BreadcrumbList"/);
 assert.match(hmb, /<meta property="og:image" content="https:\/\/maria-galieva\.ru\/cases\/hmb-bank\/cover\.webp"/);
@@ -98,12 +98,26 @@ assert.match(hmb, /<meta name="twitter:image"/);
 const bananaPath = '/cases/banana-traders/';
 const banana = await read(bananaPath.slice(1) + 'index.html');
 assert.equal(canonical(banana), 'https://maria-galieva.ru' + bananaPath);
-assert.equal(metaRobots(banana), 'noindex, nofollow');
+assert.equal(metaRobots(banana), mode === 'open' ? 'index, follow' : 'noindex, nofollow');
 assert.ok(home.includes(`href="${bananaPath}"`));
-assert.ok(!sitemap.includes(bananaPath));
+assert.equal(sitemap.includes(bananaPath), mode === 'open');
 assert.equal((banana.match(/<h1\b/g) ?? []).length, 1);
 assert.match(banana, /"@type":"Article"/);
 assert.match(banana, /"@type":"BreadcrumbList"/);
 assert.match(banana, /data-cookie-consent/);
 assert.match(banana, /href="#contact"/);
 console.log(`SEO build verification passed (${mode}).`);
+
+for (const slug of ['hmb-bank','banana-traders','tactus','ommt','artball']) {
+  const path = `/cases/${slug}/`;
+  const html = await read(path.slice(1) + 'index.html');
+  assert.equal(metaRobots(html), mode === 'open' ? 'index, follow' : 'noindex, nofollow', path);
+  assert.equal(canonical(html), 'https://maria-galieva.ru' + path);
+  assert.equal(sitemap.includes(`<loc>https://maria-galieva.ru${path}</loc>`), mode === 'open');
+  assert.match(html, /"@type":"Article"/);
+  assert.match(html, /"@type":"BreadcrumbList"/);
+  assert.match(html, /<meta name="twitter:image"/);
+}
+const consent = await read('personal-data-consent/index.html');
+assert.equal(metaRobots(consent), 'noindex, follow');
+for (const path of ['/privacy/', '/personal-data-consent/', '/agreement/']) assert.ok(!sitemap.includes(path));

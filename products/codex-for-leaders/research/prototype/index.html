@@ -71,13 +71,21 @@
   <div class="scenario-picker"><label for="scenario-select">Выбрать задачу</label><select id="scenario-select"><option value="0">Разработать новую страницу на сайте</option><option value="1">Разобрать итоги созвона</option><option value="2">Обновить цены в 3 000 строках Excel</option><option value="3">Подготовить КП новому клиенту</option><option value="4">Ответить на отзывы</option><option value="5">Подготовить посты на неделю</option><option value="6">Написать страницу услуги с голоса</option><option value="7">Найти условия в папке с договорами</option><option value="8">Найти счета без актов</option><option value="9">Найти дубли в каталоге</option></select></div>
   <div class="slider-controls"><button id="prev" type="button" aria-label="Предыдущая задача">‹</button><span id="count">1 из 10</span><button id="next" type="button" aria-label="Следующая задача">›</button></div>
 </div>
+<div class="scenario-method" style="margin:24px 0;font-size:14px;line-height:1.6;color:#102a43">
+  <p><strong>Учебные примеры расчёта.</strong> Время, частота задач и суммы ниже — условные ориентиры, а не измеренные результаты клиентов или прогноз вашего результата.</p>
+  <details><summary style="cursor:pointer;text-decoration:underline;text-underline-offset:3px">Как получены суммы и что учесть</summary>
+    <p>Для повторяющихся задач используем условную стоимость часа 1 000 ₽. Формула: (время вручную − время с ИИ) × количество задач в месяц × 1 000 ₽ / час. Минуты переводим в часы, сумму округляем до 1 ₽. Например, итоги созвона: (60 − 15) / 60 × 8 × 1 000 = 6 000 ₽ в месяц.</p>
+    <p>В примере с новой страницей 25 000 ₽ — условный бюджет дизайна и вёрстки у подрядчика, а 5–6 часов — ориентир самостоятельной работы с готовыми материалами. Эти величины нельзя напрямую вычитать друг из друга.</p>
+    <p>Денежная оценка высвобождённого времени не равна сокращению расходов или росту дохода. Реальный эффект зависит от вашей задачи, качества исходных материалов и проверки результата. Отдельно учитывайте первоначальную настройку, обучение, дополнительную проверку и доработки, оплату подписок и других инструментов; их стоимость в суммы не включена. Перед внедрением сравните полное время и затраты на своей задаче.</p>
+  </details>
+</div>
 <div class="scenario-metrics" aria-live="polite" aria-atomic="true">
   <div class="scenario-intro"><h3 id="scenario-title">Разработать новую страницу на сайте</h3>
   <p class="scenario-task" id="scenario-task">Добавить страницу услуги на существующий сайт в его стиле</p></div>
   <dl class="scenario-comparison">
     <div class="scenario-metric"><dt>Раньше</dt><dd><strong id="before-value">Около 1 недели</strong><span id="before-detail">Дизайнер готовит макет, разработчик верстает страницу и добавляет её на сайт.</span></dd></div>
     <div class="scenario-metric"><dt>Сейчас с ИИ</dt><dd><strong id="after-value">1 день · 5–6 ч</strong><span id="after-detail">С готовыми материалами и доступом ИИ помогает собрать страницу. Ты проверяешь её на телефоне и компьютере и публикуешь.</span></dd></div>
-    <div class="scenario-metric scenario-impact"><dt>Эффект для бизнеса</dt><dd><strong id="impact-value">≈ 25 000 ₽</strong><span id="impact-detail">Ориентир за дизайн и вёрстку 1 страницы у подрядчика.</span></dd></div>
+    <div class="scenario-metric scenario-impact"><dt>Расчётный ориентир</dt><dd><strong id="impact-value">≈ 25 000 ₽</strong><span id="impact-detail">Ориентир за дизайн и вёрстку 1 страницы у подрядчика.</span></dd></div>
   </dl>
 </div>
 </div></section>

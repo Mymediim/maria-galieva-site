@@ -12,15 +12,17 @@ const decisions = [
  {title:'Геймификация под бюджет',text:'Предложила кубок и прогресс как способ поддержать интерес детей к занятиям. Выбрала простую механику, чтобы обойтись без дорогой игровой разработки.'},
  {title:'Без лишней разработки',text:'Видео разместили на YouTube вместо разработки своего плеера. Готовая программа не требовала кабинета администратора — на его создание клиенту не пришлось тратиться.'},
 ];
+const schema = { '@context': 'https://schema.org', '@graph': [{ '@type': 'Article', headline: 'Приложение Artball с нуля', description, url: canonical, mainEntityOfPage: canonical, inLanguage: 'ru-RU', image: 'https://maria-galieva.ru/cases/artball/cover.jpg', author: { '@type': 'Person', name: 'Мария Галиева', url: 'https://maria-galieva.ru/' } }, { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Главная', item: 'https://maria-galieva.ru/' }, { '@type': 'ListItem', position: 2, name: 'Artball', item: canonical }] }] };
 ---
 <!doctype html>
 <html lang="ru">
 <head>
 <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>{title}</title><meta name="description" content={description} /><meta name="robots" content="noindex, nofollow" />
+<title>{title}</title><meta name="description" content={description} /><meta name="robots" content={import.meta.env.PUBLIC_SITE_INDEXING === 'true' ? 'index, follow' : 'noindex, nofollow'} />
 <link rel="canonical" href={canonical} /><link rel="icon" href="/favicon.svg" />
 <meta property="og:type" content="article" /><meta property="og:locale" content="ru_RU" /><meta property="og:title" content={title} /><meta property="og:description" content={description} /><meta property="og:url" content={canonical} /><meta property="og:image" content="https://maria-galieva.ru/cases/artball/cover.jpg" /><meta property="og:image:alt" content="Artball: программа тренировок и упражнение в мобильном приложении" />
-<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content={title} /><meta name="twitter:description" content={description} /><meta name="twitter:image" content="https://maria-galieva.ru/cases/artball/cover.jpg" />
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
 </head>
 <body class="case-reviewed artball-page">
 <a class="lc-skip" href="#main">К содержанию</a><CaseSiteChrome part="header" />

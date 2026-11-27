@@ -75,7 +75,7 @@ assert.match(agreement.text, /<meta name="robots" content="noindex, follow">/, '
 
 assert.match(robots.text, /^User-agent: \*\nAllow: \/\nSitemap: https:\/\/maria-galieva\.ru\/sitemap\.xml\n$/);
 assert.match(sitemap.text, /^<\?xml version="1\.0" encoding="UTF-8"\?>/);
-const expectedSitemapPaths = ['/', '/cases/avtomatizaciya-rabochego-mesta-myasnika/', '/cases/locapp-pervaya-versiya-prilozheniya/', '/uslugi/codex-dlya-rukovoditeley/'];
+const expectedSitemapPaths = ['/', '/cases/avtomatizaciya-rabochego-mesta-myasnika/', '/cases/locapp-pervaya-versiya-prilozheniya/', '/uslugi/codex-dlya-rukovoditeley/', '/cases/hmb-bank/', '/cases/banana-traders/', '/cases/tactus/', '/cases/ommt/', '/cases/artball/'];
 const sitemapUrls = [...sitemap.text.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
 assert.deepEqual(sitemapUrls.sort(), expectedSitemapPaths.map((path) => 'https://maria-galieva.ru' + path).sort());
 assert.match(sitemap.text, /<loc>https:\/\/maria-galieva\.ru\/cases\/avtomatizaciya-rabochego-mesta-myasnika\/<\/loc>/);
@@ -107,10 +107,20 @@ assert.ok(home.text.includes('href="/cases/locapp-pervaya-versiya-prilozheniya/"
 
 const banana = await fetchText('/cases/banana-traders/');
 assert.equal(banana.response.status, 200, 'Banana Traders must return 200');
-assert.match(banana.text, /<meta name="robots" content="noindex, nofollow"/);
+assert.match(banana.text, /<meta name="robots" content="index, follow"/);
 assert.match(banana.text, /<link rel="canonical" href="https:\/\/maria-galieva\.ru\/cases\/banana-traders\/"/);
 assert.match(banana.text, /data-cookie-consent/);
 assert.ok(home.text.includes('href="/cases/banana-traders/"'));
-assert.ok(!sitemap.text.includes('/cases/banana-traders/'));
+assert.ok(sitemap.text.includes('/cases/banana-traders/'));
 
 console.log('Production launch verification passed: indexability, sitemap, canonical, analytics consent gate, redirects and TLS are valid.');
+
+for (const slug of ['hmb-bank','tactus','ommt','artball']) {
+  const path = `/cases/${slug}/`;
+  const page = await fetchText(path);
+  assert.equal(page.response.status, 200, path);
+  assert.match(page.text, /<meta name="robots" content="index, follow"/);
+  assert.ok(page.text.includes(`<link rel="canonical" href="https://maria-galieva.ru${path}"`));
+  assert.match(page.text, /"@type":"Article"/);
+  assert.match(page.text, /"@type":"BreadcrumbList"/);
+}

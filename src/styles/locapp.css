@@ -13,3 +13,5 @@
 .lc-telegram{font-size:13px;font-weight:650}.lc-product-demos .lc-demo-copy{display:flex;flex-direction:column;flex:1}.lc-product-demos .lc-demo-copy>a{margin-top:auto;padding-top:16px}@media(min-width:701px) and (max-width:1050px){.lc-demo-copy h3{min-height:3.9em}}
 
 .lc-faq h2{margin-bottom:30px}.lc-faq details{border-top:1px solid var(--line);padding:22px 0}.lc-faq details:last-child{border-bottom:1px solid var(--line)}.lc-faq summary{cursor:pointer;color:var(--navy);font-weight:650;font-size:18px;line-height:1.5}.lc-faq details p{margin-top:18px;max-width:850px}
+
+.lc h1 em,.lc h2 em{color:#a95612}

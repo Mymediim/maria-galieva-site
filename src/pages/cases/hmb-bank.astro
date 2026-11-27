@@ -45,7 +45,7 @@ const work = [
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="robots" content="noindex, nofollow" />
+  <meta name="robots" content={import.meta.env.PUBLIC_SITE_INDEXING === 'true' ? 'index, follow' : 'noindex, nofollow'} />
   <link rel="canonical" href={canonicalUrl} />
   <meta name="description" content={pageDescription} />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />

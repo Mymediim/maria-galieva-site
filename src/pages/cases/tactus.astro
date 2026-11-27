@@ -14,19 +14,20 @@ const findings = [
   { title: 'Карточки без нужных данных', text: 'В дизайне не хватало сведений о проекте и авторе. Если добавить всё сразу, карточки становились перегруженными.' },
   { title: 'Неучтённая модерация', text: 'В первоначальном объёме не было обработки жалоб на контент и кабинета администратора.' },
 ];
-const schema = { '@context': 'https://schema.org', '@type': 'Article', headline: 'Tactus: MVP стартапа в рамках гранта', description, inLanguage: 'ru-RU', mainEntityOfPage: canonical, author: { '@type': 'Person', name: 'Мария Галиева', url: 'https://maria-galieva.ru/' }, image: 'https://maria-galieva.ru/cases/tactus/cover.webp' };
+const article = { '@context': 'https://schema.org', '@type': 'Article', headline: 'Tactus: MVP стартапа в рамках гранта', description, inLanguage: 'ru-RU', mainEntityOfPage: canonical, author: { '@type': 'Person', name: 'Мария Галиева', url: 'https://maria-galieva.ru/' }, image: 'https://maria-galieva.ru/cases/tactus/cover.webp' };
+const schema = { '@context': 'https://schema.org', '@graph': [article, { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Главная', item: 'https://maria-galieva.ru/' }, { '@type': 'ListItem', position: 2, name: 'Tactus', item: canonical }] }] };
 ---
 <!doctype html>
 <html lang="ru">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{title}</title><meta name="description" content={description} />
-  <meta name="robots" content="noindex, nofollow" /><link rel="canonical" href={canonical} />
+  <meta name="robots" content={import.meta.env.PUBLIC_SITE_INDEXING === 'true' ? 'index, follow' : 'noindex, nofollow'} /><link rel="canonical" href={canonical} />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <meta property="og:type" content="article" /><meta property="og:locale" content="ru_RU" />
   <meta property="og:title" content={title} /><meta property="og:description" content={description} /><meta property="og:url" content={canonical} />
   <meta property="og:image" content="https://maria-galieva.ru/cases/tactus/cover.webp" /><meta property="og:image:alt" content="Tactus: экраны мобильной соцсети студенческих стартапов" />
-  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content={title} /><meta name="twitter:description" content={description} /><meta name="twitter:image" content="https://maria-galieva.ru/cases/tactus/cover.webp" />
   <script type="application/ld+json" set:html={JSON.stringify(schema)} />
 </head>
 <body class="case-reviewed tactus-page">
